@@ -22,7 +22,13 @@
                 <div class="left animated fadeInLeft">
                     <div class="leftCon">
                         <ul>
-                            <li class="all" v-for="(item,index) in proList" :key="index" :class="{'selected':select===index}" @click="change(index,item.CALLED,item.ID)"><a style="cursor: pointer"><span></span><font style="vertical-align: inherit;"><font style="vertical-align: inherit;">{{item.CALLED}}</font></font></a></li>
+                            <li class="all" v-for="(item,index) in proList" :key="index" :class="{'selected':select===index}" @click="change(index,item.CALLED,item.ID)">
+                                <a style="cursor: pointer" :class="{'small':item.size===0}">
+                                    <span></span>
+                                    <font style="vertical-align: inherit;">
+                                        <font style="vertical-align: inherit;">{{item.CALLED}}</font>
+                                    </font>
+                                </a></li>
                         </ul>
                     </div>
                 </div>
@@ -77,29 +83,29 @@
                 proList:[
                     {CALLED:'所有',ID:42},
                     {CALLED:'沙发',ID:56},  //二级分类
-                    {CALLED:'单人沙发',ID:61},
-                    {CALLED:'双人沙发',ID:62},
-                    {CALLED:'三人沙发',ID:63},
-                    {CALLED:'休闲椅',ID:64},
+                    {CALLED:'单人沙发',ID:61,size:0},
+                    {CALLED:'双人沙发',ID:62,size:0},
+                    {CALLED:'三人沙发',ID:63,size:0},
+                    {CALLED:'休闲椅',ID:64,size:0},
                     {CALLED:'桌椅',ID:57},   //二级分类
-                    {CALLED:'椅子',ID:65},
-                    {CALLED:'圆桌',ID:66},
-                    {CALLED:'方桌',ID:67},
+                    {CALLED:'椅子',ID:65,size:0},
+                    {CALLED:'圆桌',ID:66,size:0},
+                    {CALLED:'方桌',ID:67,size:0},
                     {CALLED:'茶几',ID:58},  //二级分类
-                    {CALLED:'圆几',ID:68},
-                    {CALLED:'方几',ID:69},
-                    {CALLED:'异形',ID:70},
+                    {CALLED:'圆几',ID:68,size:0},
+                    {CALLED:'方几',ID:69,size:0},
+                    {CALLED:'异形',ID:70,size:0},
                     {CALLED:'床·床垫',ID:59}, //二级分类
-                    {CALLED:'床',ID:71},
-                    {CALLED:'床头柜',ID:72},
-                    {CALLED:'儿童床',ID:73},
-                    {CALLED:'床尾凳',ID:74},
-                    {CALLED:'床垫',ID:75},
+                    {CALLED:'床',ID:71,size:0},
+                    {CALLED:'床头柜',ID:72,size:0},
+                    {CALLED:'儿童床',ID:73,size:0},
+                    {CALLED:'床尾凳',ID:74,size:0},
+                    {CALLED:'床垫',ID:75,size:0},
                     {CALLED:'柜架',ID:60}, //二级分类
-                    {CALLED:'装饰柜',ID:76},
-                    {CALLED:'书柜',ID:77},
-                    {CALLED:'电视柜',ID:78},
-                    {CALLED:'书桌',ID:79},
+                    {CALLED:'装饰柜',ID:76,size:0},
+                    {CALLED:'书柜',ID:77,size:0},
+                    {CALLED:'电视柜',ID:78,size:0},
+                    {CALLED:'书桌',ID:79,size:0},
                     {CALLED:'克雷马系列',ID:0},
                     {CALLED:'马雷克系列',ID:1}
                 ]
@@ -364,6 +370,7 @@
                                     transition: color 300ms;
                                     color: #000;
                                     text-decoration: none;
+                                    font-weight: bold;
                                     span{
                                         width: 11px;
                                         height: 11px;
@@ -383,6 +390,10 @@
                                         opacity: 0;
                                         transition: all 1s;
                                     }
+                                }
+                                .small{
+                                    font-size: 14px;
+                                    font-weight: normal;
                                 }
                             }
                             .selected{

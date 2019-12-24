@@ -43,7 +43,7 @@
                                 <div class="i1">
                                     <i class="iconfont icon-qiyeguanli"></i>
                                 </div>
-                                <p>企业背景优势</p>
+                                <p>企划背景优势</p>
                             </div>
                             <div class="item" @click="change(1)" :class="{'aItem':select===1}">
                                 <div class="i1">
