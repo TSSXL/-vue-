@@ -10,28 +10,28 @@
                <a href="/index.html">Home-</a>
                <a href="/lifestyle.html">lifestyle</a>
            </div>
-            <div class="right" @mouseenter="showNav" @mouseleave="hideNav">
-               <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>
-                <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">
-                 <div v-for="(item,index)  in proList" :key="index"  @click="getType(item.ID,item.CALLED)">
-                     {{item.CALLED}}
-                     <i class="iconfont icon-arrow-left"></i>
-                 </div>
-                </div>
-            </div>
+<!--            <div class="right" @mouseenter="showNav" @mouseleave="hideNav">-->
+<!--               <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>-->
+<!--                <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">-->
+<!--                 <div v-for="(item,index)  in proList" :key="index"  @click="getType(item.ID,item.CALLED)">-->
+<!--                     {{item.CALLED}}-->
+<!--                     <i class="iconfont icon-arrow-left"></i>-->
+<!--                 </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
             <div class="allItems">
                 <div class="item wow" v-for="(item,index) in list"  :key="index" @click="gotoInfo(item.ID)">
                     <div class="a1">
                         <img  :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
-                        <div class="sc" :class="{'show':getNum(item.ID)}">
-                            <img src="../assets/black.png" alt=""  @click.stop="reShop(item.ID)">
-                            <img src="../assets/white.png" alt="" @click.stop="addShop(item.ID)">
-                        </div>
+<!--                        <div class="sc" :class="{'show':getNum(item.ID)}">-->
+<!--                            <img src="../assets/black.png" alt=""  @click.stop="reShop(item.ID)">-->
+<!--                            <img src="../assets/white.png" alt="" @click.stop="addShop(item.ID)">-->
+<!--                        </div>-->
                     </div>
                     <div class="a2">
                         <p>{{item.PRONAME}}</p>
-                        <p>{{item.TITLE2}}</p>
+<!--                        <p>{{item.TITLE2}}</p>-->
                     </div>
                 </div>
             </div>
@@ -62,53 +62,54 @@
         },
         components:{footComponent},
         mounted(){
-            this.getPro()
-            if(localStorage.getItem('fbarr')!==null){
-                this.arr=JSON.parse(localStorage.getItem('fbarr'))
-            }
-            if(window.location.search.split('?')[1]!==undefined){
-                this.text=decodeURI(window.location.search.split('?')[2].split('=')[1])
-                this.getProList(parseInt(window.location.search.split('?')[1].split('=')[1]))
-            }else{
-                this.getProList('49')
-            }
+            this.getProList('43')
+            // this.getPro()
+            // if(localStorage.getItem('fbarr')!==null){
+            //     this.arr=JSON.parse(localStorage.getItem('fbarr'))
+            // }
+            // if(window.location.search.split('?')[1]!==undefined){
+            //     this.text=decodeURI(window.location.search.split('?')[2].split('=')[1])
+            //     this.getProList(parseInt(window.location.search.split('?')[1].split('=')[1]))
+            // }else{
+            //     this.getProList('49')
+            // }
         },
         methods:{
-            getType(id,text){
-                const  link=`/lifestyle.html?id=${id}?text=${text}`
-                window.open(link,'_self')
-            },
-            delete(i){
-                var index = this.arr.indexOf(i);
-                this.arr.splice(index, 1)
-                localStorage.setItem('fbarr',JSON.stringify(this.arr))
-            },
-            getNum(n){
-                if(this.arr.includes(n)){
-                    return true
-                }
-            },
-            reShop(n){
-                this.delete(n)
-                this.$message({
-                    showClose: true,
-                    message: '取消收藏',
-                    type: 'warning'
-                });
-            },
-            addShop(n){
-                this.arr.push(n)
-                this.$message({
-                    showClose: true,
-                    message: '成功收藏',
-                    type: 'success'
-                });
-                localStorage.setItem('fbarr',JSON.stringify(this.arr))
-            },
+            // getType(id,text){
+            //     const  link=`/lifestyle.html?id=${id}?text=${text}`
+            //     window.open(link,'_self')
+            // },
+            // delete(i){
+            //     var index = this.arr.indexOf(i);
+            //     this.arr.splice(index, 1)
+            //     localStorage.setItem('fbarr',JSON.stringify(this.arr))
+            // },
+            // getNum(n){
+            //     if(this.arr.includes(n)){
+            //         return true
+            //     }
+            // },
+            // reShop(n){
+            //     this.delete(n)
+            //     this.$message({
+            //         showClose: true,
+            //         message: '取消收藏',
+            //         type: 'warning'
+            //     });
+            // },
+            // addShop(n){
+            //     this.arr.push(n)
+            //     this.$message({
+            //         showClose: true,
+            //         message: '成功收藏',
+            //         type: 'success'
+            //     });
+            //     localStorage.setItem('fbarr',JSON.stringify(this.arr))
+            // },
             showMore(){
                 if(this.page<=this.totalPage){
                     this.$nextTick(()=>{
-                        const url = `${getProductsUrl('zh-CN',this.pid,6,this.page++)}`
+                        const url = `${getProductsUrl('zh-CN',this.pid,4,this.page++)}`
                         this.$axios.get(url).then(res => {
                             this.list=this.list.concat(res.data.proarr)
                         })
@@ -121,32 +122,33 @@
                     });
                 }
             },
-            getPro(){
-                this.$nextTick(()=>{
-                    const url = `${getProductstypeUrl2('zh-CN','43')}`
-                    this.$axios.get(url).then(res => {
-                        this.proList=res.data
-                        this.text=res.data[0].CALLED
-                    })
-                })
-            },
+            // getPro(){
+            //     this.$nextTick(()=>{
+            //         const url = `${getProductstypeUrl2('zh-CN','43')}`
+            //         this.$axios.get(url).then(res => {
+            //             this.proList=res.data
+            //             this.text=res.data[0].CALLED
+            //         })
+            //     })
+            // },
             getProList(id){
                 this.pid=id
                 this.page=2
-                const url = `${getProductsUrl('zh-CN',id,6,1)}`
+                const url = `${getProductsUrl('zh-CN',id,4,1)}`
                 this.$axios.get(url).then(res => {
                     this.list=res.data.proarr
+                    console.log(this.list)
                     this.totalPage=res.data.pagershow.totalPagers
                 })
             },
-            showNav(){
-                this.active=true
-            },
-            hideNav(){
-                this.active=false
-            },
+            // showNav(){
+            //     this.active=true
+            // },
+            // hideNav(){
+            //     this.active=false
+            // },
             gotoInfo(id){
-                const link = `/proInfo.html?pid=${id}?text=${this.text}`
+                const link = `/lifeInfo.html?pid=${id}`
                 window.open(link)
             },
         }
@@ -265,17 +267,16 @@
             }
         }
         .allItems{
-            width:100%;
+            width:1440px;
+            margin: 0 auto;
             display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
+            flex-direction: column;
             .item{
                 position: relative;
                 cursor: pointer;
-                width:32%;
-                margin-left: 1%;
-                margin-top: 30px;
-                border-bottom: 1px solid #D9D9D9;
+                width:100%;
+                margin-top: 10px;
+                /*border-bottom: 1px solid #D9D9D9;*/
                 animation-name: polygon;
                 animation-duration: 2s;
                 .a1{
@@ -323,48 +324,52 @@
                     }
                 }
                 .a2{
-                    width:80%;
-                    margin-left: 10%;
                     padding: 20px 0;
                     display: flex;
                     flex-direction: row;
                     justify-content: space-between;
+                    position: absolute;
+                    left:5%;
+                    top:5%;
                     p{
-                        color:#5D5D5D;
+                        color:white;
                         transition: all 1s;
+                        background-color: #9b9b9b;
+                        padding: 3px 5px;
+                        border-radius: 2px;
                     }
                 }
             }
-            .item::before{
-                position: absolute;
-                left:0;
-                top:0;
-                width:0;
-                content:'';
-                display: inline-block;
-                height:1px;
-                background-color: black;
-                transition: all 1s;
-                z-index: 100;
-            }
-            .item::after{
-                position: absolute;
-                left:0;
-                bottom:0;
-                width:0;
-                content:'';
-                display: inline-block;
-                height:1px;
-                background-color: black;
-                transition: all 1s;
-                z-index: 100;
-            }
-            .item:hover::before{
-                width:100%;
-            }
-            .item:hover::after{
-                width:100%;
-            }
+            /*.item::before{*/
+            /*    position: absolute;*/
+            /*    left:0;*/
+            /*    top:0;*/
+            /*    width:0;*/
+            /*    content:'';*/
+            /*    display: inline-block;*/
+            /*    height:1px;*/
+            /*    background-color: black;*/
+            /*    transition: all 1s;*/
+            /*    z-index: 100;*/
+            /*}*/
+            /*.item::after{*/
+            /*    position: absolute;*/
+            /*    left:0;*/
+            /*    bottom:0;*/
+            /*    width:0;*/
+            /*    content:'';*/
+            /*    display: inline-block;*/
+            /*    height:1px;*/
+            /*    background-color: black;*/
+            /*    transition: all 1s;*/
+            /*    z-index: 100;*/
+            /*}*/
+            /*.item:hover::before{*/
+            /*    width:100%;*/
+            /*}*/
+            /*.item:hover::after{*/
+            /*    width:100%;*/
+            /*}*/
             .item:hover{
                 .a1{
                     img{
@@ -373,7 +378,7 @@
                 }
                 .a2{
                     p{
-                        color:black;
+                        background-color: black;
                     }
                 }
             }
@@ -470,7 +475,7 @@
     }
     @media screen and (max-width: 1440px) and (min-width: 1000px){
         .main{
-            .nav{
+            .nav,.allItems{
                 width:95%;
             }
         }

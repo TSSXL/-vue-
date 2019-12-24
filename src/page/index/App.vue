@@ -21,7 +21,7 @@
   import  {WOW} from 'wowjs'
   import Scrollbar from 'smooth-scrollbar';
   import firstComponent from '@/components/first.vue'
-  import homeComponent from '@/views/Home.vue'
+  import homeComponent from '@/views/home.vue'
   import { setTimeout } from 'timers';
   export default {
     name: 'home',

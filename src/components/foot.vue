@@ -20,8 +20,12 @@
                      <img class="img2" src="../assets/fb/c3.png" alt="">
                  </div>
                  <div class="l2">
-                     <img class="img1" src="../assets/fb/4.png" alt="">
-                     <img class="img2" src="../assets/fb/c4.png" alt="">
+                     <img class="img1" src="../assets/foot/4.png" alt="">
+                     <img class="img2" src="../assets/foot/44.png" alt="">
+                 </div>
+                 <div class="l2">
+                     <img class="img1" src="../assets/foot/5.png" alt="">
+                     <img class="img2" src="../assets/foot/55.png" alt="">
                  </div>
              </div>
          </div>
@@ -35,7 +39,7 @@
                </div>
                 <div class="right">
                   <p>We Try Our Best To Give It The Best A Good Products Is So Natural</p>
-                    <p>ebin-casa@ebin-casa.com</p>
+                    <p>cs@fb1952.com</p>
                     <p>
                         <i class="iconfont icon-xinlang"></i>
                         <i class="iconfont icon-weixin"></i>
@@ -43,7 +47,7 @@
                     </p>
                     <p>
                        <span> © Copyright 2019  EBIN CASA All Rights Reserved.</span>
-                        <a href="https://www.sansg.com/" target="_blank">Design In By :sunsem</a>
+<!--                        <a href="https://www.sansg.com/" target="_blank">Design In By :sunsem</a>-->
                     </p>
                 </div>
             </div>
@@ -60,48 +64,53 @@
                   {con:[
                       "所有商品",
                           "生活方式",
+                          "3D云设计"
+                      ]},
+                  {con:[
                           "居家案例",
                           "设计方案",
-                          "3D云设计",
                           "我的收藏",
-                          "关于我们"
+                          // "加盟优势",
+                          // "培训支持",
+                          // "加盟细则",
+                          // "门店形象"
                       ]},
                   {con:[
-                          "加盟合作",
-                          "加盟优势",
-                          "培训支持",
-                          "加盟细则",
-                          "门店形象"
-                      ]},
-                  {con:[
+                      "关于我们",
                           "联系我们",
-                          "附近门店",
-                          "富邦美品官网"
+                          "加盟合作"
                       ]}
               ]
             }
         },
         methods:{
             goto(i,n){
-                if(i===0 && n===1){
-                    const link='/lifestyle.html'
-                    window.open(link,'_self')
+                console.log(i,n)
+                if(i===0 && n===0){
+                    const link='/pro.html'
+                   window.open(link,'_self')
+                }else if(i===0 && n===1){
+                        const link='/lifestyle.html'
+                        window.open(link,'_self')
                 }else if(i===0 && n===2){
-                    const link='/homecase.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===3){
-                    const link='/design.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===4){
                     const link='/newPro.html'
                     window.open(link,'_self')
-                }else if(i===0 && n===5){
+                }else if(i===1 && n===0){
+                    const link='/homecase.html'
+                    window.open(link,'_self')
+                }else if(i===1 && n===1){
+                    const link='/design.html'
+                    window.open(link,'_self')
+                }else if(i===1 && n===2){
                     const link='/collect.html'
                     window.open(link,'_self')
-                }else if(i===0 && n===6){
+                }else if(i===2 && n===0){
                     const link='/about.html'
                     window.open(link,'_self')
-                }else if(i===1){
+                }else if(i===2 && n===1){
+                    const link='/cooperation.html'
+                    window.open(link,'_self')
+                }else if(i===2 && n===2){
                     const link='/cooperation.html'
                     window.open(link,'_self')
                 }

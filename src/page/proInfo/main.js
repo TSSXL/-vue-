@@ -54,7 +54,7 @@ Viewer.setDefaults({
   viewed: function (e) {
     console.log(e.type,'视图结束');
     // 索引为 1 的图片旋转20度
-    if(e.detail.index === 1){
+    if(e.detail.home === 1){
       this.viewer.rotate(20);
     }
   },

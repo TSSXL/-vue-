@@ -10,15 +10,15 @@
                <a href="/index.html">Home-</a>
                <a href="/homecase.html">homecase</a>
            </div>
-            <div class="right" @mouseenter="showNav" @mouseleave="hideNav">
-               <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>
-                <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">
-                 <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">
-                     {{item.CALLED}}
-                     <i class="iconfont icon-arrow-left"></i>
-                 </div>
-                </div>
-            </div>
+<!--            <div class="right" @mouseenter="showNav" @mouseleave="hideNav">-->
+<!--               <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>-->
+<!--                <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">-->
+<!--                 <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">-->
+<!--                     {{item.CALLED}}-->
+<!--                     <i class="iconfont icon-arrow-left"></i>-->
+<!--                 </div>-->
+<!--                </div>-->
+<!--            </div>-->
         </div>
             <div class="allItems">
                 <div class="item wow" v-for="(item,index) in list"  :key="index" @click="gotoInfo(item.ID)">
@@ -27,7 +27,9 @@
                     </div>
                     <div class="a2">
                         <p>{{item.PRONAME}}</p>
-                        <p>{{item.TITLE2}}</p>
+                        <div v-html="item.MEMO">
+
+                        </div>
                     </div>
                 </div>
             </div>
@@ -35,28 +37,54 @@
                 <a @click="showMore">loading more series</a>
             </div>
         </div>
+        <div class="mCon" v-if="IsShow">
+         <div class="content" id="intro">
+           <div class="left">
+               <homeDia :id="id" />
+           </div>
+             <div class="right">
+              <p class="p1">
+                  <span>{{info.PRONAME}}</span>
+                  <i class=" el-icon-close" @click="hideDia"></i>
+              </p>
+                 <div class="memo" v-html="info.MEMO">
+
+                 </div>
+             </div>
+         </div>
+        </div>
         <foot-Component class="foot wow"></foot-Component>
     </div>
 </template>
 
 <script>
     import footComponent from '../components/foot'
-    import {getProductstypeUrl2,getProductsUrl} from '../util/lang'
+    import homeDia from '../components/homeDia'
+    import {getProductstypeUrl2,getProductsUrl,getProductsInfo} from '../util/lang'
+    import Scrollbar from 'smooth-scrollbar'
     export default {
         name: "about",
         data(){
             return{
+                IsShow:false,
                 text:'产品分类',
                 active:0,
                 pid:'',
+                id:'',
                 page:'',
+                info:{},
                 totalPage:'',
                 proList:[],
                 list:[],
+                scrollbar:'',
+                top:''
             }
         },
-        components:{footComponent},
+        components:{footComponent,homeDia},
         mounted(){
+            Scrollbar.init(document.getElementById("scroller-wrapper"));
+            this.scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
+            this.scrollbar.scrollTo(0,0)
             this.getPro()
             if(window.location.search.split('?')[1]!==undefined){
                 this.text=decodeURI(window.location.search.split('?')[2].split('=')[1])
@@ -66,6 +94,14 @@
             }
         },
         methods:{
+            fetchData (nid) {
+                this.id=nid
+                const url = `${getProductsInfo( 'zh-CN',nid)}`
+                this.$axios.get(url).then(res => {
+                    this.info=res.data.proarr
+                    console.log(this.info)
+                })
+            },
             getType(id,text){
                 const  link=`/homecase.html?id=${id}?text=${text}`
                 window.open(link,'_self')
@@ -73,7 +109,7 @@
             showMore(){
                 if(this.page<=this.totalPage){
                     this.$nextTick(()=>{
-                        const url = `${getProductsUrl('zh-CN',this.pid,6,this.page++)}`
+                        const url = `${getProductsUrl('zh-CN',this.pid,8,this.page++)}`
                         this.$axios.get(url).then(res => {
                             this.list=this.list.concat(res.data.proarr)
                         })
@@ -97,7 +133,7 @@
             getProList(id){
                 this.pid=id
                 this.page=2
-                const url = `${getProductsUrl('zh-CN',id,6,1)}`
+                const url = `${getProductsUrl('zh-CN',id,8,1)}`
                 this.$axios.get(url).then(res => {
                     this.list=res.data.proarr
                     this.totalPage=res.data.pagershow.totalPagers
@@ -109,9 +145,21 @@
             hideNav(){
                 this.active=false
             },
+            hideDia(){
+                this.IsShow=false
+                this.scrollbar.scrollTo(0,this.top)
+            },
             gotoInfo(id){
-                const link = `/homeInfo.html?pid=${id}?text=${this.text}`
-                window.open(link)
+                this.top=this.scrollbar.scrollTop
+                this.fetchData(id)
+                 this.IsShow=true
+                setTimeout(()=>{
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#intro"),{
+                        offsetTop:100,
+                    })
+                },100)
+                // const link = `/homeInfo.html?pid=${id}?text=${this.text}`
+                // window.open(link)
             },
         }
     }
@@ -121,6 +169,7 @@
 .con{
     width:100%;
     animation: run5 1s linear forwards;
+    position: relative;
     @keyframes run5 {
         from{
             opacity: 0;
@@ -151,7 +200,6 @@
     }
     .main{
         width:100%;
-        background-color: #F3F4F6;
         .nav{
             width:1440px;
             margin: 0 auto;
@@ -229,19 +277,22 @@
             }
         }
         .allItems{
-            width:100%;
+            width:1440px;
+            margin: 0 auto;
             display: flex;
             flex-direction: row;
             flex-wrap: wrap;
             .item{
                 position: relative;
                 cursor: pointer;
-                width:32%;
+                width:23.5%;
                 margin-left: 1%;
                 margin-top: 30px;
                 border-bottom: 1px solid #D9D9D9;
                 animation-name: polygon;
                 animation-duration: 2s;
+                transition: all 1s;
+                box-shadow: 0 2px 4px 0 rgba(0,0,0,.06);
                 .a1{
                     width:100%;
                     overflow: hidden;
@@ -253,15 +304,20 @@
                     }
                 }
                 .a2{
-                    width:80%;
-                    margin-left: 10%;
-                    padding: 20px 0;
+                    width:90%;
+                    margin-left: 5%;
+                    padding: 10px 0;
                     display: flex;
-                    flex-direction: row;
+                    flex-direction: column;
                     justify-content: space-between;
                     p{
-                        color:#5D5D5D;
+                        font-weight: 600;
+                        color: #1f1f1f;
                         transition: all 1s;
+                    }
+                    div{
+                        width:90%;
+                     padding: 10px 0;
                     }
                 }
             }
@@ -296,6 +352,7 @@
                 width:100%;
             }
             .item:hover{
+                box-shadow: 0 4px 12px rgba(0,0,0,.18);
                 .a1{
                     img{
                         transform: scale(1.05);
@@ -370,6 +427,53 @@
         animation-name: polygon;
         animation-duration: 2s;
     }
+    .mCon{
+        position: fixed;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background:rgba(0,0,0,.85);
+        padding-top:120px;
+        .content{
+            width:1440px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: row;
+            background-color: white;
+            height:800px;
+            .left{
+                width:70%;
+            }
+            .right{
+                width:30%;
+                background-color: white;
+                .p1{
+                    width:90%;
+                    margin-left: 5%;
+                    padding: 10px 0;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    span{
+                        font-size: 14px;
+                        font-weight: 600;
+                        line-height: 18px;
+                        margin-bottom: 2px;
+                        color: #1f1f1f;
+                    }
+                    i{
+                        color:#909399;
+                        cursor: pointer;
+                    }
+                }
+                .memo{
+                    width:90%;
+                    margin-left: 5%;
+                }
+            }
+        }
+    }
     @keyframes transition1 {
         0% {
             transform: translate(-100px,-100px);
@@ -402,6 +506,11 @@
         .main{
             .nav{
                 width:95%;
+            }
+        }
+        .mCon{
+            .content{
+                width:90%;
             }
         }
     }

@@ -38,7 +38,7 @@
         },
         components:{footComponent},
         mounted(){
-            this.getProList('43')
+            this.getProList('42')
             if(localStorage.getItem('fbarr')!==null){
                 this.arr=JSON.parse(localStorage.getItem('fbarr'))
             }
@@ -127,8 +127,8 @@
             .item{
                 position: relative;
                 cursor: pointer;
-                width:32%;
-                margin-left: 1%;
+                width:23.5%;
+                margin-left: 1.2%;
                 margin-top: 40px;
                 border-bottom: 1px solid #D9D9D9;
                 animation-name: polygon;

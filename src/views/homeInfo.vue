@@ -84,7 +84,7 @@
                 proList:[],
                 swiperOptionTop: {
                     spaceBetween: 10,
-                    loop: true,
+                    loop: false,
                     speed:1000,
                     loopedSlides: 5, //looped slides should be the same
                     navigation: {
@@ -96,7 +96,7 @@
                     spaceBetween: 10,
                     slidesPerView: 4,
                     touchRatio: 0.2,
-                    loop: true,
+                    loop: false,
                     speed:1000,
                     loopedSlides: 5, //looped slides should be the same
                     slideToClickedSlide: true,

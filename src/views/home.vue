@@ -111,7 +111,7 @@
             </div>
             <div class="a2" @click="gotoInfo2(item.ID)">
               <p>{{item.PRONAME}}</p>
-              <p>{{item.TITLE2}}</p>
+<!--              <p>{{item.TITLE2}}</p>-->
             </div>
           </swiper-slide>
           <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
@@ -160,7 +160,7 @@ export default {
         pList2:[],
         swiperOption:{
           notNextTick: true,
-          slidesPerView: 3,
+          slidesPerView: 4,
           speed:1000,
           init:true,
           spaceBetween : 10,
@@ -174,7 +174,7 @@ export default {
         },
         swiperOption2:{
           notNextTick: true,
-          slidesPerView: 3,
+          slidesPerView: 4,
           speed:1000,
           init:true,
           spaceBetween : 10,
@@ -192,8 +192,8 @@ export default {
         Scrollbar.initAll(document.getElementById("scroller-wrapper"));
         let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
         scrollbar.scrollTo(0,0)
-      this.getProList('43')
-      this.getProList2('44')
+      this.getProList('42')
+      this.getProList2('43')
         this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
         window.pageYOffset=this.scrollbar.scrollTop
         this.scrollbar.addListener(() => {
@@ -219,7 +219,7 @@ export default {
       window.open(link)
     },
     gotoInfo2(id){
-      const link = `/homeInfo.html?pid=${id}?text=All Product`
+      const link = `/lifeInfo.html?pid=${id}`
       window.open(link)
     },
     getProList(id){
@@ -428,8 +428,13 @@ export default {
             flex-direction: row;
             justify-content: space-between;
             p{
-              color:#5D5D5D;
+              color:white;
               transition: all 1s;
+              background-color: #9b9b9b;
+              padding: 3px 5px;
+              border-radius: 5px;
+              font-size: 14px;
+              line-height: 25px;
             }
           }
         }
@@ -471,7 +476,7 @@ export default {
           }
           .a2{
             p{
-              color:black;
+              background-color: black;
             }
           }
         }
@@ -739,8 +744,13 @@ export default {
             flex-direction: row;
             justify-content: space-between;
             p{
-              color:#5D5D5D;
+              color:white;
               transition: all 1s;
+              background-color: #9b9b9b;
+              padding: 5px 5px;
+              border-radius: 5px;
+              font-size: 14px;
+             margin: 0 auto;
             }
           }
         }
@@ -782,7 +792,7 @@ export default {
           }
           .a2{
             p{
-              color:black;
+            background-color: black;
             }
           }
         }

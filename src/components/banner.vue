@@ -52,6 +52,10 @@
                     },
                     speed:1000,
                     loop: true,
+                    effect : 'fade',
+                    fadeEffect: {
+                        crossFade: true,
+                    },
                     init: false,
                     autoplay:{
                         disableOnInteraction: false,

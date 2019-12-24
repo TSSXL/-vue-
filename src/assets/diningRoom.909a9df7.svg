@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="128px" height="128px" viewBox="0 0 128 128" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>_ Collection / icons / Desk</title>
+    <desc>Created with Sketch.</desc>
+    <g id="_-Collection-/-icons-/-Desk" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(40.000000, 49.000000)" fill-rule="nonzero" stroke="#4A4A4A" stroke-width="2">
+            <path d="M9,13 L9,26" id="Line-2" stroke-linecap="round"></path>
+            <path d="M39,13 L39,26" id="Line-2" stroke-linecap="round"></path>
+            <path d="M3.73395705,-1 L44.2659373,-1 C45.0250542,-1 45.718735,-0.570234736 46.0567396,0.109479458 L49.0403873,6.10947946 C49.5322082,7.0985123 49.1291383,8.29898147 48.1401054,8.79080238 C47.8634126,8.92839467 47.5586003,9 47.2495849,9 L0.750309434,9 C-0.354260066,9 -1.24969057,8.1045695 -1.24969057,7 C-1.24969057,6.69098457 -1.17808524,6.38617224 -1.04049295,6.10947946 L1.94315467,0.109479458 C2.28115928,-0.570234736 2.97484013,-1 3.73395705,-1 Z" id="Rectangle" fill="#FFFFFF"></path>
+            <path d="M5,13 L1.59205982e-12,30" id="Line" stroke-linecap="round" stroke-linejoin="round"></path>
+            <path d="M48,13 L43,30" id="Line" stroke-linecap="round" stroke-linejoin="round" transform="translate(45.500000, 21.500000) scale(-1, 1) translate(-45.500000, -21.500000) "></path>
+        </g>
+        <text id="餐厅" font-family="PingFangSC-Regular, PingFang SC" font-size="10" font-weight="normal" fill="#1F1F1F">
+            <tspan x="54" y="114">餐厅</tspan>
+        </text>
+    </g>
+</svg>

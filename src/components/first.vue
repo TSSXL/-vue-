@@ -62,8 +62,8 @@
         </div>
 
 <!--        <div class="top animated fadeInUp">-->
-<!--            <img class="mImg" src="../assets/home/w1.png" alt="" @click="goto(0)">-->
-<!--            <img class="mImg2" src="../assets/home/b.png" alt="" @click="goto(0)">-->
+<!--            <img class="mImg" src="../assets/index/w1.png" alt="" @click="goto(0)">-->
+<!--            <img class="mImg2" src="../assets/index/b.png" alt="" @click="goto(0)">-->
 <!--            <div class="mNav" :class="{active: menuOpen}" @click="menuOpen=!menuOpen">-->
 <!--                <span class="burger"></span>-->
 <!--                <span class="burger"></span>-->
@@ -203,7 +203,7 @@
                     this.scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
                     this.active2=false
                     this.showa=true
-                    this.select=parseInt(localStorage.getItem('index'))
+                    this.select=parseInt(localStorage.getItem('home.html'))
                     let scrollHeader=this.scrollHeader
                     if(this.scrollbar){
                         this.scrollbar.addListener((status) => {
@@ -508,7 +508,7 @@
             right:-40%;
             top:0;
             width:40%;
-            background-color: black;
+            background-color: rgba(0,0,0,.8);
             height:100vh;
             transition: all 600ms;
             .x-close{
@@ -570,7 +570,7 @@
                            font-weight: lighter;
                            cursor: pointer;
                            color:#7C7C7C;
-                           transition: all 2s;
+                           transition: all 1s;
                            opacity: 0;
                            transform: matrix(1, 5, 5, 1, 100, 0);
                            font-size: 14px;
@@ -578,14 +578,14 @@
                         .item:hover{
                             color:white;
                         }
-                        .item:nth-child(1){
-                            font-size:20px;
-                            color:white;
-                        }
-                        .item:nth-child(2){
-                            font-size:18px;
-                            color:white;
-                        }
+                        /*.item:nth-child(1){*/
+                        /*    font-size:20px;*/
+                        /*    color:white;*/
+                        /*}*/
+                        /*.item:nth-child(2){*/
+                        /*    font-size:20px;*/
+                        /*    color:white;*/
+                        /*}*/
                     }
                 }
             }
