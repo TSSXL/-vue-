@@ -441,11 +441,10 @@
                         }
                     }
                     .all2{
-                        width:1200px;
+                        width:1280px;
                         margin: 0 auto;
                         height:550px;
                          background: url("../assets/circle.png") no-repeat;
-                        background-size: cover;
                         .content2{
                             width:76%;
                             margin-left: 12%;
