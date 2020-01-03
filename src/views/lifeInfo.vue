@@ -38,6 +38,13 @@
                           <img  src="../assets/diningRoom.909a9df7.svg"></div>
                       <div class="kt" v-html="info.CONTENT[4]"></div>
                   </div>
+                  <div class="ktt">
+                      <div  class="tc">
+                          <div  class="split-line" style="margin-bottom: 40px;"></div>
+                          <img  src="../assets/cf.svg"></div>
+                      <p style="text-align: center;font-size: 10px;margin: 20px 0;">书房</p>
+                      <div class="kt" v-html="info.CONTENT[5]"></div>
+                  </div>
               </div>
               <div class="recommend">
                   <div  class="tc">
