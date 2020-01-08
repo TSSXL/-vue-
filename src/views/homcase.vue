@@ -155,7 +155,7 @@
                  this.IsShow=true
                 setTimeout(()=>{
                     Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#intro"),{
-                        offsetTop:100,
+                        offsetTop:200
                     })
                 },100)
                 // const link = `/homeInfo.html?pid=${id}?text=${this.text}`
