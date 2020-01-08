@@ -80,7 +80,7 @@
                 <li style="transition-delay: 0.5s"><a href="/cooperation.html">合作</a></li>
                 <li style="transition-delay: 0.6s"><a href="/newPro.html">3D云设计</a></li>
                 <li style="transition-delay: 0.7s"><a href="/collect.html">我的收藏</a></li>
-                <li style="transition-delay: 0.7s"><a href="/contact.html">关于我们</a></li>
+                <li style="transition-delay: 0.7s"><a href="/about.html">关于我们</a></li>
             </ul>
         </div>
     </div>

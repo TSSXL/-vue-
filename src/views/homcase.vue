@@ -534,6 +534,7 @@
             }
         }
         .mCon{
+            padding-top: 150px;
             .content{
                 width:90%;
                 flex-direction: column-reverse;
