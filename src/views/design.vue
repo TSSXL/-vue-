@@ -405,5 +405,26 @@
                 }
             }
         }
+        @media screen and (max-width: 1000px){
+            .banner{
+                img{
+                    height:500px;
+                }
+            }
+            .main{
+                .nav{
+                    width:90%;
+                }
+                .allItems{
+                    width:90%;
+                    margin: 0 auto;
+                    flex-direction: column;
+                    .item{
+                        width:100%;
+                        margin-left: 0;
+                    }
+                }
+            }
+        }
     }
 </style>

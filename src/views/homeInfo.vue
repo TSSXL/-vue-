@@ -7,15 +7,15 @@
                         <a href="/index.html">Home-</a>
                         <a href="/homecase.html">homecase</a>
                     </div>
-                    <div class="right wow" @mouseenter="showNav" @mouseleave="hideNav">
-                        <div >产品分类 <i class="iconfont icon-arrow-left"></i></div>
-                        <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">
-                            <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">
-                                {{item.CALLED}}
-                                <i class="iconfont icon-arrow-left"></i>
-                            </div>
-                        </div>
-                    </div>
+<!--                    <div class="right wow" @mouseenter="showNav" @mouseleave="hideNav">-->
+<!--                        <div >产品分类 <i class="iconfont icon-arrow-left"></i></div>-->
+<!--                        <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">-->
+<!--                            <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">-->
+<!--                                {{item.CALLED}}-->
+<!--                                <i class="iconfont icon-arrow-left"></i>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
                 </div>
             </div>
             <p class="pName wow fadeInUp">- {{text}} - </p>
@@ -535,18 +535,57 @@
             }
         }
     }
+    @media screen and (max-width: 1000px){
+        .main{
+            .nav{
+                .navC{
+                    width:90%;
+                }
+            }
+            .pName,.content,.action,.proInfo{
+                width:90%;
+            }
+            .content{
+                .gallery-top{
+                .item{
+                    img{
+                        width:100%;
+                        object-fit: cover;
+                    }
+                }
+            }
+                .gallery-thumbs{
+                    .item{
+                        img{
+                            object-fit: contain;
+                        }
+                    }
+                }
+            }
+            .proInfo{
+                p:nth-child(1){
+                    font-size: 25px;
+                }
+            }
+        }
+        .bigImg{
+            .allImg{
+                width:90%;
+            }
+        }
+    }
 }
 </style>
 <style scoped>
-    @media screen and (max-width:450px){
-        .htmlCon >>>  table{
+    @media screen and (max-width:1000px){
+        .html >>>  table{
             width:100%;
             word-break: break-all;
         }
-        .htmlCon >>>  div img{
+        .html >>>  div img{
             width:100%;
         }
-        .htmlCon >>>  p img{
+        .html >>>  p img{
             width:100%;
             object-fit: contain;
         }

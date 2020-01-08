@@ -18,6 +18,15 @@
                       <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
                       <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
                   </swiper>
+                  <swiper class="swiper swiper2" :options="swiperOption2"  v-if="list.length>0">
+                      <swiper-slide class="item" v-for="(item,index) in list" :key="index" >
+                          <div class="a1">
+                              <img :src="`http://yibin.sansg.com/upload/${item.PICURL}`" alt="">
+                          </div>
+                      </swiper-slide>
+                      <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+                      <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
+                  </swiper>
               </div>
               <div class="wow fadeInUp" style="animation-duration: 4s">
                   <div class="ktt ">
@@ -81,8 +90,22 @@
                     autoplay:false,
                     setWrapperSize :true,
                     navigation: {
-                        nextEl: '.pro .swiper-button-next',
-                        prevEl: '.pro .swiper-button-prev'
+                        nextEl: '.allImgs .swiper-button-next',
+                        prevEl: '.allImgs .swiper-button-prev'
+                    }
+                },
+                swiperOption2:{
+                    notNextTick: true,
+                    slidesPerView: 1,
+                    speed:1000,
+                    init:true,
+                    spaceBetween : 0,
+                    loop:false,
+                    autoplay:false,
+                    setWrapperSize :true,
+                    navigation: {
+                        nextEl: '.allImgs .swiper-button-next',
+                        prevEl: '.allImgs .swiper-button-prev'
                     }
                 },
                 info:{
@@ -131,7 +154,7 @@
                     res.data.proarr.CONTENT=res.data.proarr.CONTENT.split("{nextpage}")
                     this.info=res.data.proarr
                     this.list=res.data.proimg
-                    console.log(res.data)
+                    console.log(  this.list)
                 })
             }
         }
@@ -204,6 +227,9 @@
                             transform: scale(1.05);
                         }
                     }
+                }
+                .swiper2{
+                    display: none;
                 }
             }
             .ktt{
@@ -305,10 +331,47 @@
             }
         }
     }
+    @media screen and (max-width: 1000px){
+        .main{
+            padding: 30px 0;
+            .nav{
+                .navC{
+                    width:90%;
+                }
+            }
+            .pName,.content,.action,.proInfo{
+                width:90%;
+            }
+            .content{
+                .allImgs{
+                    .swiper{
+                        display: none;
+                    }
+                    .swiper2{
+                        display: block;
+                    }
+                }
+                .ktt,.recommend{
+                    .tc{
+                        .split-line{
+                            width:90%;
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 </style>
 <style scoped>
-    @media screen and (max-width:450px){
+    @media screen and (max-width:1000px){
+        .lg >>> div,.kt >>> div{
+            width:100% !important;
+        }
+        .lg >>> .oval,.kt >>> .oval{
+            width:16px !important;
+            height:16px;
+        }
         .htmlCon >>>  table{
             width:100%;
             word-break: break-all;

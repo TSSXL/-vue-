@@ -514,5 +514,34 @@
             }
         }
     }
+    @media screen and (max-width: 1000px){
+        .banner{
+           img{
+               height:500px;
+           }
+        }
+        .main{
+            .nav{
+                width:90%;
+            }
+            .allItems{
+                width:90%;
+                flex-direction: column;
+                .item{
+                    width:100%;
+                    margin-left: 0;
+                }
+            }
+        }
+        .mCon{
+            .content{
+                width:90%;
+                flex-direction: column-reverse;
+                .left,.right{
+                    width:100%;
+                }
+            }
+        }
+    }
 }
 </style>

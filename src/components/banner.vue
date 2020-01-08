@@ -248,6 +248,27 @@
                      transform: rotate(360deg);
                  }
              }
+        @media screen and (max-width: 1000px){
+            .swiper{
+                .item{
+                    .text{
+                        width:90%;
+                        left:5%;
+                        p:nth-child(1){
+                            font-size: 30px;
+                            width:100%;
+                        }
+                        p:nth-child(2){
+                            font-size: 20px;
+                        }
+                        p:nth-child(3){
+                            width:100%;
+                            font-size: 16px;
+                        }
+                    }
+                }
+            }
+        }
     }
 </style>
 <style scoped>
@@ -320,9 +341,13 @@
         border-radius: 20px;
         background-color: #fff;
     }
-    @media screen and (max-width:450px){
+    @media screen and (max-width:1000px){
         .banner .swiper-pagination{
             width:40%;
+            bottom:5%;
+            flex-direction: row;
+            top:auto;
+            right:35%;
         }
     }
 </style>

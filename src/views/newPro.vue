@@ -8,7 +8,7 @@
                 </div>
             </div>
             <div class="allItems">
-                <div class="item" v-for="(item,index) in list" :key="index" @click="gotoInfo">
+                <div class="item" v-for="(item,index) in list" :key="index" >
                     <div class="a1">
                         <img class="img1 wow" :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
                         <div class="bg">
@@ -289,6 +289,34 @@
         }
         100% {
             clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+        }
+    }
+    @media screen and (max-width: 1440px) and (min-width: 1000px){
+        .main{
+            .nav,.allItems{
+                width:95%;
+                margin: 0 auto;
+            }
+        }
+    }
+    @media screen and (max-width: 1000px){
+        .main{
+            .nav,.allItems{
+                width:90%;
+                margin: 0 auto;
+            }
+            .allItems{
+                flex-direction: column;
+                .item{
+                    width:100%;
+                    margin-left: 0;
+                    .a1{
+                        .bg{
+                            padding-top: 60px;
+                        }
+                    }
+                }
+            }
         }
     }
 }

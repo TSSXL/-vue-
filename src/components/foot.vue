@@ -299,5 +299,41 @@
             width:95%;
         }
     }
+    @media screen and (max-width: 1000px){
+        .main{
+            width:90%;
+            .one{
+                .l1{
+                    justify-content: center;
+                }
+                .l11{
+                    flex-direction: column;
+                    align-items: center;
+                    div{
+                        margin-top: 30px;
+                    }
+                    div:nth-child(1){
+                        margin-top: 0;
+                    }
+                }
+            }
+            .two{
+                .left{
+                    display: none;
+                }
+                .right{
+                    margin-left: 0;
+                    width:100%;
+                    p{
+                        text-align: center;
+                        line-height: 30px;
+                    }
+                    p:nth-child(2){
+                        width:100%;
+                    }
+                }
+            }
+        }
+    }
 }
 </style>

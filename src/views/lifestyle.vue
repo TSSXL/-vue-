@@ -480,5 +480,17 @@
             }
         }
     }
+    @media screen and (max-width: 1000px){
+        .banner{
+            img{
+                height:500px;
+            }
+        }
+        .main{
+            .nav,.allItems{
+                width:90%;
+            }
+        }
+    }
 }
 </style>

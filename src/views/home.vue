@@ -45,6 +45,19 @@
           <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
           <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
         </swiper>
+        <swiper class="swiper swiper2 wow fadeIn" :options="moblieswiperOption"  v-if="pList.length>0">
+          <swiper-slide class="item" v-for="(item,index) in pList" :key="index" >
+            <div class="a1" @click="gotoInfo(item.ID)">
+              <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
+            </div>
+            <div class="a2" @click="gotoInfo(item.ID)">
+              <p>{{item.PRONAME}}</p>
+              <p>{{item.TITLE2}}</p>
+            </div>
+          </swiper-slide>
+          <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+          <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
+        </swiper>
 <!--        <div class="btn prev ">-->
 <!--          <i class="iconfont icon-leftts"></i>-->
 <!--        </div>-->
@@ -105,13 +118,26 @@
 <!--      产品-->
       <div class="pro2 wow fadeIn">
         <swiper class="swiper" :options="swiperOption2"  v-if="pList2.length>0">
+        <swiper-slide class="item" v-for="(item,index) in pList2" :key="index" >
+          <div class="a1" @click="gotoInfo2(item.ID)">
+            <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
+          </div>
+          <div class="a2" @click="gotoInfo2(item.ID)">
+            <p>{{item.PRONAME}}</p>
+            <!--              <p>{{item.TITLE2}}</p>-->
+          </div>
+        </swiper-slide>
+        <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
+        <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
+      </swiper>
+        <swiper class="swiper swiper2" :options="moblieswiperOption2"  v-if="pList2.length>0">
           <swiper-slide class="item" v-for="(item,index) in pList2" :key="index" >
             <div class="a1" @click="gotoInfo2(item.ID)">
               <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
             </div>
             <div class="a2" @click="gotoInfo2(item.ID)">
               <p>{{item.PRONAME}}</p>
-<!--              <p>{{item.TITLE2}}</p>-->
+              <!--              <p>{{item.TITLE2}}</p>-->
             </div>
           </swiper-slide>
           <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
@@ -172,12 +198,40 @@ export default {
             prevEl: '.pro .swiper-button-prev'
           }
         },
+        moblieswiperOption:{
+          notNextTick: true,
+          slidesPerView:1,
+          speed:1000,
+          init:true,
+          spaceBetween : 0,
+          loop:false,
+          autoplay:false,
+          setWrapperSize :true,
+          navigation: {
+            nextEl: '.pro .swiper-button-next',
+            prevEl: '.pro .swiper-button-prev'
+          }
+        },
         swiperOption2:{
           notNextTick: true,
           slidesPerView: 4,
           speed:1000,
           init:true,
           spaceBetween : 10,
+          loop:false,
+          autoplay:false,
+          setWrapperSize :true,
+          navigation: {
+            nextEl: '.pro2 .swiper-button-next',
+            prevEl: '.pro2 .swiper-button-prev'
+          }
+        },
+        moblieswiperOption2:{
+          notNextTick: true,
+          slidesPerView: 1,
+          speed:1000,
+          init:true,
+          spaceBetween :0,
           loop:false,
           autoplay:false,
           setWrapperSize :true,
@@ -480,6 +534,9 @@ export default {
             }
           }
         }
+      }
+      .swiper2{
+        display: none;
       }
     }
     .pp{
@@ -797,6 +854,9 @@ export default {
           }
         }
       }
+      .swiper2{
+        display: none;
+      }
     }
     .ds{
       width:100%;
@@ -936,6 +996,90 @@ export default {
       height:700px;
     }
   }
+  }
+  @media screen and (max-width: 1000px){
+    .main{
+      .brand{
+        width:95%;
+        .content{
+          flex-direction: column-reverse;
+          .left,.right{
+            width:100%;
+            margin-left: 0;
+          }
+          .left{
+            p{
+              margin: 30px auto;
+            }
+          }
+          .right{
+            padding-top: 60px;
+          }
+        }
+      }
+      .pro{
+        .swiper{
+          display: none;
+        }
+        .swiper2{
+          display: block;
+        }
+      }
+      .pp{
+        width:90%;
+        margin-left: 5%;
+        .twoImg{
+          flex-direction: column;
+          div{
+            width:100%;
+            margin-top: 10px;
+            img{
+              height:200px;
+              width:100%;
+            }
+          }
+        }
+      }
+      .intro{
+        height:750px;
+        .kb{
+          width:90%;
+          right:5%;
+          background-color: transparent;
+        }
+        .m1{
+          flex-direction: column-reverse;
+          width:90%;
+          margin-left: 5%;
+          .left,.right{
+            width:100%;
+            margin-left: 0;
+          }
+          .right{
+            padding-top: 0;
+          }
+          .left{
+            margin-top: 30px;
+          }
+        }
+      }
+      .pro2{
+        .swiper{
+          display: none;
+        }
+        .swiper2{
+          display: block;
+        }
+      }
+      .ds{
+        display: flex;
+        flex-direction: column-reverse;
+        .content{
+          position: static;
+          width:100%;
+        }
+      }
+    }
   }
 }
 </style>

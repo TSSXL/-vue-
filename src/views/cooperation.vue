@@ -638,5 +638,81 @@
             }
         }
     }
+    @media screen and (max-width: 1000px){
+        .banner{
+            .text{
+                top:10%;
+                .t1{
+                    padding-bottom: 20px;
+                }
+                .three{
+                    width:90%;
+                  flex-direction: column;
+                    margin: 0 auto;
+                    .item{
+                        width:100%;
+                        margin-left: 0;
+                        margin-top: 20px;
+                        p:nth-child(1){
+                            font-size: 40px;
+                        }
+                        .l1{
+                            right:28%;
+                        }
+                    }
+                }
+            }
+        }
+        .main{
+            .one{
+                .bigImg{
+                    height:1350px;
+                }
+                .content{
+                    .c1{
+                        width:90%;
+                        .all{
+                            flex-wrap: wrap;
+                        }
+                        .all2{
+                            width:100%;
+                            height:450px;
+                            background: none;
+                            background-color: white;
+                        }
+                    }
+                }
+            }
+            .two{
+                width:90%;
+                padding: 30px 0;
+                .tc{
+                    flex-direction: column;
+                 margin: 30px auto;
+                    .left,.right{
+                        width:100%;
+                        margin-left: 0;
+                    }
+                }
+            }
+            .three{
+                padding-bottom:60px;
+                .info{
+                    width:90%;
+                    flex-direction: column;
+                    align-items: center;
+                    .item{
+                        width:100%;
+                        margin-left: 0;
+                    }
+                }
+                .img{
+                    img{
+                        height:200px;
+                    }
+                }
+            }
+        }
+    }
 }
 </style>

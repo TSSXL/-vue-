@@ -649,5 +649,51 @@
                 }
             }
         }
+        @media screen and (max-width: 1000px){
+            .main{
+                .nav{
+                    .navC{
+                        width:90%;
+                    }
+                }
+                .aContent{
+                    flex-direction: column;
+                    width:90%;
+                    margin-left: 5%;
+                    .left{
+                        width:100%;
+                        .leftCon{
+                            padding-left: 0;
+                            ul{
+                                flex-direction: row;
+                                flex-wrap: wrap;
+                                display: flex;
+                                li{
+                                    width:50%;
+                                }
+                            }
+                        }
+                    }
+                    .col-main{
+                        width:100%;
+                        .products-category{
+                            .title{
+                                padding-left: 0;
+                            }
+                            .allItems{
+                                flex-direction: column;
+                                .item{
+                                    width:100%;
+                                    margin-left: 0;
+                                }
+                            }
+                        }
+                    }
+                }
+                .pName{
+                    width:90%;
+                }
+            }
+        }
     }
 </style>

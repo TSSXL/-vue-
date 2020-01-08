@@ -302,5 +302,65 @@ export default {
         }
       }
     }
+    @media screen and (max-width: 1000px){
+      .banner{
+        img{
+          height:500px;
+        }
+      }
+      .main{
+        .one,.two,.three,.four{
+          width:90%;
+        }
+        .one{
+          flex-direction: column;
+          .left,.right{
+            width:100%;
+            margin-left: 0;
+          }
+          .right{
+            margin-top: 30px;
+            .r1{
+              margin: 0;
+              flex-direction: column;
+              div:nth-child(2){
+                padding-top: 20px;
+                margin-left: 0;
+                p{
+                  text-align: center;
+                }
+              }
+            }
+            .r2{
+              padding-top: 30px;
+              p:nth-child(1){
+                text-align: center;
+              }
+            }
+          }
+        }
+        .two{
+          flex-direction: column;
+          p,div{
+            width:100%;
+          }
+          div{
+            margin-top: 20px;
+          }
+        }
+        .three{
+          flex-direction: column;
+          .left,.right{
+            width:100%;
+            margin-left: 0;
+          }
+          .right{
+            p:nth-child(1){
+              text-align: center;
+            }
+          }
+        }
+      }
+    }
   }
 </style>

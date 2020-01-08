@@ -281,5 +281,16 @@
             clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
         }
     }
+    @media screen and (max-width: 1000px){
+        .main{
+            .allItems{
+                flex-direction: column;
+                .item{
+                    width:100%;
+                    margin-left: 0;
+                }
+            }
+        }
+    }
 }
 </style>

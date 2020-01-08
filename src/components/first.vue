@@ -61,19 +61,27 @@
            </div>
         </div>
 
-<!--        <div class="top animated fadeInUp">-->
-<!--            <img class="mImg" src="../assets/index/w1.png" alt="" @click="goto(0)">-->
-<!--            <img class="mImg2" src="../assets/index/b.png" alt="" @click="goto(0)">-->
-<!--            <div class="mNav" :class="{active: menuOpen}" @click="menuOpen=!menuOpen">-->
-<!--                <span class="burger"></span>-->
-<!--                <span class="burger"></span>-->
-<!--                <span class="burger"></span>-->
-<!--            </div>-->
-<!--        </div>-->
-        <div class="menuBox" :class="{open: menuOpen}">
-            <div class="item">
-                <span v-for="(item,index) in list" :key="index" @click="goto(index)">{{item}}</span>
+        <div class="top animated fadeInDown">
+            <a href="/index.html" class="l1">
+                <img class="aImg" src="../assets/fb/topLogo.png" alt="">
+            </a>
+            <div class="mNav" :class="{active: menuOpen}" @click="menuOpen=!menuOpen">
+                <span class="burger"></span>
+                <span class="burger"></span>
+                <span class="burger"></span>
             </div>
+        </div>
+        <div class="menuBox" :class="{open: menuOpen}">
+            <ul>
+                <li ><a href="/index.html">首页</a></li>
+                <li style="transition-delay: 0.2s"><a href="/pro.html">所有商品</a></li>
+                <li style="transition-delay: 0.3s"><a href="/lifestyle.html">生活方式</a></li>
+                <li style="transition-delay: 0.4s"><a href="/homecase.html">居家案例</a></li>
+                <li style="transition-delay: 0.5s"><a href="/cooperation.html">合作</a></li>
+                <li style="transition-delay: 0.6s"><a href="/newPro.html">3D云设计</a></li>
+                <li style="transition-delay: 0.7s"><a href="/collect.html">我的收藏</a></li>
+                <li style="transition-delay: 0.7s"><a href="/contact.html">关于我们</a></li>
+            </ul>
         </div>
     </div>
 </template>
@@ -99,7 +107,7 @@
                             "所有商品",
                             "生活方式",
                             "居家案例",
-                            "设计方案",
+                            "生活方式",
                             "3D云设计",
                             "我的收藏",
                             "关于我们"
@@ -740,25 +748,44 @@
         }
         .menuBox{
             position: fixed;
-            top: 89px;
-            left:-100%;
+            top: -100vh;
+            left:0;
             height:100vh;
-            width: 100%;
-            background: #0C3665;
+            width: 80%;
+            background:black;
             z-index: 1010;
             transition: .8s;
             display: block;
         }
         .menuBox.open{
             left:0;
+            top: 71px;
+            padding-top: 20px;
+            ul{
+                li{
+                    transform: matrix(1, 0, 0, 1, 0, 0);
+                }
+            }
         }
-        .menuBox .item span{
+        .menuBox ul{
             display: block;
             font-size: 18px;
-            color:white;
             width:100%;
             padding: 18px 0px;
             text-align: center;
+            list-style: none;
+            li{
+                padding: 15px 0;
+                text-transform: uppercase;
+                font-family: SourceHanSerifCN-Regular;
+                transform: matrix(1, 0, 0, 1, -600, 0);
+                transition: all 1s;
+                a{
+                    color:white;
+                    transition: all 1s;
+                    font-size: 12px;
+                }
+            }
         }
         @keyframes transition1 {
             0% {
@@ -804,7 +831,7 @@
                 }
             }
         }
-        @media screen and (max-width:450px){
+        @media screen and (max-width: 1000px){
             .main{
                 display: none;
             }
@@ -813,57 +840,51 @@
                 flex-direction: row;
                 justify-content: space-between;
                 width:100%;
-                padding: 20px 0px;
                 transition: all 2s;
-            }
-            .mImg{
-                height:50px;
-                object-fit: cover;
-                margin-left: 20px;
-                display: block;
-                transition: all 600ms;
-            }
-            .mImg2{
-                height:50px;
-                object-fit: cover;
-                margin-left: 20px;
-                display: none;
-                transition: all 600ms;
+                background-color: white;
+                padding: 10px 0;
+                a{
+                    text-align: center;
+                    display: inline-block;
+                    text-align: center;
+                    padding: 10px 0;
+                    width:100%;
+                }
             }
             .mNav{
                 display: block;
                 transition: .8s;
                 position: absolute;
-                right: 0;
+                left: 0;
                 top: 0;
                 bottom: 0;
                 width: 60px;
             }
             .mNav .burger{
                 width: 32px;
-                height: 4px;
-                background-color: white;
+                height: 1px;
+                background-color: black;
                 position: absolute;
-                top: 28px;
+                top: 25px;
                 left: 50%;
                 margin: 0px 0px 0px -16px;
                 transform-origin: center;
                 transition: .8s;
             }
             .mNav .burger:nth-of-type(2){
-                top: 38px;
+                top: 35px;
             }
             .mNav .burger:nth-of-type(3){
-                top: 48px;
+                top: 45px;
             }
             .mNav.active{
-                background-color:#0C3665;
+                background-color:black;
             }
             .mNav.active .burger{
                 background-color: #fff;
             }
             .mNav.active .burger:nth-of-type(1){
-                top: 40px;
+                top: 35px;
                 transform: rotate(225deg);
             }
             .mNav.active .burger:nth-of-type(2){
@@ -871,22 +892,22 @@
                 opacity: 0;
             }
             .mNav.active .burger:nth-of-type(3){
-                top: 40px;
+                top: 35px;
                 transform: rotate(-225deg);
             }
         }
     }
-    .dark{
-        @media screen and (max-width:450px){
-            .mImg{
-                display: none;
-            }
-            .mImg2{
-                display: block;
-            }
-            .mNav .burger{
-                background-color: #0C3665;
-            }
-        }
-    }
+    /*.dark{*/
+    /*    @media screen and (max-width:450px){*/
+    /*        .mImg{*/
+    /*            display: none;*/
+    /*        }*/
+    /*        .mImg2{*/
+    /*            display: block;*/
+    /*        }*/
+    /*        .mNav .burger{*/
+    /*            background-color: #0C3665;*/
+    /*        }*/
+    /*    }*/
+    /*}*/
 </style>

@@ -107,6 +107,7 @@
 .con{
     width:100%;
     animation: run5 1s linear forwards;
+    background-color: #F3F4F6;
     @keyframes run5 {
         from{
             opacity: 0;
@@ -117,7 +118,6 @@
     }
     .main{
         width:100%;
-        background-color: #F3F4F6;
         padding: 90px 0;
         .allItems{
             width:100%;
@@ -322,6 +322,19 @@
         }
         100% {
             clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+        }
+    }
+    @media screen and (max-width: 1000px){
+        .main{
+            width:90%;
+            margin-left: 5%;
+            .allItems{
+                flex-direction: column;
+                .item{
+                    width:100%;
+                    margin-left: 0;
+                }
+            }
         }
     }
 }
