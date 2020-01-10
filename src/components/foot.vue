@@ -241,7 +241,7 @@
                     font-weight: bold;
                     font-size: 18px;
                     margin: 20px 0;
-                    text-transform: capitalize;
+                    /*text-transform: capitalize;*/
                 }
                 p:nth-child(2){
                     font-family: it;
