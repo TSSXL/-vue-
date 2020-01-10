@@ -38,7 +38,7 @@
                   </div>
                </div>
                 <div class="right">
-                  <p>We Try Our Best To Give It The Best A Good Products Is So Natural</p>
+                  <p>We try our best to provide the best products</p>
                     <p>cs@fb1952.com</p>
                     <p>
                         <i class="iconfont icon-xinlang"></i>
