@@ -7,18 +7,18 @@
               <p>富邦旗下品牌</p>
           </div>
              <div class="l11">
-                 <div class="l2">
+                 <a class="l2" href="http://www.fb1952.com/main.php">
                      <img class="img1" src="../assets/fb/1.png" alt="" >
                      <img class="img2" src="../assets/fb/c1.png" alt="" >
-                 </div>
-                 <div class="l2">
+                 </a>
+                 <a class="l2" href="http://xmh.fb1952.com/">
                      <img class="img1" src="../assets/fb/2.png" alt="">
                      <img class="img2" src="../assets/fb/c2.png" alt="">
-                 </div>
-                 <div class="l2">
+                 </a>
+                 <a class="l2" href="http://www.ebincasa.com/">
                      <img class="img1" src="../assets/fb/3.png" alt="">
                      <img class="img2" src="../assets/fb/c3.png" alt="">
-                 </div>
+                 </a>
                  <div class="l2">
                      <img class="img1" src="../assets/foot/4.png" alt="">
                      <img class="img2" src="../assets/foot/44.png" alt="">
@@ -39,14 +39,14 @@
                </div>
                 <div class="right">
                   <p>We try our best to provide the best products</p>
-                    <p>cs@fb1952.com</p>
+                    <p><span class="email">cs@fb1952.com</span> <span>400-800-0805</span></p>
                     <p>
                         <i class="iconfont icon-xinlang"></i>
                         <i class="iconfont icon-weixin"></i>
                         <i class="iconfont icon-ins"></i>
                     </p>
                     <p>
-                       <span> © Copyright 2019  EBIN CASA All Rights Reserved.</span>
+                       <span> © Copyright 2020  EBIN CASA All Rights Reserved. <a href="http://www.beian.miit.gov.cn/">浙ICP备19052612号-1</a></span>
 <!--                        <a href="https://www.sansg.com/" target="_blank">Design In By :sunsem</a>-->
                     </p>
                 </div>
@@ -183,10 +183,10 @@
                         transform: rotateX(0);
                     }
                 }
-                div:nth-child(1){
+                .l2:nth-child(1){
                     margin-left: 0;
                 }
-                div{
+                .l2{
                     margin-left: 5%;
                 }
             }
@@ -248,8 +248,14 @@
                     font-weight: bolder;
                     display: inline-block;
                     width:auto;
-                    padding-bottom: 2px;
-                    border-bottom: 1px solid black;
+                    // padding-bottom: 2px;
+                    // border-bottom: 1px solid black;
+                    span{
+                        display: inline-block;
+                        &.email{
+                            margin-right: 20px;
+                        }
+                    }
                 }
                 p:nth-child(3){
                     color:#A6A6A6;
