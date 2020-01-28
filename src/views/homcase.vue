@@ -1,6 +1,6 @@
 <template>
     <div class="con">
-     <div class="banner">
+      <div class="banner" id="intro">
          <img src="../assets/about/ban.png" alt="">
          <p class="animated fadeInUp">Ebin ·Life · Home</p>
      </div>
@@ -37,8 +37,8 @@
                 <a @click="showMore">loading more series</a>
             </div>
         </div>
-        <div class="mCon" v-if="IsShow">
-         <div class="content" id="intro">
+        <div class="mCon" v-if="IsShow" :style="dStyle">
+         <div class="content" >
            <div class="left">
                <homeDia :id="id" />
            </div>
@@ -434,11 +434,12 @@
         width: 100%;
         height: 100%;
         background:rgba(0,0,0,.85);
-        padding-top:120px;
+        /*padding-top: 200px;*/
         .content{
             width:1440px;
             margin: 0 auto;
             display: flex;
+            margin-top: 150px;
             flex-direction: row;
             background-color: white;
             height:800px;
