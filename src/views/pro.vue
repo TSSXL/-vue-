@@ -127,6 +127,7 @@
                 this.text=decodeURI(window.location.search.split('?')[2].split('=')[1])
                 this.getProList(parseInt(window.location.search.split('?')[3].split('=')[1]))
             }else if(window.location.search.split('?')[1]!==undefined &&parseInt(window.location.search.split('?')[3].split('=')[1])<10){
+               // 针对不同系列进行获取data  ID<10
                 this.select=parseInt(window.location.search.split('?')[1].split('=')[1])
                 this.text=decodeURI(window.location.search.split('?')[2].split('=')[1])
                 this.getProList2(decodeURI(window.location.search.split('?')[2].split('=')[1]))
@@ -196,6 +197,7 @@
                 let list=JSON.parse(localStorage.getItem('proList'))
                 console.log(list)
                list.map((item)=>{
+                   //如果这个系列等于商品的TYPE值，则push进去
                    if(type==item.TYPE) {
                        this.listAll.push(item)
                    }
@@ -646,6 +648,27 @@
                 }
                 .pName{
                     width:95%;
+                }
+                .aContent{
+                    .col-main{
+                        .products-category{
+                            .allItems{
+                                .item{
+                                    .a2{
+                                        width:90%;
+                                        margin-left: 5%;
+                                        p{
+                                            font-size: 14px;
+                                            display: -webkit-box;
+                                            -webkit-box-orient: vertical;
+                                            -webkit-line-clamp: 1;
+                                            overflow: hidden;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }

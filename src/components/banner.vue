@@ -248,6 +248,19 @@
                      transform: rotate(360deg);
                  }
              }
+        @media screen and (max-width: 1440px) and (min-width: 1000px){
+            .swiper{
+                .item{
+                    .text{
+                        left:5%;
+                    }
+                }
+            }
+            .share{
+                top:70%;
+                right:7.5%;
+            }
+        }
         @media screen and (max-width: 1000px){
             .swiper{
                 .item{

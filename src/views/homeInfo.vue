@@ -18,7 +18,7 @@
 <!--                    </div>-->
                 </div>
             </div>
-            <p class="pName wow fadeInUp">- {{text}} - </p>
+<!--            <p class="pName wow fadeInUp">- {{text}} - </p>-->
             <div class="content">
                 <swiper :options="swiperOptionTop" class="gallery-top wow" ref="swiperTop" v-if="list.length>0">
                     <swiper-slide class="item" v-for="(item,index) in list" :key="index">

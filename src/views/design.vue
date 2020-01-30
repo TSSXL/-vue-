@@ -10,15 +10,15 @@
                     <a href="/index.html">Home-</a>
                     <a href="/homecase.html">designesign</a>
                 </div>
-                <div class="right" @mouseenter="showNav" @mouseleave="hideNav">
-                    <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>
-                    <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">
-                        <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">
-                            {{item.CALLED}}
-                            <i class="iconfont icon-arrow-left"></i>
-                        </div>
-                    </div>
-                </div>
+<!--                <div class="right" @mouseenter="showNav" @mouseleave="hideNav">-->
+<!--                    <div > {{text}} <i class="iconfont icon-arrow-left"></i></div>-->
+<!--                    <div class="proList" :class="{'animated fadeInUp':active}" v-if="active">-->
+<!--                        <div v-for="(item,index)  in proList" :key="index" @click="getType(item.ID,item.CALLED)">-->
+<!--                            {{item.CALLED}}-->
+<!--                            <i class="iconfont icon-arrow-left"></i>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
             <div class="allItems">
                 <div class="item wow" v-for="(item,index) in list"  :key="index" @click="gotoInfo(item.ID)">
