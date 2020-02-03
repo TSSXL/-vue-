@@ -1,7 +1,7 @@
 <template>
   <div class="con">
     <div class="banner">
-      <img src="../assets/about/abanner.png" alt="">
+      <img src="../assets/zm/banner.png" alt="">
       <p class="animated fadeInUp">About · Ebin</p>
     </div>
     <div class="main">

@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <first-Component></first-Component>
+    <first-Component page="about"></first-Component>
     <div id="scroller-wrapper" data-scrollbar >
       <home-Component></home-Component>
     </div>

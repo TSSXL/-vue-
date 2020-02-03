@@ -1,15 +1,16 @@
 <template>
   <div id="app">
-    <first-Component page="home" v-if="!loader"></first-Component>
-    <transition name="el-fade-in">
-      <div class="loader-wrap" v-if="loader">
-        <img class="logo" v-if="loading" src="../../assets/ablack.png" alt="">
-        <div class="loadingbar" v-if="loading">
-          <div class="processbar" id="processbar"></div>
-        </div>
-        <div class="num" id="loadingratio" v-if="loading">0%</div>
-      </div>
-    </transition>
+    <first-Component page="index" ></first-Component>
+<!--    <first-Component page="home" v-if="!loader"></first-Component>-->
+<!--    <transition name="el-fade-in">-->
+<!--      <div class="loader-wrap" v-if="loader">-->
+<!--        <img class="logo" v-if="loading" src="../../assets/ablack.png" alt="">-->
+<!--        <div class="loadingbar" v-if="loading">-->
+<!--          <div class="processbar" id="processbar"></div>-->
+<!--        </div>-->
+<!--        <div class="num" id="loadingratio" v-if="loading">0%</div>-->
+<!--      </div>-->
+<!--    </transition>-->
     <div id="scroller-wrapper" data-scrollbar >
       <home-Component></home-Component>
     </div>
@@ -41,12 +42,12 @@
     mounted() {
       this.wow=new WOW();
       this.init()
-      this.$nextTick(() => {
-        setTimeout(()=>{
-          this.loading=true
-          this.loadingAddNum(0, 10);
-        },1000)
-      });
+      // this.$nextTick(() => {
+      //   setTimeout(()=>{
+      //     this.loading=true
+      //     this.loadingAddNum(0, 10);
+      //   },1000)
+      // });
       // this.$router.beforeEach((to, from, next) => {
       //   Scrollbar.destroyAll()
       //   next()

@@ -2,9 +2,6 @@
   <div id="app">
     <first-Component page="contact"></first-Component>
     <div id="scroller-wrapper" data-scrollbar >
-      <div class="donghua animated flipOutX"  :style="noShow">
-
-      </div>
       <home-Component></home-Component>
     </div>
 

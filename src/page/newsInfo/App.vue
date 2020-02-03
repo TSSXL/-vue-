@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <first-Component page="cooperation"></first-Component>
+    <first-Component page='newsInfo'></first-Component>
     <div id="scroller-wrapper" data-scrollbar >
       <home-Component></home-Component>
     </div>
@@ -12,9 +12,9 @@
   import  {WOW} from 'wowjs'
   import Scrollbar from 'smooth-scrollbar';
   import firstComponent from '@/components/first.vue'
-  import homeComponent from '@/views/cooperation.vue'
+  import homeComponent from '@/views/newsInfo.vue'
   export default {
-    name: 'contact',
+    name: 'faq',
     data(){
       return{
         noShow:{},
@@ -112,15 +112,9 @@
   }
   .scrollbar-thumb{
     width:3px !important;
-    background-color:black!important;
+    background-color: #F7BC30!important;
   }
   .scrollbar-track-y{
     width:3px !important;
-  }
-  .fade-enter-active, .fade-leave-active {
-    transition: opacity .5s;
-  }
-  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-    opacity: 0;
   }
 </style>

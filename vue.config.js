@@ -14,6 +14,18 @@ module.exports = {
       filename: 'about.html',
       chunks: ['chunk-vendors', 'chunk-common', 'about']
     },
+    contact: {
+      entry: 'src/page/contact/main.js',
+      template: 'public/contact.html',
+      filename: 'contact.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'contact']
+    },
+    newsInfo: {
+      entry: 'src/page/newsInfo/main.js',
+      template: 'public/newsInfo.html',
+      filename: 'newsInfo.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'newsInfo']
+    },
     lifestyle: {
       entry: 'src/page/lifestyle/main.js',
       template: 'public/lifestyle.html',
@@ -50,11 +62,11 @@ module.exports = {
       filename: 'pro.html',
       chunks: ['chunk-vendors', 'chunk-common', 'pro']
     },
-    collect: {
-      entry: 'src/page/collect/main.js',
-      template: 'public/collect.html',
-      filename: 'collect.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'collect']
+    sale: {
+      entry: 'src/page/sale/main.js',
+      template: 'public/sale.html',
+      filename: 'sale.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'sale']
     },
     newPro: {
       entry: 'src/page/newPro/main.js',
@@ -62,11 +74,11 @@ module.exports = {
       filename: 'newPro.html',
       chunks: ['chunk-vendors', 'chunk-common', 'newPro']
     },
-    design: {
-      entry: 'src/page/design/main.js',
-      template: 'public/design.html',
-      filename: 'design.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'design']
+    news: {
+      entry: 'src/page/news/main.js',
+      template: 'public/news.html',
+      filename: 'news.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'news']
     },
     proInfo: {
       entry: 'src/page/proInfo/main.js',
@@ -74,11 +86,11 @@ module.exports = {
       filename: 'proInfo.html',
       chunks: ['chunk-vendors', 'chunk-common', 'proInfo']
     },
-    cooperation: {
-      entry: 'src/page/cooperation/main.js',
-      template: 'public/cooperation.html',
-      filename: 'cooperation.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'cooperation']
+    job: {
+      entry: 'src/page/job/main.js',
+      template: 'public/job.html',
+      filename: 'job.html',
+      chunks: ['chunk-vendors', 'chunk-common', 'job']
     }
   }
 }

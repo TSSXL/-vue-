@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-    <first-Component page='faq'></first-Component>
+    <first-Component page="cooperation"></first-Component>
     <div id="scroller-wrapper" data-scrollbar >
-      <div class="donghua animated flipOutX"  :style="noShow">
-
-      </div>
       <home-Component></home-Component>
     </div>
 
@@ -15,9 +12,9 @@
   import  {WOW} from 'wowjs'
   import Scrollbar from 'smooth-scrollbar';
   import firstComponent from '@/components/first.vue'
-  import homeComponent from '@/views/faq.vue'
+  import homeComponent from '@/views/job.vue'
   export default {
-    name: 'faq',
+    name: 'contact',
     data(){
       return{
         noShow:{},
@@ -59,6 +56,10 @@
   }
 </script>
 <style>
+  .el-carousel__arrow--left,  .el-carousel__arrow--right{
+    top:45% !important;
+    background-color: #F37041 !important;
+  }
   body{
     margin: 0;
     padding: 0;
@@ -115,9 +116,15 @@
   }
   .scrollbar-thumb{
     width:3px !important;
-    background-color: #F7BC30!important;
+    background-color:black!important;
   }
   .scrollbar-track-y{
     width:3px !important;
+  }
+  .fade-enter-active, .fade-leave-active {
+    transition: opacity .5s;
+  }
+  .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+    opacity: 0;
   }
 </style>

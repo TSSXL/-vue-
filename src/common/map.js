@@ -6,7 +6,7 @@ export function initMap(){
   addMapOverlay();//向地图添加覆盖物
   // map.setMapStyle({style:"dark"});
   map.setMapStyleV2({
-    styleId: 'cebddd115f78e3f59d6b8ad5f26321f2'
+    styleId: '6ceb21d2a8787ac9b2077a4c57c90af7'
   });
 }
 function createMap(){
@@ -26,7 +26,7 @@ function addClickHandler(target,window){
 }
 function addMapOverlay(){
   var markers = [
-    {content:"中国 · 浙江 · 宁波高新区菁华路58号",title:"宁波君安控股有限公司",imageOffset: {width:-46,height:-21},position:{lat:29.87296805351663,lng:121.63810761111449}}
+    {content:"中国 · 浙江 · 宁波高新区菁华路58号",title:"宁波镇明转轴有限公司",imageOffset: {width:-46,height:-21},position:{lat:29.87296805351663,lng:121.63810761111449}}
   ];
   for(var index = 0; index < markers.length; index++ ){
     var point = new window.BMap.Point(markers[index].position.lng,markers[index].position.lat);

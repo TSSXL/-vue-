@@ -12,7 +12,7 @@
   import  {WOW} from 'wowjs'
   import Scrollbar from 'smooth-scrollbar';
   import firstComponent from '@/components/first.vue'
-  import homeComponent from '@/views/collect.vue'
+  import homeComponent from '@/views/sale.vue'
   export default {
     name: 'Pro',
     data(){

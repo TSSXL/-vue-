@@ -1,54 +1,50 @@
 <template>
     <div class="con" :class="{'dark':active2}">
-        <div class="main">
-            <a class="left" href="/index.html">
-                <img class="a" src="../assets/fb/topLogo.png" alt="">
-            </a>
-            <div class="right">
-                <ul>
-                    <!--                <li v-for="(item,index) in list" :key="index" @click="goto(index)" :class="{'showLine':select===index}">{{item}}</li>-->
-                    <li :class="page === 'pro' ? 'showLine' : ''" @click="goto('pro')">
-                        <a>　All　</a>
-                        <a>产品</a>
-                    </li>
-                    <li :class="page === 'lifestyle' ? 'showLine' : ''" @click="goto('lifestyle')">
-                        <a>　Life Style　</a>
-                        <a>生活方式</a>
-                    </li>
-                    <li :class="page === 'homecase' ? 'showLine' : ''" @click="goto('homecase')">
-                        <a>Home Case</a>
-                        <a>居家案例</a>
-                    </li>
-                    <li :class="page === 'cooperation' ? 'showLine' : ''" @click="goto('cooperation')">
-                        <a >Cooperation</a>
-                        <a >合作</a>
-                    </li>
-                </ul>
-                <div class="a1">
-                   <div class="collect" @click="gotoC" :class="page === 'collect' ? 'show' : ''">
-                       <img src="../assets/black.png" alt="" >
-                       <img src="../assets/white.png" alt=""  >
-                   </div>
-                    <i class="iconfont icon-sousuo" style="font-size: 22px;" @click="showS"></i>
-                    <div class="lines" @click="showList" >
-                        <div></div>
-                        <div></div>
-                        <div></div>
+        <div class="lan animated fadeInRight">
+            <span>
+                <i class="iconfont icon-shixindiqiu"></i>
+            </span>
+            <span>语言:中文简体</span>
+        </div>
+        <div class="mm">
+            <div class="main">
+                <a class="left" href="/index.html">
+                    <img class="a" src="../assets/zm/tlogo.png" alt="">
+                </a>
+                <div class="right">
+                    <ul>
+                        <li class="animated fadeInDown" :class="page === 'index' ? 'showLine' : ''" @click="goto('index')"  style="animation-delay: 0.2s">
+                            <a>首页</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'about' ? 'showLine' : ''" @click="goto('about')" style="animation-delay: 0.3s">
+                            <a>关于我们</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'pro' ? 'showLine' : ''" @click="goto('pro')" style="animation-delay: 0.4s">
+                            <a>产品中心</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'news' ? 'showLine' : ''" @click="goto('news')" style="animation-delay: 0.5s">
+                            <a >新闻中心</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'job' ? 'showLine' : ''" @click="goto('job')" style="animation-delay: 0.6s">
+                            <a >职业发展</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'sale' ? 'showLine' : ''" @click="goto('sale')" style="animation-delay: 0.7s">
+                            <a >销售网络</a>
+                        </li>
+                        <li class="animated fadeInDown" :class="page === 'contact' ? 'showLine' : ''" @click="goto('contact')" style="animation-delay: 0.8s">
+                            <a >联系我们</a>
+                        </li>
+                    </ul>
+                    <div class="tc">
+                        <div class="animated fadeInDown" style="animation-delay: 0.9s">
+                            <i class="iconfont icon-youxiang"></i>
+                        </div>
+                        <div class="animated fadeInDown" style="animation-delay: 1s">
+                            <i class="iconfont icon-search-line"></i>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="nList"  :class="{'shownList':showNav}">
-            <span class="x-close" @click="hideList"></span>
-             <div class="mCon">
-                 <ul>
-                     <li class="list" v-for="(item,index) in nlist" :key="index">
-                         <div class="item" v-for="(i,idx) in item.con" :key="idx" :style="aStyle(idx)" @click="gotoLink(index,idx)">
-                             {{i}}
-                         </div>
-                     </li>
-                 </ul>
-             </div>
         </div>
         <div class="search" :class="{'showsList':showSearch}">
             <span class="x-close" @click="hideS"></span>
@@ -94,45 +90,11 @@
             return{
                 keywords:'',
                 showSearch:false,
-                showNav:false,
-                showa:true,
                 select:0,
                 menuOpen:false,
                 active2:false,
                 scrollbar:'',
-                top:'',
-                nlist:[
-                    {con:[
-                        "首页",
-                            "所有商品",
-                            "生活方式",
-                            "居家案例",
-                            "设计方案",
-                            "3D云设计",
-                            "我的收藏",
-                            "关于我们"
-                        ]},
-                    // {con:[
-                    //         "加盟合作",
-                    //         "加盟优势",
-                    //         "培训支持",
-                    //         "加盟细则",
-                    //         "门店形象"
-                    //     ]},
-                    // {con:[
-                    //         "联系我们",
-                    //         "附近门店",
-                    //         "富邦美品官网"
-                    //     ]}
-                ],
-                list:[
-                    "HOME",
-                    "ABOUT US",
-                    "PRODUCTS",
-                    "FAQ",
-                    "NEW ARRIVALS",
-                    "CONTACT US",
-                ]
+                top:''
             }
         },
         props:['page'],
@@ -152,9 +114,6 @@
             hideS(){
                 this.showSearch=false
             },
-            showS(){
-                this.showSearch=true
-            },
             gotoLink(i,n){
                 if(i===0 && n===1){
                     const link='/pro.html'
@@ -166,13 +125,13 @@
                     const link='/homecase.html'
                     window.open(link,'_self')
                 }else if(i===0 && n===4){
-                    const link='/design.html'
+                    const link='/news.html'
                     window.open(link,'_self')
                 }else if(i===0 && n===5){
                     const link='/newPro.html'
                     window.open(link,'_self')
                 }else if(i===0 && n===6){
-                    const link='/collect.html'
+                    const link='/sale.html'
                     window.open(link,'_self')
                 }else if(i===0 && n===0){
                     const link='/index.html'
@@ -182,22 +141,12 @@
                     window.open(link,'_self')
                 }
                 else if(i===1){
-                    const link='/cooperation.html'
+                    const link='/job.html'
                     window.open(link,'_self')
                 }
             },
             aStyle(n){
                 return {transitionDelay:n*0.1+'s'}
-            },
-            hideList(){
-                this.showNav=false
-            },
-            showList(){
-                this.showNav=true
-            },
-            gotoC(){
-                const link='/collect.html'
-                window.open(link,'_self')
             },
            goto(n){
               const link=`/${n}.html`
@@ -210,7 +159,6 @@
                 this.$nextTick(()=>{
                     this.scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
                     this.active2=false
-                    this.showa=true
                     this.select=parseInt(localStorage.getItem('home.html'))
                     let scrollHeader=this.scrollHeader
                     if(this.scrollbar){
@@ -231,393 +179,182 @@
         top:0;
         left:0;
         z-index: 1000;
-        background-color: white;
-        box-shadow: 0 20px 20px -20px rgba(71,71,71,.2);
         .animated{
             animation-delay: 600ms;
         }
-        .main{
+        .lan{
             width:90%;
+            margin-left: 5%;
+            padding-top: 15px;
             display: flex;
             flex-direction: row;
-            justify-content: space-between;
-            transition: all 600ms;
-            margin-left: 5%;
-            .left{
-              display: inline-block;
-                width:215px;
-                height:27px;
-                position: relative;
-                overflow: hidden;
-                margin-top:25px;
-                img{
-                    position: absolute;
-                    left:-100%;
-                    top:0;
-                    height:100%;
-                    width:100%;
-                    animation: show 1s linear forwards;
-                    opacity: 0;
+            justify-content: flex-end;
+            align-items: center;
+            span{
+                color:#D4D4D4;
+                font-family: "Fira Code Light";
+                font-weight: lighter;
+                cursor: pointer;
+                transition: all 1s;
+                i{
+                    font-size: 25px;
+                    color:white;
+                    transition: all 1s;
                 }
-                @keyframes show {
-                    from{
-                        left:-100%;
-                        opacity: 0;
-                    }
-                    to{
-                        left:0;
-                        opacity: 1;
+                &:hover{
+                    color:#F37041;
+                    i{
+                        color:#F37041;
                     }
                 }
             }
-            .right{
+            span:nth-child(1){
+                display: inline-block;
+                animation: xz 1s infinite linear;
+            }
+            @keyframes xz {
+                from{
+                    transform: rotate(0);
+                }
+                to{
+                    transform: rotate(360deg);
+                }
+            }
+            span:nth-child(2){
+                margin-left: 10px;
+            }
+        }
+        .mm{
+            width:100%;
+            border-bottom: 1px solid rgba(255,255,255,.2);
+            padding-bottom: 20px;
+            .main{
+                width:90%;
                 display: flex;
                 flex-direction: row;
-                width:45%;
-                ul{
-                    list-style: none;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    width:75%;
-                    li{
-                        position: relative;
-                        margin-left: 3%;
-                        padding: 30px 0;
-                        cursor: pointer;
-                        a:nth-child(1){
-                            color:#ACACAC;
-                            width:100%;
-                            display: inline-block;
-                            text-align: center;
-                            line-height: 25px;
-                            opacity: 1;
-                            transition: all 1s;
-                            font-family: it;
-                        }
-                        a:nth-child(2){
-                            position: absolute;
-                            left:0;
-                            top:32px;
-                            display: inline-block;
-                            width:100%;
-                            text-align: center;
-                            font-family: "Fira Code Medium";
-                            font-weight: lighter;
-                            opacity: 0;
-                            transition: all 1s;
-                            transform: rotateX(180deg);
-
-                        }
-                    }
-                    li:hover{
-                        a:nth-child(1){
-                            opacity: 0;
-                            transform: rotateX(180deg);
-                        }
-                        a:nth-child(2){
-                            opacity: 1;
-                            transform: rotateX(0);
-                        }
-                    }
-                    .showLine{
-                        a:nth-child(1){
-                            opacity: 0;
-                            transform: rotateX(180deg);
-                        }
-                        a:nth-child(2){
-                            opacity: 1;
-                            transform: rotateX(0);
-                        }
-                    }
-                    .showLine::after{
-                        width:100%;
-                    }
-                    li::after{
+                justify-content: space-between;
+                transition: all 600ms;
+                margin-left: 5%;
+                .left{
+                    display: inline-block;
+                    width:131px;
+                    height:47px;
+                    position: relative;
+                    overflow: hidden;
+                    img{
                         position: absolute;
-                        left:0;
-                        bottom:0;
-                        width:0;
-                        height:3px;
-                        transition: all 1s;
-                        content:'';
-                        display: inline-block;
-                        background-color: black;
-                    }
-                    li:hover::after{
+                        left:-100%;
+                        top:0;
+                        height:100%;
                         width:100%;
+                        animation: show 1s linear forwards;
+                        opacity: 0;
                     }
-                }
-                .a1{
-                    padding-top: 30px;
-                    margin-left: 5%;
-                    width:20%;
-                    display: flex;
-                    flex-direction: row;
-                    justify-content: space-between;
-                    .collect{
-                        height:20px;
-                        width:21px;
-                        position: relative;
-                        margin-top: 3px;
-                        img{
-                            position: absolute;
+                    @keyframes show {
+                        from{
+                            left:-100%;
+                            opacity: 0;
+                        }
+                        to{
                             left:0;
-                            top:0;
-                            width:100%;
-                            height:100%;
-                            transition: all 1s;
-                            object-fit: cover;
-                            display: block;
-                            cursor: pointer;
-                        }
-                        img:nth-child(1){
-                            opacity: 0;
-                            z-index: 10;
-                        }
-                        img:nth-child(2){
-                            z-index: 100;
-                        }
-                    }
-                    .collect:hover{
-                        img:nth-child(1){
                             opacity: 1;
-                            z-index: 100;
-                        }
-                        img:nth-child(2){
-                            opacity: 0;
-                            z-index: 10;
-                        }
-                    }
-                    .show{
-                        img:nth-child(1){
-                            opacity: 1;
-                            z-index: 100;
-                        }
-                        img:nth-child(2){
-                            opacity: 0;
-                            z-index: 10;
-                        }
-                    }
-                    i{
-                        font-size: 20px;
-                        color:#ACACAC;
-                        cursor: pointer;
-                        transition: all 1s;
-                        z-index: 1000;
-                    }
-                    i:hover{
-                        color:black;
-                    }
-                    .lines{
-                     width:30px;
-                        position: relative;
-                        cursor: pointer;
-                        div{
-                            height:1px;
-                            width:100%;
-                            position: absolute;
-                            background-color: #ACACAC;
-                            left:0;
-                            transition: all 1s;
-                        }
-                        div:nth-child(1){
-                            top:5px;
-                            animation: long 2s linear infinite;
-                        }
-                        div:nth-child(2){
-                            top:15px;
-                            width:75%;
-                            animation: long2 2s linear infinite;
-                            animation-delay: 600ms;
-                        }
-                        div:nth-child(3){
-                            top:25px;
-                            width:50%;
-                            animation: long3 2s linear infinite;
-                            animation-delay: 1s;
-                        }
-                        @keyframes long {
-                            0% {
-                                width: 50%;
-                            }
-                            25% {
-                                width: 75%;
-                            }
-                            50% {
-                                width: 100%;
-                            }
-                            75% {
-                                width: 75%;
-                            }
-                            100% {
-                                width: 50%;
-                            }
-                        }
-                        @keyframes long2 {
-                            0% {
-                                width: 25%;
-                            }
-                            25% {
-                                width: 50%;
-                            }
-                            50% {
-                                width: 75%;
-                            }
-                            75% {
-                                width: 50%;
-                            }
-                            100% {
-                                width: 25%;
-                            }
-                        }
-                        @keyframes long3 {
-                            0% {
-                                width: 0;
-                            }
-                            25% {
-                                width: 25%;
-                            }
-                            50% {
-                                width: 50%;
-                            }
-                            75% {
-                                width: 25%;
-                            }
-                            100% {
-                                width: 0;
-                            }
-                        }
-                    }
-                    .aLine{
-                        div:nth-child(2){
-                            top:15px;
-                            width: 100%;
-                            transform: rotate(90deg);
-                            -webkit-animation: none;
-                            animation: none;
-                        }
-                        div:nth-child(1),div:nth-child(3){
-                            width:100%;
-                            animation: none;
-                            top:15px;
                         }
                     }
                 }
-            }
-            @media screen and (max-width: 1440px) and (min-width: 1000px){
                 .right{
-                    width:50%;
-                }
-            }
-        }
-        .nList{
-            position: absolute;
-            right:-40%;
-            top:0;
-            width:40%;
-            background-color: rgba(0,0,0,.8);
-            height:100vh;
-            transition: all 600ms;
-            .x-close{
-                -webkit-font-smoothing: antialiased;
-                text-rendering: optimizeLegibility;
-                font-feature-settings: "kern" 1;
-                font-kerning: normal;
-                font-family: "helvetica_neue_light",Arial,Helvetica,sans-serif;
-                font-size: 17px;
-                line-height: 24px;
-                visibility: inherit;
-                padding: 0;
-                margin: 0;
-                display: block;
-                cursor: pointer;
-                width: 41px;
-                height: 41px;
-                top: 20px;
-                right: 90px;
-                position: absolute;
-                z-index: 100;
-                color: #000;
-                transform: scaleX(1);
-            }
-            .x-close:before, .x-close:after {
-                content: '';
-                position: absolute;
-                left: -7px;
-                top: 20px;
-                height: 1px;
-                width: 55px;
-                z-index: 10;
-                background-color: white;
-                opacity: 0;
-                transition: all 1s;
-                transition-delay: 600ms;
-                transform: rotate(0deg);
-            }
-            .mCon{
-                width:100%;
-                padding: 60px 0;
-                padding-bottom: 90px;
-                ul{
-                    width:100%;
                     display: flex;
                     flex-direction: row;
-                    justify-content: space-between;
-                    flex-wrap: wrap;
-                    list-style: none;
-                    opacity: 0;
-                    transition: all 600ms;
-                    li{
-                        width:50%;
-                        margin-top: 30px;
-                       .item{
-                           text-align: center;
-                           margin-top: 20px;
-                           font-family: "Fira Code Medium";
-                           font-weight: lighter;
-                           cursor: pointer;
-                           color:#7C7C7C;
-                           transition: all 1s;
-                           opacity: 0;
-                           transform: matrix(1, 5, 5, 1, 100, 0);
-                           font-size: 14px;
-                       }
-                        .item:hover{
-                            color:white;
+                    width:80%;
+                    padding-top: 20px;
+                    ul{
+                        list-style: none;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: space-between;
+                        width:77%;
+                        li{
+                            position: relative;
+                            margin-left: 3%;
+                            cursor: pointer;
+                            a{
+                                font-size: 14px;
+                                font-family: "Fira Code Light";
+                                font-weight: lighter;
+                                color:white;
+                                transition: all 1s;
+                            }
+                            &::after{
+                                position: absolute;
+                                left:30%;
+                                bottom:-20px;
+                                width:0;
+                                height:3px;
+                                transition: all 1s;
+                                content:'';
+                                display: inline-block;
+                                background-color: white;
+                            }
+                            &:hover::after{
+                                width:40%;
+                            }
+                            &:hover{
+                                a{
+                                    color:#F37041;
+                                }
+                            }
                         }
-                        /*.item:nth-child(1){*/
-                        /*    font-size:20px;*/
-                        /*    color:white;*/
-                        /*}*/
-                        /*.item:nth-child(2){*/
-                        /*    font-size:20px;*/
-                        /*    color:white;*/
-                        /*}*/
+                        .showLine::after{
+                            width:40%;
+                        }
+                        .showLine{
+                            a{
+                                color:#F37041;
+                            }
+                        }
+                    }
+                    .tc{
+                        width:18%;
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        margin-left: 5%;
+                        div{
+                            width:50%;
+                            text-align: center;
+                            position: relative;
+                            i{
+                                color:white;
+                                font-size: 20px;
+                                cursor: pointer;
+                                transition: all 1s;
+                            }
+                            &:hover{
+                                i{
+                                    color:#F37041;
+                                }
+                            }
+                        }
+                        div:nth-child(1)::before,div:nth-child(1)::after{
+                            content:'';
+                            display: inline-block;
+                            height:20px;
+                            width:1px;
+                            background-color: rgba(255,255,255,.3);
+                            position: absolute;
+                        }
+                        div:nth-child(1)::before{
+                            left:0;
+                            top:2px;
+                        }
+                        div:nth-child(1)::after{
+                            right:0;
+                            top:2px;
+                        }
                     }
                 }
-            }
-        }
-        .shownList{
-            right:0;
-            z-index: 1000;
-            .x-close:before, .x-close:after{
-                opacity: 1;
-            }
-            .x-close:before {
-                transform: rotate(-45deg);
-            }
-            .x-close:after {
-                transform: rotate(45deg);
-            }
-            .mCon{
-                ul{
-                    opacity: 1;
-                    li{
-                        .item{
-                            opacity: 1;
-                            transform: matrix(1, 0, 0, 1, 0, 0);
-                        }
+                @media screen and (max-width: 1440px) and (min-width: 1000px){
+                    .right{
+                        width:80%;
                     }
                 }
             }
@@ -897,17 +634,49 @@
             }
         }
     }
-    /*.dark{*/
-    /*    @media screen and (max-width:450px){*/
-    /*        .mImg{*/
-    /*            display: none;*/
-    /*        }*/
-    /*        .mImg2{*/
-    /*            display: block;*/
-    /*        }*/
-    /*        .mNav .burger{*/
-    /*            background-color: #0C3665;*/
-    /*        }*/
-    /*    }*/
-    /*}*/
+    .dark{
+        background-color: white;
+        .lan{
+            span{
+                color:black;
+                i{
+                    color:black;
+                }
+            }
+        }
+        .mm{
+            .main{
+                .right{
+                    ul{
+                        li{
+                            a{
+                                color:black;
+                            }
+                        }
+                    }
+                    .tc{
+                        div{
+                            i{
+                                color:black;
+                            }
+                        }
+                        div:nth-child(1)::before,div:nth-child(1)::after{
+                            background-color: black;
+                        }
+                    }
+                }
+            }
+        }
+        /*@media screen and (max-width:450px){*/
+        /*    .mImg{*/
+        /*        display: none;*/
+        /*    }*/
+        /*    .mImg2{*/
+        /*        display: block;*/
+        /*    }*/
+        /*    .mNav .burger{*/
+        /*        background-color: #0C3665;*/
+        /*    }*/
+        /*}*/
+    }
 </style>
