@@ -2,51 +2,201 @@
   <div class="con">
     <div class="banner">
       <img src="../assets/zm/banner.png" alt="">
-      <p class="animated fadeInUp">About · Ebin</p>
+      <div class="text">
+        <p class="p1 animated fadeInLeft">团结 · 敬业 · 创新 · 拼搏</p>
+        <p class="p2 animated fadeInLeft">Unity · Dedication · Innovation · Hard work</p>
+      </div>
     </div>
     <div class="main">
-    <div class="one">
-     <div class="left wow ">
-       <img src="../assets/about/about1.png" alt="">
-     </div>
-      <div class="right">
-        <div class="r1 wow">
-        <div>
-          <img src="../assets/about/play.png" alt="">
-        </div>
-          <div>
-              <p>欢迎来到意缤生活世界</p>
-            <p>Welcome to the world of Ebin Casa</p>
+      <div class="nav">
+        <div class="left">
+          <p>关于我们</p>
+          <p>About Us</p>
+          <div class="line">
+
           </div>
         </div>
-        <div class="r2 wow">
-          <p>品牌概况</p>
-          <p>　　意缤设计师以介于奢华和时尚间的品质生活为设计源头，既有高端的定位，更尊重生活品质，它代表着高品质家居生活的追求。在消费观念方面，已超越了“珠光宝气”的奢侈品阶段，而趋于一种理性、健康的消费方式；购买意缤家具不是崇拜，不为走在前端，只为享受生活的美好、舒适、惬意和恣意时尚的生活态度。设在意大利总部的品牌和设计研发中心，有来自意大利、德国、西班牙的才华横溢的设计师。他们有着多元化的文化视野和强势领先的专业底蕴，在设计上综合多种材料组合，结合现代人的审美和人体工程学；为现代要求高品质生活主张的人群，提供原汁原味的意大利现代设计。</p>
+        <div class="right">
+          <span><i class="iconfont icon-home"></i></span>
+          <a href="./index.html">首页-</a>
+          <a href="./pro.html">关于我们</a>
         </div>
       </div>
-    </div>
-      <div class="two">
-        <p class="wow">　　随着中国的国际地位提升，国民生活品质不断提高，人们对居家环境的要求和个性化需求也发生质的变化，从简单的实用型家居需求转向品位化、功能化、美学化和艺术化的发展。为此富邦家具将意缤系列产品引入中国市场，在设计上追求亚洲元素和现代时尚完美结合，在用材上追求绿色环保和品质上乘，在风格上追求品位独特和表现优越，给用户带来具有当代最时尚气息的家具产品。</p>
-        <div></div>
+      <div class="tnav">
+        <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
       </div>
-      <div class="three">
-        <div class="left wow">
-          <img src="../assets/about/people.png" alt="">
+
+     <!--      公司概况-->
+      <div class="about">
+     <div class="title">
+         <p>关于镇明转轴</p>
+       <p>About zms</p>
+     </div>
+        <div class="content">
+          <div class="left">
+          <div class="l">
+            <img src="../assets/zm/l.png" alt="">
+          </div>
+            <div class="r">
+              <img src="../assets/zm/r1.png" alt="">
+              <img src="../assets/zm/r2.png" alt="">
+            </div>
+          </div>
+          <div class="right">
+           <p>宁波镇明转轴有限公司</p>
+            <p>世界一流的轴制造商</p>
+            <aboutDia />
+            <div class="im">
+              <img src="../assets/zm/1495678518246.png" alt="">
+            </div>
+          </div>
         </div>
-        <div class="right wow">
-          <p>品牌溯源</p>
-          <p>　　意大利米兰是世界时尚与设计之都和时尚界最有影响力的城市，世界历史文化名城，世界歌剧圣地，世界艺术之都。米兰拥有众多的美术馆，博物馆，世界著名大师的作品一应俱全。像达芬奇的《最后的晚餐》和众多手稿，米开朗基罗生前最后一个雕塑，拉斐尔，提香，佩鲁吉诺，毕加索等大师的绘画均收藏于布雷拉美术馆、布雷拉现代美术馆、二十世纪博物馆、米兰现代艺术博物馆等地。意大利同时汇聚了众多世界时尚名品，像阿玛尼、范思哲、普拉达、杜嘉班纳、华伦天奴、古奇、莫斯奇诺等。而诞生于意大利米兰的EBIN CASA，将米兰的时尚文化和艺术传承在家具设计中进行了尽情演绎，打造出独具魅力的时尚简约家具。</p>
+      </div>
+
+<!--      厂房设备展示-->
+         <div class="house">
+           <div class="title">
+             <p>厂房设备展示</p>
+             <p>Plant equipment</p>
+           </div>
+           <div class="allImgs">
+             <swiper class="swiper" :options="swiperOption" ref="mySwiper"  v-if="hList.length>0">
+               <swiper-slide class="item" v-for="(item,index) in hList" :key="index" >
+                 <div class="oItem">
+                   <img :src="item.a" alt="">
+                 </div>
+                <div class="oItem" v-for="(i,idx) in item.conList" :key="idx" @click="getBig(index,i.img)">
+                  <img :src="i.img" alt="">
+                  <div class="circle">
+                  <i class="iconfont icon-fangda"></i>
+                  </div>
+                  <div class="name">
+                    {{i.name}}
+                  </div>
+                </div>
+               </swiper-slide>
+             </swiper>
+             <div class="prev">
+               <i class="el-icon-arrow-left"></i>
+             </div>
+             <div class="next ">
+               <i class="el-icon-arrow-right"></i>
+             </div>
+           </div>
+         </div>
+
+<!--      企业理念-->
+      <div class="title1">
+        <p>企业理念</p>
+        <p>Corporate Philosophy</p>
+      </div>
+       <div class="idea">
+
+         <div class="service">
+        <div class="left">
+          <p>服务客户</p>
+          <p>
+            为客户创造更多的价值<br>
+            提供更好的服务
+          </p>
         </div>
-      </div>
-      <div class="four wow fadeInUp">
-        <p>品牌源自-富邦家居</p>
-        <p>
-          　　宁波富邦家具有限公司隶属于中国企业500强—富邦控股集团，是一家致力于提供国际高端品质家具的企业。旗下主要品牌有“富邦美品”、“FASHION PLAZA新美荟”、“EBIN CASA意缤”、“至锐”、“莱洛克”等。公司产品传承经典，引领时尚，涵盖了美式经典、美式现代、意式现代、时尚轻奢、东方极简、整木定制等国际主流家居风格。可为不同户型提供针对性的整体家居解决方案，满足不同群体对高品质生活的追求。各式高档产品做工细腻、雕琢精致、工艺独特，曾为Thomasville、Lexington、Stanley、Bassett、Hooker、Glenarbor、Drexel等国外知名品牌的主要供应商，在国际上深得客户的青睐和赞誉。<br>
-          　　宁波富邦家具有限公司，始建于1952年。其前身为宁波木器家具一厂，2002年正式更名为宁波富邦家具有限公司。总部坐落于宁波经济开发区富邦家具工业城内，现拥有十二家全资和控股子公司，工厂总占地面积300余亩，近10000平方米的生活情景化体验展厅。是行业内较早通过ISO9001、ISO14001质量管理体系认证以及中国环境标志认证的企业；率先导入ERP等管理软件，采用信息化管理手段的信息化示范企业；拥有从德国、意大利、日本等国引进的具有国际先进水平的数控、镭射激光机床和涂装流水线；公司全面采用国际标准制造。产品能通过国际上严酷的EMC绝干环境模拟测试和摄氏零上50度、零下20度五个冷热循环测试。选用的主要原材料供应商每年必须经过国际环保检测组织论证、复查通过，加上每一制造环节的严密管控，所有的产品都能通过中国国家级和国际环保的检测，保证了全世界购买富邦家具产品的消费者的生活安全。<br>
-          　　富邦家具从建立之日起，一直秉承匠心制造的理念，以“富国兴邦，美丽家园”为己任，现依托富邦控股集团雄厚的实力和富邦家具的强大设计能力及具有国际化开发、创新能力和现代运营能力的先进团队，正在为中国消费者引进、提供国际高端生活方式的体验。<br>
-          　　富邦家具将不忘初心，坚持实施品牌经营战略，努力打造国际品牌家具，不断满足消费者对美好生活的追求，真正实现国富家美的愿景，以达成我们“让回家的感觉更好、让致富的人们心境更美化”的诉求，为新时代添新彩！
-        </p>
-      </div>
+           <div class="right">
+             <img src="../assets/zm/ser.png" alt="">
+           </div>
+         </div>
+         <div class="cj">
+           <div class="left">
+             <p>成就员工</p>
+             <p>
+               为员工提供一个有进步和<br>
+               提升价值的工作环境。
+             </p>
+           </div>
+           <div class="right">
+             <img src="../assets/zm/cj.png" alt="">
+           </div>
+         </div>
+         <div class="gx">
+           <div class="left">
+             <p>贡献社会</p>
+             <p>
+               我们肩负的企业责任并不局限于<br>
+               我们的商业运营。
+             </p>
+           </div>
+           <div class="right">
+             <img src="../assets/zm/gx.png" alt="">
+           </div>
+         </div>
+       </div>
+
+<!--      企业荣誉-->
+        <div class="honor">
+          <div class="title">
+            <p>企业荣誉</p>
+            <p>Enterprise Honor</p>
+          </div>
+            <Honor />
+
+        </div>
+
+<!--        品质保障-->
+        <div class="quality">
+            <div class="title">
+                <p>品质保障</p>
+                <p>Quality Assurance</p>
+            </div>
+            <div class="t2">
+                <p>我们的目标</p>
+                <p>世界一流的专业转轴制造商</p>
+            </div>
+            <div class="three">
+            <div class="left">
+          <div class="item">
+              <img src="../assets/zm/duty.png" alt="">
+              <p class="t0">责任</p>
+              <p class="t1">
+                  责任是对社会的责任<br>
+                  对员工的责任
+              </p>
+          </div>
+                <div class="item">
+                    <img src="../assets/zm/create.png" alt="">
+                    <p class="t0">创新</p>
+                    <p class="t1">
+                        创新是实现理想的<br>
+                        动力和基础
+                    </p>
+                </div>
+                <div class="item">
+                    <img src="../assets/zm/devalop.png" alt="">
+                    <p class="t0">发展</p>
+                    <p class="t1">
+                        发展是硬道理<br>
+                        发展是目的
+                    </p>
+                </div>
+            </div>
+                <div class="right">
+                <p>我们的灵魂</p>
+                    <p>
+                        我们根据客户需求开发新产品，提供可靠的质量和最好的服务，并降低客户成本。<br>
+                        · 致力产品质量达到世界水准<br>
+                        · 打造高度统一价值观的经营管理团队
+                    </p>
+                </div>
+            </div>
+        </div>
+
+<!--        发展历程-->
+       <div class="develop">
+           <div class="title">
+               <p>发展历程</p>
+               <p>Development Path</p>
+           </div>
+           <History />
+       </div>
+
     </div>
       <foot-Component class="foot wow"></foot-Component>
   </div>
@@ -54,15 +204,82 @@
 
 <script>
   import footComponent from '../components/foot'
+  import Honor from '../components/honor'
+  import History from '../components/history'
+  import { swiper, swiperSlide } from "vue-awesome-swiper";
+  import "swiper/dist/css/swiper.css";
+  import aboutDia  from "../components/aboutDia";
 export default {
   name: 'about',
     data(){
+    let _this=this
       return{
+        swiperOption:{
+          notNextTick: true,
+          slidesPerView: 1,
+          speed:1000,
+          init:true,
+          spaceBetween : 10,
+          loop:false,
+          autoplay:false,
+          setWrapperSize :true,
+          on: {
+            slideChangeTransitionEnd: () => {
+              this.$nextTick(() => {
+                let swiper = this.$refs.mySwiper.swiper;
+                let active = swiper.realIndex;
+                _this.hList[active].a=_this.hList[active].conList[0].img
+              });
+            }
+          },
+          navigation: {
+            nextEl: '.allImgs .next',
+            prevEl: '.allImgs .prev'
+          }
+        },
+        hList:[
+          {
+            a:'',
+            conList:[
+              {img:require('../assets/zm/h1.png'),name:'厂房设备'},
+              {img:require('../assets/zm/h2.png'),name:'厂房设备'},
+              {img:require('../assets/zm/h3.png'),name:'厂房设备'},
+              {img:require('../assets/zm/h4.png'),name:'厂房设备'},
+              {img:require('../assets/zm/h5.png'),name:'厂房设备'}
+            ]
+          },
+          {
+            a:'',
+            conList:[
+              {img:require('../assets/zm/h4.png'),name:'厂房设备'},
+              {img:require('../assets/zm/h5.png'),name:'厂房设备'}
+            ]
+          }
+        ],
+        select:0,
+        list:[
+          "企业概况",
+          "厂房设备",
+          "企业理念",
+                "企业荣誉",
+                "品质保障",
+                "发展历程"
+        ],
       }
     },
-  components:{footComponent},
+  components:{footComponent,aboutDia,swiper, swiperSlide ,Honor,History},
+  mounted() {
+    this.$nextTick(()=>{
+     this.hList[0].a=this.hList[0].conList[0].img
+    })
+  },
   methods:{
-
+    getBig(i,n){
+      this.hList[i].a=n
+    },
+    change(n){
+      this.select=n
+    }
   }
 }
 </script>
@@ -87,181 +304,596 @@ export default {
         object-fit: cover;
         display: block;
       }
-      p{
+      .text{
         position: absolute;
         width:100%;
-        top:60%;
+        top:50%;
         left:0;
         text-align: center;
-        font-size: 30px;
-        font-style: italic;
-        color:white;
-        font-family: bem;
+        .p1{
+
+          font-size: 30px;
+          color:white;
+          font-weight: bold;
+          text-shadow:0px 2px 5px rgba(0, 0, 0, 1);
+        }
+        .p2{
+          @extend .p1;
+          font-family: "Fira Code Light";
+          font-weight: lighter;
+          font-size: 20px;
+          animation-delay: 0.2s;
+        }
       }
     }
     .main{
       width:100%;
-      background-color: #F3F4F6;
-      padding: 80px 0;
-      .one{
+      margin: 30px auto;
+      .nav{
         width:1440px;
         margin: 0 auto;
         display: flex;
         flex-direction: row;
+        justify-content: space-between;
         .left{
-          width:40%;
+          padding: 10px 0;
+          text-align: center;
+          background-color: #F37041;
+          width:200px;
+          height:200px;
           overflow: hidden;
-          cursor: pointer;
-          animation-name: transition1;
-          animation-duration: 2s;
-          animation-fill-mode:forwards;
-          img{
-            width:100%;
-            object-fit: cover;
-            transition: all 1s;
-            display: block;
-            height:100%;
+          margin-top: -140px;
+          z-index: 100;
+          p{
+            color:white;
           }
-          img:hover{
-            transform: scale(1.05);
-          }
-        }
-        .right{
-          width:58%;
-          margin-left: 2%;
-          display: flex;
-          flex-direction: column;
-          .r1{
-            width:100%;
-            display: flex;
-            flex-direction: row;
-            margin-left: -100px;
-            margin-top: 60px;
-            z-index: 100;
-            overflow: hidden;
-            animation-name: transition2;
-            animation-duration: 2s;
-            animation-fill-mode:forwards;
-            img{
-              display: block;
-              cursor: pointer;
-              transition: all 1s;
-            }
-            img:hover{
-              transform: scale(1.05);
-            }
-            div:nth-child(2){
-              padding-top: 120px;
-              margin-left: 20px;
-              p:nth-child(1){
-                font-family: "Fira Code Medium";
-                font-weight: lighter;
-                font-size: 30px;
-              }
-              p:nth-child(2){
-                color:#7A7A7A;
-                font-size: 25px;
-                font-style: italic;
-                font-family: bem;
-              }
-            }
-          }
-          .r2{
-          padding-top: 20px;
-            animation-name: transition2;
-            animation-duration: 2s;
-            animation-fill-mode:forwards;
-            p:nth-child(1){
-            font-family: "Fira Code Medium";
-              font-weight: lighter;
-              font-size: 25px;
-              padding-bottom: 30px;
-            }
-            p:nth-child(2){
-              font-family: "Fira Code Medium";
-              font-weight: lighter;
-              line-height: 35px;
-            }
-          }
-        }
-      }
-      .two{
-        width:1440px;
-        margin: 0 auto;
-        margin-top: 40px;
-        display: flex;
-        flex-direction: row;
-        p{
-          display: inline-block;
-          width:70%;
-          font-family: "Fira Code Medium";
-          font-weight: lighter;
-          line-height: 30px;
-          animation-name: transition1;
-          animation-duration: 2s;
-          animation-fill-mode:forwards;
-        }
-        div{
-          height:1px;
-          width:30%;
-          background-color: rgba(0,0,0,.1);
-        }
-      }
-      .three{
-        width:1440px;
-        margin: 60px auto;
-        display: flex;
-        flex-direction: row;
-        .left{
-          width:40%;
-          overflow: hidden;
-          animation-name: transition1;
-          animation-duration: 2s;
-          animation-fill-mode:forwards;
-          img{
-            width:100%;
-            object-fit: cover;
-            display: block;
-          }
-        }
-        .right{
-          width:65%;
-          padding-top: 40px;
-          margin-left: -5%;
-          animation-name: transition2;
-          animation-duration: 2s;
-          animation-fill-mode:forwards;
           p:nth-child(1){
-            text-align: right;
-            font-family: "Fira Code Medium";
-            font-weight: lighter;
-            font-size: 25px;
-            padding-bottom: 30px;
+            font-size: 35px;
+            font-weight: bold;
+            margin-top: 10px;
           }
           p:nth-child(2){
-            font-family: "Fira Code Medium";
+            font-size: 25px;
+            font-family: "Fira Code Light";
+            margin-top: 5px;
             font-weight: lighter;
-            line-height: 35px;
+          }
+          .line{
+            width:1px;
+            height:120px;
+            margin-left: 30px;
+            background-color: white;
+            margin-top: 20px;
+          }
+        }
+        .right{
+          span{
+            cursor: pointer;
+            margin-right: 10px;
+            i{
+              font-size: 25px;
+              color:black;
+              transition: all .6s;
+            }
+          }
+          span:hover{
+            i{
+              color:#F37041;
+            }
+          }
+          a{
+            margin-right: 5px;
+            display: inline-block;
+            transition: all 1s;
+            &:hover{
+              color:#F37041;
+            }
           }
         }
       }
-      .four{
-        width:1440px;
-        margin: 40px auto;
-        animation-duration: 2s;
-        p:nth-child(1){
-          font-family: "Fira Code Medium";
+      .tnav{
+        width:100%;
+        border-top: 1px solid #E7E7E7;
+        border-bottom: 1px solid #E7E7E7;
+        display: flex;
+        margin: 30px auto;
+        flex-direction: row;
+        justify-content: center;
+        padding: 15px 0;
+        span{
+          display: inline-block;
+          padding: 0 50px;
+          position: relative;
+          font-size: 18px;
+          font-family: "Fira Code Light";
           font-weight: lighter;
-          font-size: 25px;
-          text-align: center;
-          padding-bottom: 30px;
+          cursor: pointer;
+          transition: all 1s;
+          color:#B8B8B8;
+          position: relative;
         }
-        p:nth-child(2){
-          font-family: "Fira Code Medium";
-          font-weight: lighter;
-          line-height: 35px;
+        span:hover{
+          color:black;
+        }
+        span::before{
+          position: absolute;
+          content:'';
+          display: inline-block;
+          width:12%;
+          height:3px;
+          background:rgba(243,112,65,1);
+          left:44%;
+          bottom:-15px;
+          opacity: 0;
+          transition: all 1s;
+        }
+        .active{
+          color:black;
+        }
+        .active::before{
+    opacity: 1;
+        }
+        span::after{
+          content:'';
+          display: inline-block;
+          height:18px;
+          top:4px;
+          right:0;
+          width:1px;
+          position: absolute;
+          background-color: #848484;
         }
       }
+      .about{
+        width:1440px;
+        margin: 60px auto;
+        .title{
+          width:100%;
+          p:nth-child(1){
+            color:#313131;
+            font-size: 35px;
+            position: relative;
+            padding: 20px 0;
+            font-weight: bold;
+            font-family: "Fira Code Medium";
+            &::after{
+              content:'';
+              display: inline-block;
+              position: absolute;
+              left:0;
+              bottom:0;
+              width:73px;
+              height:8px;
+              background:rgba(243,112,65,1);
+            }
+          }
+          p:nth-child(2){
+            font-size:20px;
+            font-weight:500;
+            font-style:italic;
+            color:rgba(194,194,194,1);
+            line-height:35px;
+            margin: 5px auto;
+          }
+        }
+        .content{
+          width:100%;
+          display: flex;
+          margin: 30px auto;
+          flex-direction: row;
+          justify-content: space-between;
+          .left{
+            width:65%;
+             display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            .l{
+              width:49.5%;
+              overflow: hidden;
+              img{
+                width:100%;
+                display: block;
+                object-fit: cover;
+                height:100%;
+              }
+            }
+            .r{
+              width:49.5%;
+              display: flex;
+              flex-direction: column;
+              overflow: hidden;
+              img{
+                width:100%;
+              }
+              img:nth-child(2){
+                margin-top: 10px;
+              }
+            }
+            img{
+              transition: all 1s;
+              cursor: pointer;
+              &:hover{
+                transform: scale(1.05);
+              }
+            }
+          }
+          .right{
+            width:30%;
+            p:nth-child(1){
+              font-size: 30px;
+              font-weight: bolder;
+            }
+            p:nth-child(2){
+              margin: 10px auto;
+              font-size: 25px;
+              font-family: "Fira Code Light";
+              font-weight: lighter;
+            }
+            .im{
+              width:100%;
+              text-align: center;
+            }
+          }
+        }
+      }
+      .house{
+        @extend .about;
+        .allImgs{
+          width:100%;
+          margin: 30px auto;
+          position: relative;
+          .swiper{
+            .item{
+              position: relative;
+              .oItem{
+                height:615px;
+                width:960px;
+                cursor: pointer;
+                overflow: hidden;
+                img{
+                  width:100%;
+                  height:100%;
+                  object-fit: cover;
+                  display: block;
+                  transition: all 1s;
+                }
+                &:nth-child(1){
+                  float: left;
+                }
+                &:nth-child(2), &:nth-child(3){
+                  float: right;
+                  height:300px;
+                  width:466px;
+                  img{
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
+                    display: block;
+                  }
+                }
+                &:nth-child(3){
+                  margin-top: 15px;
+                }
+                &:nth-child(4),&:nth-child(5),&:nth-child(6){
+                  height:300px;
+                  width:466px;
+                  margin-top: 15px;
+                  img{
+                    width:100%;
+                    height:100%;
+                    object-fit: cover;
+                    display: block;
+                  }
+                  float: right;
+                }
+                &:nth-child(4), &:nth-child(5){
+                  float: left;
+                  width:472.5px;
+                }
+               &:nth-child(5){
+              margin-left: 15px;
+                margin-top: 15px;
+              }
+                &:not(:first-child){
+                  position: relative;
+                  .circle{
+                    padding: 20px 20px;
+                    background:rgba(0,0,0,1);
+                    opacity: 0;
+                    border-radius:50%;
+                    position: absolute;
+                    left:43%;
+                    top:38%;
+                    text-align: center;
+                    transition: all 1s;
+                    i{
+                      color:white;
+                      font-size: 25px;
+                    }
+                  }
+                  .name{
+                    position: absolute;
+                    left:0;
+                    bottom:0;
+                    width:100%;
+                     background-color: #F37041;
+                    color:white;
+                    font-size: 14px;
+                    font-family: "Fira Code Light";
+                    font-weight: lighter;
+                    text-align: center;
+                    padding: 15px 0;
+                    opacity: 0;
+                    transition: all 1s;
+                  }
+                }
+                &:hover{
+                  img{
+                    transform: scale(1.05);
+                  }
+                  .circle{
+                    opacity: .7;
+                  }
+                  .name{
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+          .prev{
+            position: absolute;
+            left:-60px;
+            top:50%;
+            background-color: #F37041;
+            z-index: 100;
+            border-radius: 50%;
+            padding: 10px 10px;
+            i{
+              color:white;
+              font-size: 30px;
+            }
+              &:focus{
+                  outline: none;
+              }
+          }
+          .next{
+            @extend .prev;
+            right:-60px;
+            left:auto;
+          }
+        }
+      }
+      .title1{
+        width:1440px;
+        margin: 0 auto;
+        p:nth-child(1){
+          color:#313131;
+          font-size: 35px;
+          position: relative;
+          padding: 20px 0;
+          font-weight: bold;
+          font-family: "Fira Code Medium";
+          &::after{
+            content:'';
+            display: inline-block;
+            position: absolute;
+            left:0;
+            bottom:0;
+            width:73px;
+            height:8px;
+            background:rgba(243,112,65,1);
+          }
+        }
+        p:nth-child(2){
+          font-size:20px;
+          font-weight:500;
+          font-style:italic;
+          color:rgba(194,194,194,1);
+          line-height:35px;
+          margin: 5px auto;
+        }
+      }
+      .idea{
+        width:100%;
+        margin: 60px auto;
+        .service{
+          width:88%;
+          display: flex;
+          flex-direction: row;
+          cursor: pointer;
+          .left{
+            width:40%;
+            background-color: #F7F7F7;
+            p{
+              width:60%;
+              margin-left: 40%;
+              text-align: center;
+              &:nth-child(1){
+                color:#F37041;
+                font-size: 20px;
+                font-weight: bolder;
+                margin-top: 50px;
+               padding: 30px 0;
+              }
+              &:nth-child(2){
+                color:#4C4C4C;
+                font-size: 14px;
+                line-height: 35px;
+              }
+            }
+          }
+          .right{
+            width:60%;
+            overflow: hidden;
+            img{
+              width:100%;
+              display: block;
+              object-fit: cover;
+              transition: all 1s;
+            }
+          }
+          &:hover{
+            .right{
+              img{
+                transform: scale(1.05);
+              }
+            }
+          }
+        }
+        .cj{
+          @extend .service;
+          margin-top: 20px;
+          flex-direction: row-reverse;
+          margin-left: 12%;
+          .left{
+            p{
+              margin-left: 0;
+            }
+          }
+        }
+        .gx{
+          @extend .service;
+          margin-top: 20px;
+        }
+      }
+      .honor{
+        width:100%;
+        background-color: #E4E9ED;
+        padding: 40px 0;
+        .title{
+          width:1440px;
+          margin: 0 auto;
+          p:nth-child(1){
+            color:#313131;
+            font-size: 35px;
+            position: relative;
+            padding: 20px 0;
+            font-weight: bold;
+            font-family: "Fira Code Medium";
+            &::after{
+              content:'';
+              display: inline-block;
+              position: absolute;
+              left:0;
+              bottom:0;
+              width:73px;
+              height:8px;
+              background:rgba(243,112,65,1);
+            }
+          }
+          p:nth-child(2){
+            font-size:20px;
+            font-weight:500;
+            font-style:italic;
+            color:rgba(194,194,194,1);
+            line-height:35px;
+            margin: 5px auto;
+          }
+        }
+      }
+        .quality{
+            @extend .about;
+            .t2{
+                width:100%;
+                text-align: right;
+                margin: 30px auto;
+                p:nth-child(1){
+                    font-size: 30px;
+                    font-family: "Fira Code Light";
+                    font-weight: lighter;
+                    margin: 15px 0;
+                }
+                p:nth-child(2){
+                    font-size: 40px;
+                    font-family: "Fira Code Medium";
+                    font-weight: bolder;
+                }
+            }
+            .three{
+                width:100%;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-between;
+                margin: 60px auto;
+                .left{
+                    width:50%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    .item{
+                        width:30%;
+                        text-align: center;
+                        cursor: pointer;
+                        transition: all 1s;
+                        padding: 40px 0;
+                        .t0{
+                            margin: 20px 0;
+                            font-size: 22px;
+                        }
+                        .t1{
+                            font-family: "Fira Code Light";
+                            font-weight: lighter;
+                            line-height: 30px;
+                        }
+                        &:hover{
+                            box-shadow:0px 46px 20px 1px rgba(0, 0, 0, 0.05);
+                        }
+                    }
+                }
+                .right{
+                    width:48%;
+                    p:nth-child(1){
+                        font-size: 30px;
+                        font-family: "Fira Code Light";
+                        font-weight: lighter;
+                    }
+                    p:nth-child(2){
+                        font-family: "Fira Code Light";
+                        font-weight:lighter;
+                        font-size: 14px;
+                        line-height: 30px;
+                        margin: 30px auto;
+                    }
+                }
+            }
+        }
+        .develop{
+            width:100%;
+            background: url("../assets/zm/debg.png") no-repeat;
+            background-size:cover;
+            height:790px;
+            .title{
+                width:1440px;
+                margin: 0 auto;
+                p:nth-child(1){
+                    color:#313131;
+                    font-size: 35px;
+                    position: relative;
+                    padding: 20px 0;
+                    font-weight: bold;
+                    font-family: "Fira Code Medium";
+                    &::after{
+                        content:'';
+                        display: inline-block;
+                        position: absolute;
+                        left:0;
+                        bottom:0;
+                        width:73px;
+                        height:8px;
+                        background:rgba(243,112,65,1);
+                    }
+                }
+                p:nth-child(2){
+                    font-size:20px;
+                    font-weight:500;
+                    font-style:italic;
+                    color:rgba(194,194,194,1);
+                    line-height:35px;
+                    margin: 5px auto;
+                }
+            }
+        }
     }
     .foot{
       animation-name: polygon;

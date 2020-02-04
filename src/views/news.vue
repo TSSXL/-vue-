@@ -213,6 +213,10 @@
                     a{
                         margin-right: 5px;
                         display: inline-block;
+                        transition: all 1s;
+                        &:hover{
+                            color:#F37041;
+                        }
                     }
                 }
             }
