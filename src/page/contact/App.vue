@@ -112,7 +112,7 @@
   }
   .scrollbar-thumb{
     width:3px !important;
-    background-color: #F7BC30!important;
+    background-color:#F37041!important;
   }
   .scrollbar-track-y{
     width:3px !important;
