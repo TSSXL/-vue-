@@ -18,11 +18,11 @@
                     <a href="./pro.html">产品中心</a>
                 </div>
             </div>
-            <div class="tnav">
+            <div class="tnav wow">
                 <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
             </div>
             <div class="allItems">
-                <div class="item" v-for="(item,index) in pList" :key="index">
+                <div class="item wow fadeInUp" v-for="(item,index) in pList" :key="index" :style="aStyle(index)">
                 <div class="one">
                     <img :src="item.img" alt="">
                     <div class="add">
@@ -79,6 +79,9 @@
         methods:{
             change(n){
                 this.select=n
+            },
+            aStyle(n){
+                return {animationDelay:n*0.2+0.2+'s'}
             }
         }
     }
@@ -121,6 +124,7 @@
                     height:200px;
                     overflow: hidden;
                     margin-top: -150px;
+                    animation: transition1 2s ease-in forwards;
                     p{
                         color:white;
                     }
@@ -144,6 +148,7 @@
                     }
                 }
                 .right{
+                    animation: transition2 2s ease-in forwards;
                     span{
                         cursor: pointer;
                         margin-right: 10px;
@@ -177,6 +182,7 @@
                 flex-direction: row;
                 justify-content: center;
                 padding: 15px 0;
+                animation-duration: 2s;
                 span{
                     display: inline-block;
                     padding: 0 50px;
@@ -215,6 +221,8 @@
                    margin-left: 1%;
                    cursor: pointer;
                    margin-top: 30px;
+                   transition: all 1s;
+                   animation-duration: 2s;
                    .one{
                        width:100%;
                        position: relative;
@@ -278,6 +286,7 @@
                        }
                    }
                    &:hover{
+                       box-shadow:5px 5px 5px 5px #e2e2e2;
                        .one{
                            img{
                                transform: scale(1.05);
@@ -334,8 +343,8 @@
         }
         @media screen and (max-width: 1440px) and (min-width: 1000px){
             .main{
-                .nav{
-                    width:95%;
+                .nav,.allItems{
+                    width:90%;
                 }
             }
         }

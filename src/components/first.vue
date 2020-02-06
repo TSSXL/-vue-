@@ -179,6 +179,7 @@
         top:0;
         left:0;
         z-index: 1000;
+        transition: all 1s;
         .animated{
             animation-delay: 600ms;
         }

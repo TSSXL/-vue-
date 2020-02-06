@@ -1,168 +1,141 @@
 <template>
   <div class="home">
-    <banner-Component @goDown="goDown"></banner-Component>
-    <div class="main" id="nav">
-<!--      品牌-->
-      <div class="brand" >
-      <div class="title wow">
-        <p>
-          Brand<br>
-          Traceability
-        </p>
-        <p>品牌溯源</p>
-      </div>
-        <div class="content">
-           <div class="left wow">
-             <p>
-              　　意大利米兰是世界时尚与设计之都和时尚界最有影响力的城市，世界历史文化名城，世界歌剧圣地，世界艺术之都。米兰拥有众多的美术馆，博物馆，世界著名大师的作品一应俱全。像达芬奇的《最后的晚餐》和众多手稿，米开朗基罗生前最后一个雕塑，拉斐尔，提香，佩鲁吉诺，毕加索等大师的绘画均收藏于布雷拉美术馆、布雷拉现代美术馆、二十世纪博物馆、米兰现代艺术博物馆等地。意大利同时汇聚了众多世界时尚名品，像阿玛尼、范思哲、普拉达、杜嘉班纳、华伦天奴、古奇、莫斯奇诺等。而诞生于意大利米兰的EBIN CASA，将米兰的时尚文化和艺术传承在家具设计中进行了尽情演绎，打造出独具魅力的时尚简约家具。
-             </p>
-             <a @click="gotoAbout">loading more series</a>
-           </div>
-          <div class="right wow">
-            <img src="../assets/fb/right.png" alt="">
-          </div>
-        </div>
-      </div>
-
-<!--      产品-->
-      <div class="pro">
-        <div class="one wow fadeInUp">
-          <div class="title">
-            <p>Product Series</p>
-            <p @click="gotoPro">Explore more product lines >></p>
-          </div>
-        </div>
-        <swiper class="swiper wow fadeIn" :options="swiperOption"  v-if="pList.length>0">
-          <swiper-slide class="item" v-for="(item,index) in pList" :key="index" >
-           <div class="a1" @click="gotoInfo(item.ID)">
-             <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
-           </div>
-           <div class="a2" @click="gotoInfo(item.ID)">
-             <p>{{item.PRONAME}}</p>
-             <p>{{item.TITLE2}}</p>
-           </div>
-          </swiper-slide>
-          <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
-          <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-        </swiper>
-        <swiper class="swiper swiper2 wow fadeIn" :options="moblieswiperOption"  v-if="pList.length>0">
-          <swiper-slide class="item" v-for="(item,index) in pList" :key="index" >
-            <div class="a1" @click="gotoInfo(item.ID)">
-              <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
-            </div>
-            <div class="a2" @click="gotoInfo(item.ID)">
-              <p>{{item.PRONAME}}</p>
-              <p>{{item.TITLE2}}</p>
-            </div>
-          </swiper-slide>
-          <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
-          <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-        </swiper>
-<!--        <div class="btn prev ">-->
-<!--          <i class="iconfont icon-leftts"></i>-->
-<!--        </div>-->
-<!--        <div class="btn next ">-->
-<!--          <i class="iconfont icon-leftts"></i>-->
-<!--        </div>-->
-      </div>
-
-<!--      品牌优势-->
-      <div class="pp">
-        <div class="title wow ">
-          <p>
-            Brand<br>
-            Advantagers
-          </p>
-          <p>品牌优势</p>
-        </div>
-        <p class="content wow">
-
-          源自意大利的意缤品牌，作为国际原创家具品牌的典范，以其简约奢华，知性优雅的现代国际风格，引领时尚的潮流；<br>
-          意缤品牌的设计团队由来自意大利、西班牙和中国的设计师组成，具有国际时尚的艺术视角和深厚纯正的专业底蕴----这也是原创设计，创作国际顶级品牌的先决条件，<br>
-          典雅时尚、别致完美的外形设计，都达到能仿其行不能仿其神的境界；
-        </p>
-        <a class="wow" @click="gotoAbout">loading more series</a>
-        <div class="twoImg">
-          <div>
-            <img class="wow" src="../assets/fb/l.png" alt="">
-          </div>
-          <div>
-            <img class="wow" src="../assets/fb/r.png" alt="">
-          </div>
-        </div>
-      </div>
-
-<!--      品牌概况-->
-        <div class="intro">
-          <div class="kb"></div>
-          <div class="m1">
-            <div class="left">
-              <img class="wow" src="../assets/fb/left.png" alt="">
-            </div>
-            <div class="right wow">
-              <div class="title">
-                <p>
-                  Brand<br>
-                  Overview
-                </p>
-                <p>品牌概况</p>
+    <banner-Component></banner-Component>
+    <div class="main">
+<!--    关于镇明转轴-->
+      <div class="about">
+          <div class="content">
+              <div class="left wow">
+              <div class="one">
+                <div class="l">
+                    <img src="../assets/zm/home/dot.png" alt="">
+                </div>
+                  <div class="r">
+                      <img src="../assets/zm/home/zm.png" alt="">
+                      <span>
+                          <i class="iconfont icon-bofang"></i>
+                      </span>
+                  </div>
               </div>
-              <p class="content">
-                意缤设计师用介于奢华和时尚间的品质生活为设计源头，既拥有高端的定位，又更尊重生活品质，它代表着高品质家居生活的追求。在消费观念方面，已超越了“珠光宝气”的奢侈品阶段，而趋于一种理性、健康的消费方式...
-              </p>
-              <a @click="gotoAbout">loading more series</a>
-            </div>
+                  <div class="two">
+                      <img src="../assets/zm/home/ab.png" alt="">
+                  </div>
+                  <div class="three">
+                      <div></div>
+                      <p>人本、诚信、创新、发展</p>
+                  </div>
+              </div>
+              <div class="right wow">
+                  <p>关于镇明转轴</p>
+                  <p>ABOUT US</p>
+                  <homeDia class="dia" />
+                  <div class="detail">
+                      了解更多
+                      <span>
+                                      <i class="iconfont icon-top-line"></i>
+                                  </span>
+                  </div>
+                  <div class="im">
+                      <img src="../assets/zm/home/DSC_1697.png" alt="">
+                  </div>
+              </div>
           </div>
-        </div>
-
-<!--      产品-->
-      <div class="pro2 wow fadeIn">
-        <swiper class="swiper" :options="swiperOption2"  v-if="pList2.length>0">
-        <swiper-slide class="item" v-for="(item,index) in pList2" :key="index" >
-          <div class="a1" @click="gotoInfo2(item.ID)">
-            <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
-          </div>
-          <div class="a2" @click="gotoInfo2(item.ID)">
-            <p>{{item.PRONAME}}</p>
-            <!--              <p>{{item.TITLE2}}</p>-->
-          </div>
-        </swiper-slide>
-        <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
-        <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-      </swiper>
-        <swiper class="swiper swiper2" :options="moblieswiperOption2"  v-if="pList2.length>0">
-          <swiper-slide class="item" v-for="(item,index) in pList2" :key="index" >
-            <div class="a1" @click="gotoInfo2(item.ID)">
-              <img :src="`http://yibin.sansg.com/upload/${item.SMALLPIC}`" alt="">
-            </div>
-            <div class="a2" @click="gotoInfo2(item.ID)">
-              <p>{{item.PRONAME}}</p>
-              <!--              <p>{{item.TITLE2}}</p>-->
-            </div>
-          </swiper-slide>
-          <div class="swiper-button-next swiper-button-black" slot="button-next"></div>
-          <div class="swiper-button-prev swiper-button-black" slot="button-prev"></div>
-        </swiper>
       </div>
 
-<!--      诞生-->
-       <div class="ds">
-         <img class="wow" src="../assets/fb/ds.png" alt="">
-         <div class="content wow">
-           <div class="left">
-             <p>
-               Italian modern \<br>
-               Minimalist luxury
-             </p>
-             <p>诞生于意大利米兰的EBIN CASA，将米兰的时尚文化和艺术传承在家具设计中进行了尽情演绎，打造出独具魅力的时尚简约家具。</p>
+<!--        汽车电机轴-->
+      <div class="car wow">
+       <div class="content wow fadeIn">
+           <p>汽车电机轴</p>
+           <p>汽车轴从2011年开始试样投产，公司引进先进的加工设备，配备专业技术操作人才。两年时间，共组建了4条专业汽车产品轴生产线，生产包括新型能源汽车轴、混合动力汽车轴、汽车马达发动机轴、汽车座椅轴等产品。</p>
+           <div class="detail">
+               了解详情
+               <span>
+                                      <i class="iconfont icon-top-line"></i>
+                                  </span>
            </div>
-           <div class="right">
-             <span>
-                         <i class="iconfont icon-bofang"></i>
-             </span>
-           </div>
-         </div>
        </div>
+      </div>
+
+<!--        工业电机轴&新能源轴-->
+       <div class="pros">
+      <div class="industry wow">
+          <div class="content wow fadeIn">
+              <p>工业电机轴</p>
+              <p>工业电机轴类产品是目前公司主要生产项目之一. 目前主要生产机器人、伺服电机、减速机、压缩机等设备用轴。</p>
+              <div class="detail">
+                  了解详情
+                  <span>
+                                      <i class="iconfont icon-top-line"></i>
+                                  </span>
+              </div>
+          </div>
+      </div>
+           <div class="ele wow">
+               <div class="content wow fadeIn">
+                   <p>新能源轴</p>
+                   <p>主要用于风力发电、新能源主要用于风力发电、 新能源等大型电机... ...
+                   </p>
+                   <div class="detail">
+                       了解详情
+                       <span>
+                                      <i class="iconfont icon-top-line"></i>
+                                  </span>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+<!--        新闻资讯-->
+       <div class="news">
+        <div class="title wow fadeInLeft">
+        <p>新闻资讯</p>
+            <p>news</p>
+        </div>
+           <div class="content wow fadeInRight">
+          <div class="link">
+              <a href="./news.html">全部/</a>
+              <a href="./news.html?index=0">企业资讯/</a>
+              <a href="./news.html?index=1">展会信息</a>
+          </div>
+               <div class="allNews">
+                   <swiper class="swiper" :options="swiperOption" ref="mySwiper"  v-if="nList.length>0">
+                       <swiper-slide class="item" v-for="(item,index) in nList" :key="index" >
+                        <div class="l">
+                            <img :src="item.img" alt="">
+                        </div>
+                           <div class="r">
+                               <p>{{item.title}}</p>
+                               <p>{{item.con}}</p>
+                               <div class="detail">
+                                   探索更多
+                                   <span>
+                                      <i class="iconfont icon-top-line"></i>
+                                  </span>
+                               </div>
+                           </div>
+                       </swiper-slide>
+                   </swiper>
+                   <div class="prev">
+                       <i class="el-icon-arrow-left"></i>
+                   </div>
+                   <div class="next ">
+                       <i class="el-icon-arrow-right"></i>
+                   </div>
+               </div>
+           </div>
+       </div>
+
+<!--        下一篇-->
+        <div class="nextNews wow fadeInUp">
+         <div class="left">
+             <img src="../assets/zm/home/cn.png" alt="">
+         </div>
+            <div class="right">
+            <p>下一篇</p>
+                <p>国家医保局：明年将建成全国统一医保信息系统</p>
+                <p>国家医保局6月27日晚发布消息，到2020年我国将建成统一的医保信息系统。全国参保居民将使用全国统一的医保电子凭证，查询个人医保信息、医保参保关系转移接续、异地就医结算也将会更加的快捷方便...</p>
+            </div>
+        </div>
 
     </div>
       <foot-Component class="foot wow"></foot-Component>
@@ -172,775 +145,676 @@
 <script>
   import bannerComponent from '../components/banner'
   import Scrollbar from 'smooth-scrollbar'
+  import homeDia from "../components/homeDia";
   import { swiper, swiperSlide } from "vue-awesome-swiper";
   import "swiper/dist/css/swiper.css";
   import footComponent from '../components/foot'
-  import '../common/jquery-1.11.3.min'
   import {getProductsUrl} from '../util/lang'
 export default {
-  name: 'homea',
+  name: 'home',
     data(){
       return{
-          scrollbar:'',
-        pList:[],
-        pList2:[],
-        swiperOption:{
-          notNextTick: true,
-          slidesPerView: 4,
-          speed:1000,
-          init:true,
-          spaceBetween : 10,
-          loop:false,
-          autoplay:false,
-          setWrapperSize :true,
-          navigation: {
-            nextEl: '.pro .swiper-button-next',
-            prevEl: '.pro .swiper-button-prev'
-          }
-        },
-        moblieswiperOption:{
-          notNextTick: true,
-          slidesPerView:1,
-          speed:1000,
-          init:true,
-          spaceBetween : 0,
-          loop:false,
-          autoplay:false,
-          setWrapperSize :true,
-          navigation: {
-            nextEl: '.pro .swiper-button-next',
-            prevEl: '.pro .swiper-button-prev'
-          }
-        },
-        swiperOption2:{
-          notNextTick: true,
-          slidesPerView: 4,
-          speed:1000,
-          init:true,
-          spaceBetween : 10,
-          loop:false,
-          autoplay:false,
-          setWrapperSize :true,
-          navigation: {
-            nextEl: '.pro2 .swiper-button-next',
-            prevEl: '.pro2 .swiper-button-prev'
-          }
-        },
-        moblieswiperOption2:{
-          notNextTick: true,
-          slidesPerView: 1,
-          speed:1000,
-          init:true,
-          spaceBetween :0,
-          loop:false,
-          autoplay:false,
-          setWrapperSize :true,
-          navigation: {
-            nextEl: '.pro2 .swiper-button-next',
-            prevEl: '.pro2 .swiper-button-prev'
-          }
-        },
+          nList:[
+              {
+                  img:require('../assets/zm/home/news.png'),
+                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
+                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
+              },
+              {
+                  img:require('../assets/zm/home/news.png'),
+                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
+                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
+              },
+              {
+                  img:require('../assets/zm/home/news.png'),
+                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
+                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
+              },
+              {
+                  img:require('../assets/zm/home/news.png'),
+                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
+                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
+              }
+          ],
+          swiperOption:{
+              notNextTick: true,
+              slidesPerView: 1,
+              speed:1000,
+              init:true,
+              spaceBetween : 10,
+              loop:false,
+              autoplay:false,
+              setWrapperSize :true,
+              on: {
+                  slideChangeTransitionEnd: () => {
+                      this.$nextTick(() => {
+                          let swiper = this.$refs.mySwiper.swiper;
+                          let active = swiper.realIndex;
+                      });
+                  }
+              },
+              navigation: {
+                  nextEl: '.allNews .next',
+                  prevEl: '.allNews .prev'
+              }
+          },
       }
     },
     mounted() {
         Scrollbar.initAll(document.getElementById("scroller-wrapper"));
         let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
         scrollbar.scrollTo(0,0)
-      this.getProList('42')
-      this.getProList2('43')
         this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
         window.pageYOffset=this.scrollbar.scrollTop
-        this.scrollbar.addListener(() => {
-            // $(".brand .title").each(function() {
-            //     var _this = $(this);
-            //     if ($(window).scrollTop() >= $(this).offset().top - $(window).height() + 50)
-            //     {
-            //         _this.addClass('show');
-            //     }else{
-            //         _this.removeClass('show');
-            //     }
-            // });
-        });
     },
-  components:{bannerComponent,footComponent,swiper, swiperSlide},
-  methods:{
-    gotoPro(){
-      const link='/pro.html'
-      window.open(link,'_self')
-    },
-    gotoInfo(id){
-      const link = `/proInfo.html?pid=${id}?text=All Product`
-      window.open(link)
-    },
-    gotoInfo2(id){
-      const link = `/lifeInfo.html?pid=${id}`
-      window.open(link)
-    },
-    getProList(id){
-      const url = `${getProductsUrl('zh-CN',id,10000,1)}`
-      this.$axios.get(url).then(res => {
-        res.data.proarr.map((item)=>{
-          if(item.ISCOMMEND==='1'){
-            this.pList.push(item)
-          }
-        })
-      })
-    },
-    getProList2(id){
-      const url = `${getProductsUrl('zh-CN',id,10000,1)}`
-      this.$axios.get(url).then(res => {
-        res.data.proarr.map((item)=>{
-          if(item.ISCOMMEND==='1'){
-            this.pList2.push(item)
-          }
-        })
-      })
-    },
-    gotoAbout(){
-      const link='/about.html'
-      window.open(link,'_self')
-    },
-    goDown(){
-      Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#nav"),{
-        offsetTop:80,
-      })
-    }
-  }
+  components:{bannerComponent,footComponent,swiper, swiperSlide,homeDia},
 }
 </script>
 
 <style lang="scss" scoped>
 .home{
   width:100%;
+    animation: run5 1s linear forwards;
+    @keyframes run5 {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
   .main{
     width:100%;
-    background-color: #F3F4F6;
-    .brand{
-      width:1440px;
-      margin: 0 auto;
-      padding: 60px 0;
-      .title{
-        display: flex;
-        flex-direction: row;
-        animation-name: transition1;
-        animation-duration: 1s;
-        animation-fill-mode:forwards;
-        p:nth-child(1){
-          font-family: play;
-          font-size: 30px;
-        }
-        p:nth-child(2){
-        margin-left: 30px;
-          padding-top: 50px;
-          display: inline-block;
-          color:#3B3B3B;
-          font-size: 20px;
-     font-family: "Fira Code Medium";
-          font-weight: bolder;
-        }
-      }
-      .content{
-        width:100%;
-        display: flex;
-        flex-direction: row;
-        .left{
-          width:65%;
-          animation-name: transition1;
-          animation-duration: 1s;
-          animation-fill-mode:forwards;
-          p{
-          font-family: "Fira Code Medium";
-            font-weight: lighter;
-            line-height: 40px;
-            margin: 60px auto;
-            font-size: 14px;
-          }
-          a{
-          font-family: it;
-            font-weight: bolder;
-            text-transform: capitalize;
-            cursor: pointer;
-            font-size: 12px;
-            background: transparent;
-            text-decoration: none;
-            padding: 10px 70px;
-            border: 1px solid black;
-            -webkit-tap-highlight-color: transparent;
-            display: inline-block;
-            vertical-align: middle;
-            transform: translateZ(0);
-            box-shadow: 0 0 1px transparent;
-            backface-visibility: hidden;
-            position: relative;
-            transition-property: color;
-            transition-duration: .5s;
-          }
-          a::before{
-            content: "";
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            height:100%;
-            width:100%;
-            right: 0;
-            bottom: 0;
-            background:black;
-            -webkit-transform: scaleX(0);
-            transform: scaleX(0);
-            -webkit-transform-origin: 0 50%;
-            transform-origin: 0 50%;
-            -webkit-transition-property: transform;
-            transition-property: transform;
-            -webkit-transition-duration: .5s;
-            transition-duration: .5s;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-          }
-          a:hover{
-            color:white;
-          }
-          a:hover::before{
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-            -webkit-transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-            transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-          }
-        }
-        .right{
-          width:35%;
-          text-align: center;
-          padding-top: 120px;
-          animation-name: transition2;
-          animation-duration: 1s;
-          animation-fill-mode:forwards;
-        }
-      }
-    }
-    .pro{
-      width:100%;
-      margin: 30px auto;
-      .one{
-        width:100%;
-        text-align: center;
-        animation-duration: 2s;
-        .title{
-          text-align: center;
-          p:nth-child(1){
-            font-family: play;
-            font-size: 40px;
-            text-transform: capitalize;
-            padding-bottom: 20px;
-          }
-          p:nth-child(2){
-            width:auto;
-            display: inline-block;
-            padding: 2px 5px;
-            position: relative;
-            cursor: pointer;
-          }
-          p:nth-child(2)::before{
-            position: absolute;
-            content:'';
-            display: inline-block;
-            left:0;
-            bottom:0;
-            height:1px;
-            width:0;
-            background-color: black;
-            transition: all 1s;
-          }
-          p:nth-child(2):hover::before{
-            width:100%;
-          }
-        }
-      }
-      .swiper{
-        width:100%;
-        margin: 30px auto;
-        border-bottom: 1px solid #D9D9D9;
-        animation-name: polygon;
-        animation-duration: 2s;
-        .item{
-          position: relative;
-          cursor: pointer;
-          .a1{
-            width:100%;
-            overflow: hidden;
-            img{
-              width:100%;
-              object-fit: cover;
-              display: block;
-              transition: all 1s;
-            }
-          }
-          .a2{
-            width:80%;
-            margin-left: 10%;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            p{
-              color:white;
-              transition: all 1s;
-              background-color: #9b9b9b;
-              padding: 3px 5px;
-              border-radius: 5px;
-              font-size: 14px;
-              line-height: 25px;
-            }
-          }
-        }
-        .item::before{
-          position: absolute;
-          left:0;
-          top:0;
-          width:0;
-          content:'';
-          display: inline-block;
-          height:1px;
-          background-color: black;
-          transition: all 1s;
-          z-index: 100;
-        }
-        .item::after{
-          position: absolute;
-          left:0;
-          bottom:0;
-          width:0;
-          content:'';
-          display: inline-block;
-          height:1px;
-          background-color: black;
-          transition: all 1s;
-          z-index: 100;
-        }
-        .item:hover::before{
+      .about{
           width:100%;
-        }
-        .item:hover::after{
+          height:1000px;
+          background: url("../assets/zm/home/abg.png") no-repeat;
+          background-size: cover;
+          .content{
+              width:1440px;
+              margin: 0 auto;
+              padding: 60px 0;
+              display: flex;
+              flex-direction: row;
+              .left{
+                  width:45%;
+                  position: relative;
+                  animation:transition1 2s forwards ease-in ;
+                  .one{
+                      width:100%;
+                      position: absolute;
+                      top:60px;
+                      left:0;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-end;
+                      align-items: center;
+                      z-index: 100;
+                      .l{
+                          margin-right: 20px;
+                      }
+                      .r{
+                          position: relative;
+                          cursor: pointer;
+                          span{
+                              display: inline-block;
+                              position: absolute;
+                              left:45%;
+                              top:35%;
+                              height:66px;
+                              width:66px;
+                              i{
+                                  color:rgba(255,255,255,.6);
+                                  font-size: 60px;
+                              }
+                              &::after{
+                                  content: "";
+                                  position: absolute;
+                                  width: 100%;
+                                  height: 100%;
+                                  top: -2px;
+                                  left: -5px;
+                                  pointer-events: none;
+                                  background-color: transparent;
+                                  border-style: solid;
+                                  border-width: 2px;
+                                  border-color: rgba(255, 255, 255, 0.5);
+                                  border-radius: 50%;
+                                  opacity: 0;
+                                  transition: opacity 0.3s,transform 0.5s;
+                              }
+                          }
+                          &:hover{
+                              span::after{
+                                  opacity: 1;
+                                  transform: scale(1.2);
+                                  -webkit-transform: scale(1.2);
+                              }
+                          }
+                      }
+                  }
+                  .two{
+                      width:100%;
+                      position: absolute;
+                      top:320px;
+                      left: -112px;
+                  }
+                  .three{
+                      position: absolute;
+                      bottom:15%;
+                      left:0;
+                      width:90%;
+                      display: flex;
+                      flex-direction: row;
+                      justify-content: flex-end;
+                      align-items: center;
+                      div{
+                          width:247px;
+                          height:1px;
+                          background:rgba(243,112,65,1);
+                      }
+                      p{
+                          font-size: 18px;
+                          font-family: "Fira Code Light";
+                          font-weight: lighter;
+                          margin-left: 30px;
+                      }
+                  }
+              }
+              .right{
+                  width:55%;
+                  padding-left: 20px;
+                  animation:transition2 2s forwards ease-in ;
+                  p{
+                      width:90%;
+                  }
+                  p:nth-child(1){
+                      color:#2F2F2F;
+                      font-size: 30px;
+                      font-weight: bold;
+                  }
+                  p:nth-child(2){
+                      color:#D3D6D9;
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      margin: 5px 0;
+                  }
+                  .dia{
+                      margin: 30px 0;
+                      width:90%;
+                  }
+                 .detail{
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      font-size: 14px;
+                     margin: 30px 0;
+                     margin-right: 10px;
+                     width:90%;
+                     display: flex;
+                     flex-direction: row;
+                     justify-content: flex-end;
+                     cursor: pointer;
+                      span{
+                          width:20px;
+                          height:20px;
+                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
+                          border:1px solid rgba(223, 88, 39, 1);
+                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                          border-radius:50%;
+                          display: inline-block;
+                          transform: rotate(90deg);
+                          text-align: center;
+                          margin-left: 10px;
+                          transition: all 1s;
+                          i{
+                              color:white;
+                              font-size: 14px;
+                          }
+                      }
+                     &:hover{
+                         span{
+                             margin-left: 30px;
+                         }
+                     }
+                  }
+                  .im{
+                      width:100%;
+                      overflow: hidden;
+                      cursor: pointer;
+                      margin: 58px auto;
+                      margin-left: -50px;
+                      img{
+                          width:100%;
+                          display: block;
+                          object-fit: cover;
+                          transition: all 1s;
+                      }
+                      &:hover{
+                          img{
+                               transform: scale(1.05);
+                          }
+                      }
+                  }
+              }
+          }
+      }
+      .car{
+          width: 100%;
+          background: url("../assets/zm/home/car.png") no-repeat;
+          background-size: cover;
+          height:737px;
+          animation-name: polygon;
+          animation-duration: 2s;
+          cursor: pointer;
+          .content{
+              width:1440px;
+              margin: 0 auto;
+              animation-duration: 2s;
+              animation-delay: 1.5s;
+              p:nth-child(1){
+                  color:#383838;
+                  font-size: 50px;
+                  padding-top: 150px;
+                  margin-bottom: 50px;
+              }
+              p:nth-child(2){
+                  color:#4B4B4B;
+                  font-family: "Fira Code Light";
+                  font-weight: lighter;
+                  line-height: 32px;
+                  width:38%;
+              }
+              .detail{
+                  font-family: "Fira Code Light";
+                  font-weight: lighter;
+                  font-size: 14px;
+                  display: flex;
+                  width:38%;
+                  margin: 60px 0;
+                  flex-direction: row;
+                  justify-content: flex-end;
+                  span{
+                      width:20px;
+                      height:20px;
+                      background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
+                      border:1px solid rgba(223, 88, 39, 1);
+                      box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                      border-radius:50%;
+                      display: inline-block;
+                      transform: rotate(90deg);
+                      text-align: center;
+                      margin-left: 10px;
+                      transition: all 1s;
+                      i{
+                          color:white;
+                          font-size: 14px;
+                      }
+                  }
+              }
+              &:hover{
+                      .detail{
+                          span{
+                              margin-left: 20px;
+                          }
+                      }
+              }
+          }
+
+      }
+      .pros{
           width:100%;
-        }
-        .item:hover{
-          .a1{
-            img{
-              transform: scale(1.05);
-            }
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          margin-top: 10px;
+          .industry{
+              width:50%;
+              height:600px;
+              background: url("../assets/zm/home/in.png") no-repeat;
+              background-size: cover;
+              animation-name: polygon2;
+              animation-duration: 2s;
+              cursor: pointer;
+              .content{
+                  width:80%;
+                  margin-left: 10%;
+                  text-align: right;
+                  animation-duration: 2s;
+                  animation-delay: 2s;
+                  p:nth-child(1){
+                      color:#383838;
+                      font-size: 50px;
+                      padding-top: 100px;
+                      padding-bottom: 30px;
+                  }
+                  p:nth-child(2){
+                      color:#4B4B4B;
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      line-height: 32px;
+                      width:80%;
+                      margin-left: 20%;
+                  }
+                  .detail{
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      font-size: 14px;
+                      display: flex;
+                      width:80%;
+                      margin: 60px 20%;
+                      flex-direction: row;
+                      justify-content: flex-end;
+                      span{
+                          width:20px;
+                          height:20px;
+                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
+                          border:1px solid rgba(223, 88, 39, 1);
+                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                          border-radius:50%;
+                          display: inline-block;
+                          transform: rotate(90deg);
+                          text-align: center;
+                          margin-left: 10px;
+                          transition: all 1s;
+                          i{
+                              color:white;
+                              font-size: 14px;
+                          }
+                      }
+                  }
+              }
+              &:hover{
+                  .content{
+                      .detail{
+                          span{
+                              margin-left: 30px;
+                          }
+                      }
+                  }
+              }
           }
-          .a2{
-            p{
-              background-color: black;
-            }
+          .ele{
+              width:50%;
+              height:600px;
+              background: url("../assets/zm/home/ele.png") no-repeat;
+              background-size: cover;
+              margin-left: 10px;
+              animation-name: polygon2;
+              animation-duration: 2s;
+              cursor: pointer;
+              .content{
+                  width:80%;
+                  margin-left: 10%;
+                  animation-duration: 2s;
+                  animation-delay: 2s;
+                  p:nth-child(1){
+                      color:#383838;
+                      font-size: 50px;
+                      padding-top: 100px;
+                      padding-bottom: 30px;
+                  }
+                  p:nth-child(2){
+                      color:#4B4B4B;
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      line-height: 32px;
+                      width:50%;
+                  }
+                  .detail{
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      font-size: 14px;
+                      display: flex;
+                      width:80%;
+                      margin: 60px 0;
+                      flex-direction: row;
+                      span{
+                          width:20px;
+                          height:20px;
+                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
+                          border:1px solid rgba(223, 88, 39, 1);
+                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                          border-radius:50%;
+                          display: inline-block;
+                          transform: rotate(90deg);
+                          text-align: center;
+                          margin-left: 10px;
+                          transition: all 1s;
+                          i{
+                              color:white;
+                              font-size: 14px;
+                          }
+                      }
+                  }
+              }
+              &:hover{
+                  .content{
+                      .detail{
+                          span{
+                              margin-left: 30px;
+                          }
+                      }
+                  }
+              }
           }
-        }
       }
-      .swiper2{
-        display: none;
-      }
-    }
-    .pp{
-      width:72%;
-      margin-left: 28%;
-      padding: 60px 0;
-      padding-bottom: 0;
-      .title{
-        display: flex;
-        flex-direction: row;
-        animation-name: transition2;
-        animation-duration: 1s;
-        animation-fill-mode:forwards;
-        p:nth-child(1){
-          font-family: play;
-          font-size: 30px;
-        }
-        p:nth-child(2){
-          margin-left: 30px;
-          padding-top: 50px;
-          display: inline-block;
-          color:#3B3B3B;
-          font-size: 20px;
-          font-family: "Fira Code Medium";
-          font-weight: bolder;
-        }
-      }
-      .content{
-       font-family: "Fira Code Medium";
-        font-weight: lighter;
-        line-height: 40px;
-        margin: 30px 0;
-        font-size: 14px;
-        animation-name: transition2;
-        animation-duration: 1s;
-        animation-fill-mode:forwards;
-      }
-      a{
-        font-family: it;
-        font-weight: bolder;
-        text-transform: capitalize;
-        cursor: pointer;
-        animation-name: transition2;
-        animation-duration: 1s;
-        animation-fill-mode:forwards;
-        font-size: 12px;
-        background: transparent;
-        text-decoration: none;
-        padding: 10px 70px;
-        border: 1px solid black;
-        -webkit-tap-highlight-color: transparent;
-        display: inline-block;
-        vertical-align: middle;
-        transform: translateZ(0);
-        box-shadow: 0 0 1px transparent;
-        backface-visibility: hidden;
-        position: relative;
-        transition-property: color;
-        transition-duration: .5s;
-      }
-      a::before{
-        content: "";
-        position: absolute;
-        z-index: -1;
-        top: 0;
-        left: 0;
-        height:100%;
-        width:100%;
-        right: 0;
-        bottom: 0;
-        background: black;
-        -webkit-transform: scaleX(0);
-        transform: scaleX(0);
-        -webkit-transform-origin: 0 50%;
-        transform-origin: 0 50%;
-        -webkit-transition-property: transform;
-        transition-property: transform;
-        -webkit-transition-duration: .5s;
-        transition-duration: .5s;
-        -webkit-transition-timing-function: ease-out;
-        transition-timing-function: ease-out;
-      }
-      a:hover{
-        color:white;
-      }
-      a:hover::before{
-        -webkit-transform: scaleX(1);
-        transform: scaleX(1);
-        -webkit-transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-        transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-      }
-      .twoImg{
-        width:100%;
-        display: flex;
-        flex-direction: row;
-        margin: 30px auto;
-        margin-bottom: 0;
-        div{
-          width:50%;
-          cursor: pointer;
-          overflow: hidden;
-          img{
-            display: block;
-            object-fit: cover;
-            transition: all 1s;
-            animation-name: polygon;
-            animation-duration: 2s;
-          }
-        }
-        div:hover{
-          img{
-            transform: scale(1.05);
-          }
-        }
-      }
-    }
-    .intro{
-      width:100%;
-      position: relative;
-      height:1000px;
-      .m1{
-        width:100%;
-        display: flex;
-        flex-direction: row;
-        position: absolute;
-        left:0;
-        top:100px;
-        .left{
-           width:65%;
-          cursor: pointer;
-          overflow: hidden;
-          img{
-            width:100%;
-            object-fit: cover;
-            transition: all 1s;
-            animation-name: polygon;
-            animation-duration: 2s;
-          }
-          img:hover{
-            transform: scale(1.05);
-          }
-        }
-        .right{
-          width:30%;
-          margin-left: 3%;
-          padding-top: 100px;
-          animation-name: transition2;
-          animation-duration: 1s;
-          animation-fill-mode:forwards;
+      .news{
+          width:100%;
+          display: flex;
+          flex-direction: row;
           .title{
-            display: flex;
-            flex-direction: row;
-            p:nth-child(1){
-              font-family: play;
-              font-size: 30px;
-            }
-            p:nth-child(2){
-              margin-left: 30px;
-              padding-top: 50px;
-              display: inline-block;
-              color:#3B3B3B;
-              font-size: 20px;
-              font-family: "Fira Code Medium";
-              font-weight: bolder;
-            }
+              width:15%;
+              padding: 30px 0;
+              background-color: #EDEDED;
+              position: relative;
+              p:nth-child(1){
+                  writing-mode:vertical-lr;
+                  font-size: 30px;
+                  font-weight: bolder;
+                  position: absolute;
+                  left:50%;
+                  top:30px;
+              }
+              p:nth-child(2){
+                  font-family: dusha;
+                  color:#A8A8A8;
+                  font-size: 60px;
+                  text-transform: uppercase;
+                  writing-mode:vertical-lr;
+                  position: absolute;
+                  left:25%;
+                  top:30px;
+              }
           }
           .content{
-          font-family: "Fira Code Medium";
-            font-weight: lighter;
-            line-height: 40px;
-            margin: 30px 0;
-            font-size: 14px;
+              width:80%;
+              margin-left: 2%;
+             padding: 60px 0;
+              .link{
+                  width:100%;
+                  display: flex;
+                  flex-direction: row;
+                  a{
+                      font-family: "Fira Code Light";
+                      font-weight: lighter;
+                      letter-spacing: 1px;
+                      transition: all 1s;
+                      &:hover{
+                          color:#F37041;
+                      }
+                  }
+              }
+              .allNews{
+                  width:90%;
+                  margin: 60px 0;
+                  margin-left: 2.5%;
+                  position: relative;
+                  .swiper{
+                      .item{
+                          display: flex;
+                          flex-direction: row;
+                          cursor: pointer;
+                          .l{
+                              width:35%;
+                              overflow: hidden;
+                              img{
+                                  width:100%;
+                                  display: block;
+                                  object-fit: cover;
+                                  transition: all 1s;
+                              }
+                          }
+                          .r{
+                              width:62%;
+                              margin-left: 3%;
+                              p:nth-child(1){
+                                  margin: 20px auto;
+                                  font-size: 22px;
+                                  font-weight: bolder;
+                              }
+                              p:nth-child(2){
+                                  font-family: "Fira Code Light";
+                                  font-weight: lighter;
+                                  font-size: 14px;
+                                  line-height: 30px;
+                                  margin: 10px auto;
+                                  display: -webkit-box;
+                                  -webkit-box-orient: vertical;
+                                  -webkit-line-clamp: 4;
+                                  overflow: hidden;
+                              }
+                              .detail{
+                                  font-family: "Fira Code Light";
+                                  font-weight: lighter;
+                                  font-size: 14px;
+                                  display: flex;
+                                  flex-direction: row;
+                                 margin-top: 60px;
+                                  span{
+                                      width:20px;
+                                      height:20px;
+                                      background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
+                                      border:1px solid rgba(223, 88, 39, 1);
+                                      box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
+                                      border-radius:50%;
+                                      display: inline-block;
+                                      transform: rotate(90deg);
+                                      text-align: center;
+                                      margin-left: 10px;
+                                      transition: all 1s;
+                                      i{
+                                          color:white;
+                                          font-size: 14px;
+                                      }
+                                  }
+                              }
+                          }
+                          &:hover{
+                              .l{
+                                  img{
+                                      transform: scale(1.05);
+                                  }
+                              }
+                              .r{
+                                  .detail{
+                                      span{
+                                          margin-left: 30px;
+                                      }
+                                  }
+                              }
+                          }
+                      }
+                  }
+                  .prev{
+                      position: absolute;
+                      right:10%;
+                      bottom:5%;
+                      z-index: 100;
+                      padding: 5px 5px;
+                      transition: all 1s;
+                      cursor: pointer;
+                      z-index: 100;
+                      i{
+                          transition: all 1s;
+                          font-size: 20px;
+                      }
+                      &:focus{
+                          outline: none;
+                      }
+                      &:hover{
+                          background-color: #F37041;
+                          i{
+                              color:white;
+                          }
+                      }
+                  }
+                  .next{
+                      @extend .prev;
+                      right:3%;
+                      left:auto;
+                      &::before{
+                          content:'';
+                          display: inline-block;
+                          width:1px;
+                          height:22px;
+                          background:rgba(77,77,77,.4);
+                          position: absolute;
+                          left:-33px;
+                          top:4px;
+                      }
+                  }
+              }
           }
-          a{
-            font-family: it;
-            font-weight: bolder;
-            text-transform: capitalize;
-            cursor: pointer;
-            font-size: 12px;
-            background: transparent;
-            text-decoration: none;
-            padding: 10px 70px;
-            border: 1px solid black;
-            -webkit-tap-highlight-color: transparent;
-            display: inline-block;
-            vertical-align: middle;
-            transform: translateZ(0);
-            box-shadow: 0 0 1px transparent;
-            backface-visibility: hidden;
-            position: relative;
-            transition-property: color;
-            transition-duration: .5s;
-          }
-          a::before{
-            content: "";
-            position: absolute;
-            z-index: -1;
-            top: 0;
-            left: 0;
-            height:100%;
-            width:100%;
-            right: 0;
-            bottom: 0;
-            background: black;
-            -webkit-transform: scaleX(0);
-            transform: scaleX(0);
-            -webkit-transform-origin: 0 50%;
-            transform-origin: 0 50%;
-            -webkit-transition-property: transform;
-            transition-property: transform;
-            -webkit-transition-duration: .5s;
-            transition-duration: .5s;
-            -webkit-transition-timing-function: ease-out;
-            transition-timing-function: ease-out;
-          }
-          a:hover{
-            color:white;
-          }
-          a:hover::before{
-            -webkit-transform: scaleX(1);
-            transform: scaleX(1);
-            -webkit-transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-            transition-timing-function: cubic-bezier(.52,1.64,.37,.66);
-          }
-        }
       }
-      .kb{
-        background-color: white;
-        width:72%;
-        height:600px;
-        position: absolute;
-        top:0;
-        right:0;
-      }
-    }
-    .pro2{
-      width:100%;
-      animation-name: polygon;
-      animation-duration: 2s;
-      .swiper{
-        width:100%;
-        margin: 30px auto;
-        border-bottom: 1px solid #D9D9D9;
-        .item{
-          position: relative;
-          cursor: pointer;
-          .a1{
-            width:100%;
-            overflow: hidden;
-            img{
-              width:100%;
-              object-fit: cover;
-              display: block;
-              transition: all 1s;
-            }
-          }
-          .a2{
-            width:80%;
-            margin-left: 10%;
-            padding: 20px 0;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            p{
-              color:white;
-              transition: all 1s;
-              background-color: #9b9b9b;
-              padding: 5px 5px;
-              border-radius: 5px;
-              font-size: 14px;
-             margin: 0 auto;
-            }
-          }
-        }
-        .item::before{
-          position: absolute;
-          left:0;
-          top:0;
-          width:0;
-          content:'';
-          display: inline-block;
-          height:1px;
-          background-color: black;
-          transition: all 1s;
-          z-index: 100;
-        }
-        .item::after{
-          position: absolute;
-          left:0;
-          bottom:0;
-          width:0;
-          content:'';
-          display: inline-block;
-          height:1px;
-          background-color: black;
-          transition: all 1s;
-          z-index: 100;
-        }
-        .item:hover::before{
+      .nextNews{
           width:100%;
-        }
-        .item:hover::after{
-          width:100%;
-        }
-        .item:hover{
-          .a1{
-            img{
-              transform: scale(1.05);
-            }
+          display: flex;
+          flex-direction: row;
+          margin-bottom: 30px;
+          .left{
+              width:30%;
+              overflow: hidden;
+              cursor: pointer;
+              img{
+                  width:100%;
+                  object-fit: cover;
+                  display: block;
+                  transition: all 1s;
+                  height:100%;
+              }
+              &:hover{
+                  img{
+                      transform: scale(1.05);
+                  }
+              }
           }
-          .a2{
-            p{
-            background-color: black;
-            }
+          .right{
+              width:70%;
+              background-color: #EDEDED;
+              p{
+                  width:80%;
+                  margin-left: 5%;
+              }
+              p:nth-child(1){
+                  font-size: 14px;
+                  font-family: "Fira Code Light";
+                  font-weight: lighter;
+                  padding: 40px 0;
+              }
+              p:nth-child(2){
+                  font-size: 18px;
+                  font-weight: bolder;
+              }
+              p:nth-child(3){
+                  margin: 20px 5%;
+                  font-size: 14px;
+                  font-family: "Fira Code Light";
+                  font-weight: lighter;
+                  color:#010101;
+                  line-height: 35px;
+              }
           }
-        }
       }
-      .swiper2{
-        display: none;
-      }
-    }
-    .ds{
-      width:100%;
-      cursor: pointer;
-      position: relative;
-      padding-top: 10px;
-      padding-bottom: 30px;
-      img{
-        width:100%;
-        object-fit: cover;
-        height:100%;
-        display: block;
-        animation-name: polygon;
-        animation-duration: 2s;
-      }
-      .content{
-        position: absolute;
-        right:0;
-        bottom:30px;
-        width:60%;
-        background-color: #F3F4F6;
-        display: flex;
-        flex-direction: row;
-        padding: 40px 0;
-        animation-name: transition2;
-        animation-duration: 1s;
-        animation-fill-mode:forwards;
-        .left{
-          width:65%;
-          p{
-            margin-left: 5%;
-          }
-          p:nth-child(1){
-            font-family: play;
-            font-size: 30px;
-          }
-          p:nth-child(2){
-            font-family: "Fira Code Medium";
-            font-weight: lighter;
-            line-height: 30px;
-            padding: 15px 0;
-            font-size: 14px;
-          }
-        }
-        .right{
-          margin-left: 5%;
-          padding-top: 60px;
-          span{
-            display: inline-block;
-            animation: xz 2s linear infinite;
-            i{
-              font-size: 60px;
-              color:#7C7C7C;
-              animation: color2 2s linear infinite;
-            }
-            @keyframes color2 {
-              0% {
-                color:rgba(124,124,124,.5);
-              }
-              25% {
-                color:rgba(124,124,124,1);
-              }
-              50% {
-                color:black;
-              }
-              75% {
-                color:rgba(124,124,124,1);
-              }
-              100% {
-                color:rgba(124,124,124,.5);
-              }
-            }
-          }
-          @keyframes xz {
-            from{
-              transform: rotate(0);
-            }
-            to{
-              transform: rotate(360deg);
-            }
-          }
-        }
-      }
-    }
   }
   .foot{
     animation-name: polygon;
@@ -948,7 +822,7 @@ export default {
   }
   @keyframes transition1 {
     0% {
-      transform: translate(-100px,-100px);
+      transform: translate(-100px,100px);
       opacity: 0;
     }
     100% {
@@ -974,112 +848,45 @@ export default {
       clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
     }
   }
-  @media screen  and (min-width: 2200px){
-    .main{
-      .intro{
-        .m1{
-          .left{
-            img{
-              height:800px;
-            }
-          }
+    @keyframes polygon2 {
+        0% {
+            clip-path: polygon(0% 0%, 100% 0%, 1000% 0%, 0% 0%);
         }
-      }
+        100% {
+            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+        }
     }
+  @media screen  and (min-width: 2200px){
+
   }
   @media screen and (max-width: 1440px) and (min-width: 1000px){
-  .main{
-    .brand{
-      width:95%;
-    }
-    .intro{
-      height:700px;
-    }
-  }
+   .main{
+       .about{
+           .content{
+               width:90%;
+           }
+       }
+       .car{
+           .content{
+               width:90%;
+           }
+       }
+       .news{
+           .content{
+               .allNews{
+                   .prev{
+                       right:12%;
+                   }
+                   .next{
+                       right:3%;
+                   }
+               }
+           }
+       }
+   }
   }
   @media screen and (max-width: 1000px){
-    .main{
-      .brand{
-        width:95%;
-        .content{
-          flex-direction: column-reverse;
-          .left,.right{
-            width:100%;
-            margin-left: 0;
-          }
-          .left{
-            p{
-              margin: 30px auto;
-            }
-          }
-          .right{
-            padding-top: 60px;
-          }
-        }
-      }
-      .pro{
-        .swiper{
-          display: none;
-        }
-        .swiper2{
-          display: block;
-        }
-      }
-      .pp{
-        width:90%;
-        margin-left: 5%;
-        .twoImg{
-          flex-direction: column;
-          div{
-            width:100%;
-            margin-top: 10px;
-            img{
-              height:200px;
-              width:100%;
-            }
-          }
-        }
-      }
-      .intro{
-        height:750px;
-        .kb{
-          width:90%;
-          right:5%;
-          background-color: transparent;
-        }
-        .m1{
-          flex-direction: column-reverse;
-          width:90%;
-          margin-left: 5%;
-          .left,.right{
-            width:100%;
-            margin-left: 0;
-          }
-          .right{
-            padding-top: 0;
-          }
-          .left{
-            margin-top: 30px;
-          }
-        }
-      }
-      .pro2{
-        .swiper{
-          display: none;
-        }
-        .swiper2{
-          display: block;
-        }
-      }
-      .ds{
-        display: flex;
-        flex-direction: column-reverse;
-        .content{
-          position: static;
-          width:100%;
-        }
-      }
-    }
+
   }
 }
 </style>

@@ -5,23 +5,23 @@
         </div>
         <div class="main">
             <div class="nav">
-                <div class="left">
+                <div class="left wow">
                     <p>销售网络</p>
                     <p>Sales Network</p>
                     <div class="line">
 
                     </div>
                 </div>
-                <div class="right">
+                <div class="right wow">
                     <span><i class="iconfont icon-home"></i></span>
                     <a href="./index.html">首页-</a>
                     <a href="./sale.html">销售网络</a>
                 </div>
             </div>
-            <div class="tnav">
+            <div class="tnav wow fadeInUp">
                 <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
             </div>
-            <div class="xsfb">
+            <div class="xsfb wow fadeInUp" id="xsfb">
                 <p class="title">销售分布</p>
                 <div class="world-img">
                     <img src="../assets/zm/xs/world-img.png" alt="">
@@ -35,10 +35,15 @@
                     </div>
                 </div>
             </div>
-            <div class="customer">
+            <div class="customer wow fadeInUp" id="customer">
                 <p class="title">客户展示</p>
+                <div class="allItems">
+                    <div class="item wow fadeInUp" v-for="(item,index) in cList" :key="index" :style="bStyle(index)">
+                        <img :src="item.img" alt="">
+                    </div>
+                </div>
             </div>
-            <div class="hope">
+            <div class="hope wow fadeInUp" id="zs">
                 <p class="title">销售展望</p>
                 <div class="content">
                  <p>暂无内容</p>
@@ -52,11 +57,50 @@
 <script>
     import footComponent from '../components/foot'
     import {getProductsUrl} from '../util/lang'
+    import Scrollbar from 'smooth-scrollbar'
     export default {
         name: "pro",
         data(){
             return{
                 select:0,
+                cList:[
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    },
+                    {
+                        img:require('../assets/zm/kh.png')
+                    }
+                ],
                 list:[
                     "销售分布",
                     "客户展示",
@@ -65,9 +109,40 @@
             }
         },
         components:{footComponent},
+        mounted() {
+            Scrollbar.initAll(document.getElementById("scroller-wrapper"));
+            let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
+            scrollbar.scrollTo(0,1)
+            this.$nextTick(()=>{
+                if(this.getNid()!==undefined){
+                    setTimeout(()=>{
+                        this.change(parseInt(this.getNid()))
+                    },1000)
+                }
+            })
+        },
         methods:{
+            getNid () {
+                return window.location.search.replace('?', '').split('=')[1].split('?')[0]
+            },
+            bStyle(n){
+                return {animationDelay:n*0.1+0.2+'s'}
+            },
             change(n){
                 this.select=n
+                if(n===0){
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#xsfb"),{
+                        offsetTop:100,
+                    })
+                }else if(n===1){
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#customer"),{
+                        offsetTop:100,
+                    })
+                }else{
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#zs"),{
+                        offsetTop:100,
+                    })
+                }
             }
         }
     }
@@ -102,6 +177,7 @@
                 height:200px;
                 overflow: hidden;
                 margin-top: -150px;
+                animation: transition1 2s ease-in forwards;
                 p{
                     color:white;
                 }
@@ -124,6 +200,7 @@
                 }
             }
             .right{
+                animation: transition2 2s ease-in forwards;
                 span{
                     cursor: pointer;
                     margin-right: 10px;
@@ -157,6 +234,7 @@
             flex-direction: row;
             justify-content: center;
             padding: 15px 0;
+            animation-duration: 2s;
             span{
                 display: inline-block;
                 padding: 0 30px;
@@ -188,6 +266,7 @@
         .xsfb{
             width:1440px;
             margin: 60px auto;
+            animation-duration: 2s;
             .title{
                 color:#313131;
                 font-size: 35px;
@@ -270,6 +349,37 @@
         }
         .customer{
             @extend .xsfb;
+            .allItems{
+                width:100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                margin: 60px auto;
+                .item{
+                    width: 15%;
+                    height: 60px;
+                    text-align: center;
+                    border: 1px solid #dfdfdf;
+                    padding: 30px 0;
+                    margin-top: 30px;
+                    cursor: pointer;
+                    overflow: hidden;
+                    -webkit-transition: all 2s;
+                    transition: all 2s;
+                    margin-left: 1%;
+                    animation-duration: 2s;
+                    img{
+                        height: 50px;
+                        -webkit-transition: all 2s;
+                        transition: all 2s;
+                    }
+                    &:hover{
+                        img{
+                            transform: scale(1.05);
+                        }
+                    }
+                }
+            }
         }
         .hope{
             @extend.xsfb;
@@ -279,6 +389,13 @@
                 p{
                     text-align: center;
                 }
+            }
+        }
+    }
+    @media screen and (max-width: 1440px) and (min-width: 1000px){
+        .main{
+            .nav,.xsfb{
+                width:90%;
             }
         }
     }

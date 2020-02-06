@@ -82,31 +82,34 @@
             goto(i,n){
                 console.log(i,n)
                 if(i===0 && n===0){
-                    const link='/pro.html'
+                    const link='/about.html'
                    window.open(link,'_self')
-                }else if(i===0 && n===1){
-                        const link='/lifestyle.html'
+                }else if(i===0 && n!==0){
+                        const link=`/about.html?index=${n-1}`
                         window.open(link,'_self')
-                }else if(i===0 && n===2){
-                    const link='/newPro.html'
-                    window.open(link,'_self')
                 }else if(i===1 && n===0){
-                    const link='/homecase.html'
-                    window.open(link,'_self')
-                }else if(i===1 && n===1){
-                    const link='/news.html'
-                    window.open(link,'_self')
-                }else if(i===1 && n===2){
-                    const link='/sale.html'
+                    const link='/pro.html'
                     window.open(link,'_self')
                 }else if(i===2 && n===0){
-                    const link='/about.html'
+                    const link='/news.html'
                     window.open(link,'_self')
-                }else if(i===2 && n===1){
+                }else if(i===2 && n!==0){
+                    const link=`/news.html?index=${n-1}`
+                    window.open(link,'_self')
+                }else if(i===3 && n===0){
                     const link='/job.html'
                     window.open(link,'_self')
-                }else if(i===2 && n===2){
-                    const link='/job.html'
+                }else if(i===4 && n===0){
+                    const link='/sale.html'
+                    window.open(link,'_self')
+                }else if(i===4 && n!==0){
+                    const link=`/sale.html?index=${n-1}`
+                    window.open(link,'_self')
+                }else if(i===5 && n===0){
+                    const link='/contact.html'
+                    window.open(link,'_self')
+                }else if(i===5 && n!==0){
+                    const link=`/contact.html?index=${n-1}`
                     window.open(link,'_self')
                 }
             }
@@ -218,9 +221,16 @@
         }
     }
     @media screen and (max-width: 1440px) and (min-width: 1000px){
-        .main{
-            width:95%;
+        .mone{
+            .main{
+                width:90%;
+            }
         }
+       .mtwo{
+           .mcon{
+               width:90%;
+           }
+       }
     }
     @media screen and (max-width: 1000px){
         .main{

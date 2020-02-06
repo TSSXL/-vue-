@@ -5,26 +5,26 @@
         </div>
         <div class="main">
             <div class="nav">
-                <div class="left">
+                <div class="left wow">
                     <p>新闻中心</p>
                     <p>News</p>
                     <div class="line">
 
                     </div>
                 </div>
-                <div class="right">
+                <div class="right wow">
                     <span><i class="iconfont icon-home"></i></span>
                     <a href="./index.html">首页-</a>
                     <a href="./news.html">新闻中心</a>
                 </div>
             </div>
-            <div class="tnav">
+            <div class="tnav wow fadeInUp">
                 <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
             </div>
             <transition name="fade">
                 <div class="yg" v-if="select===0">
-                    <p class="title">企业资讯</p>
-                      <div class="item" v-for="(item,index) in nList" :key="index" @click="gotoInfo">
+                    <p class="title wow fadeInUp">企业资讯</p>
+                      <div class="item wow fadeInUp" v-for="(item,index) in nList" :key="index" @click="gotoInfo">
                           <div class="left">
                               <img :src="item.img" alt="">
                           </div>
@@ -39,7 +39,7 @@
                               </div>
                           </div>
                       </div>
-                    <div class="btn">
+                    <div class="btn wow fadeInUp">
                         <a>
                             <div><span>加载更多</span><span>加载更多</span></div>
                         </a>
@@ -125,7 +125,17 @@
             }
         },
         components:{footComponent},
+        mounted() {
+            if(this.getNid()!==undefined){
+                setTimeout(()=>{
+                    this.change(parseInt(this.getNid()))
+                },1000)
+            }
+        },
         methods:{
+            getNid () {
+                return window.location.search.replace('?', '').split('=')[1].split('?')[0]
+            },
             change(n){
                 this.select=n
             },
@@ -174,6 +184,7 @@
                     height:200px;
                     overflow: hidden;
                     margin-top: -150px;
+                    animation: transition1 2s ease-in forwards;
                     p{
                         color:white;
                     }
@@ -196,6 +207,7 @@
                     }
                 }
                 .right{
+                    animation: transition2 2s ease-in forwards;
                     span{
                         cursor: pointer;
                         margin-right: 10px;
@@ -229,6 +241,7 @@
                 flex-direction: row;
                 justify-content: center;
                 padding: 15px 0;
+                animation-duration: 2s;
                 span{
                     display: inline-block;
                     padding: 0 30px;
@@ -268,6 +281,7 @@
                     font-weight: bold;
                     position: relative;
                     padding: 15px 0;
+                    animation-duration: 2s;
                 }
                 .title::after{
                     position: absolute;
@@ -285,6 +299,7 @@
                     flex-direction: row;
                     cursor: pointer;
                     margin-top: 50px;
+                    animation-duration: 2s;
                     .left{
                         width:35%;
                         overflow: hidden;
@@ -328,6 +343,7 @@
                                 transition: all 1s;
                                 i{
                                     color:white;
+                                    font-size: 14px;
                                 }
                             }
                         }
@@ -356,6 +372,7 @@
                     display: flex;
                     flex-direction: row;
                     justify-content: center;
+                    animation-duration: 2s;
                     a{
                         line-height: 1.5;
                         -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
@@ -509,8 +526,8 @@
         }
         @media screen and (max-width: 1440px) and (min-width: 1000px){
             .main{
-                .nav{
-                    width:95%;
+                .nav,.yg{
+                    width:90%;
                 }
             }
         }

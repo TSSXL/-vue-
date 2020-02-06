@@ -22,6 +22,10 @@
   font-family: 'medium';
   src:url("./SourceHanSerifCN-Medium.otf");
 }
+@font-face {
+  font-family: 'os';
+  src:url("./Oswald-Medium.ttf");
+}
 
 @font-face {
   font-family: 'bem';
@@ -31,6 +35,10 @@
 @font-face {
   font-family: 'ding';
   src:url("./DINEngschriftStd.otf");
+}
+@font-face {
+  font-family: 'dusha';
+  src:url("./Dusha.ttf");
 }
 
 @font-face {

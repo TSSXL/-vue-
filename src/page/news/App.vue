@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <first-Component></first-Component>
+    <first-Component page="news"></first-Component>
     <div id="scroller-wrapper" data-scrollbar >
       <home-Component></home-Component>
     </div>
@@ -112,7 +112,7 @@
   }
   .scrollbar-thumb{
     width:3px !important;
-    background-color: black!important;
+    background-color: #F37041!important;
   }
   .scrollbar-track-y{
     width:3px !important;

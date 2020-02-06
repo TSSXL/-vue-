@@ -2,31 +2,26 @@
     <div class="banner">
         <swiper :options="swiperOptiona" ref="mySwipers" class="swiper" >
             <swiper-slide class="item" v-for="(item,index) in bList" :key="index">
-                <img :src="`http://yibin.sansg.com/upload/${item.PICURL}`" alt="">
+<!--                <img :src="`http://yibin.sansg.com/upload/${item.PICURL}`" alt="">-->
+                <img :src="item.img" alt="">
                 <div class="text">
-                    <p>
-                        <span v-for="(i,idx) in item.TEXT1" :key="idx" :style="aStyle(idx)" :class="{'small':i==='*'}">{{i}}</span>
+                    <p class="en">
+                        Committed to building a<br>
+                        World-class shaft manufacturer
                     </p>
-                    <p >
-                        <span v-for="(i,idx) in item.TEXT2" :key="idx" :style="aStyle(idx)" :class="{'small':i==='*'}">{{i}}</span>
+                    <p class="cn">
+                        人本 · 诚信 · 创新 · 发展
                     </p>
-                    <p>
-                        <span v-for="(i,idx) in item.TEXT3" :key="idx" :style="aStyle(idx)" :class="{'small':i==='*'}">{{i}}</span>
-                    </p>
-                    <i class="iconfont icon-you"></i>
+
+                </div>
+                <div class="line">
+                    <div></div>
+                    <p>致力于打造世界一流的转轴制造商</p>
                 </div>
             </swiper-slide>
         </swiper>
         <div class="swiper-pagination">
 
-        </div>
-        <div class="share">
-        <i class="iconfont icon-fenxiang"></i>
-        </div>
-        <div class="circle" @click="goDown">
-            <span>
-                     <i class="iconfont icon-right-copy"></i>
-            </span>
         </div>
     </div>
 </template>
@@ -40,7 +35,17 @@
         name: "banner",
         data(){
             return{
-                bList:[],
+                bList:[
+                    {
+                        img:require('../assets/zm/home/banner.png')
+                    },
+                    {
+                        img:require('../assets/zm/home/banner.png')
+                    },
+                    {
+                        img:require('../assets/zm/home/banner.png')
+                    }
+                ],
                 swiperOptiona:{
                     direction: 'vertical',
                     pagination: {
@@ -69,21 +74,14 @@
             swiperSlide,
         },
         mounted(){
-            setTimeout(()=>{
-                this.getList()
-            },4000)
-            // this.$nextTick(()=>{
+            // setTimeout(()=>{
             //     this.getList()
-            // })
+            // },4000)
+            setTimeout(()=>{
+                this.$refs.mySwipers.swiper.init()
+            },100)
         },
         methods:{
-            aStyle(n){
-                let a=1*0.05+1
-                return {transitionDelay:a+'s'}
-            },
-            goDown(){
-                this.$emit('goDown')
-            },
             getList(){
                 const url = `${getPicUrl( 'zh-CN','首页banner',8)}`
                 this.$axios.get(url).then(res => {
@@ -114,62 +112,79 @@
                     display: block;
                     z-index: 1;
                     cursor: pointer;
+                    transition: all 2s;
+                    transform: scale(1.05);
                 }
                 .text{
                     z-index: 10;
                     position: absolute;
                     left: 10%;
-                    bottom:20%;
+                    top:30%;
                     width:80%;
-                    color:white;
-                    p:nth-child(1){
-                        font-size: 76px;
-                        font-weight: bold;
-                        width:50%;
-                        overflow: hidden;
-                        height:auto;
-                        font-family: play;
-                        color:white;
+                    p{
+                        transition: all 1s;
+                        transform: translateX(-500px);
                     }
-                    p:nth-child(2){
-                        line-height: 35px;
-                        font-size: 70px;
-                        font-weight: bold;
-                        height:auto;
-                        color:white;
-                        font-family: play;
-                        margin-top: 30px;
-                    }
-                    p:nth-child(3){
-                        font-size: 18px;
-                        width:50%;
-                        margin-top: 30px;
-                        font-family: light;
-                        line-height: 30px;
-                        color:white;
-                        span{
-                            margin-left: 5px;
-                            letter-spacing: 0 !important;
-                        }
-                    }
-                    span{
-                        display: inline-block;
-                        opacity: 0;
-                        letter-spacing: 5px;
-                        transform: translate(100px, 0px);
-                        transition: 0.8s cubic-bezier(0.32, 0.6, 0.4, 1.21);
-                    }
-                    .small{
+                    .en{
                         font-size: 40px;
-                        opacity: 0;
+                        font-family: os;
+                        color:white;
+                        line-height: 70px;
+                        text-transform: uppercase;
+                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
+                    }
+                    .cn{
+                        font-size: 30px;
+                        margin: 30px auto;
+                       font-family: "Fira Code Light";
+                        font-weight: lighter;
+                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
+                        color:white;
+                    }
+                }
+                .line{
+                    z-index: 10;
+                    position: absolute;
+                    left: 0;
+                    bottom:30%;
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    div{
+                        height:1px;
+                        background:rgba(255,255,255,.3);
+                        width:450px;
+                        transform: translateX(-450px);
+                        transition: all 1s;
+                        transition-delay: 0.5s;
+                    }
+                    p{
+                        color:white;
+                        font-size: 20px;
+                        font-family: "Fira Code Medium";
+                        margin-left: 10px;
+                        transition: all 1s;
+                        transform: translateX(-1000px);
+                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
                     }
                 }
             }
             .swiper-slide-active{
+                img{
+                    transform: scale(1);
+                }
                 .text{
-                    span{
-                        opacity: 1;
-                        transform: translate(0px, 0px);
+                    p{
+                        transform: translateX(0);
+                    }
+                    .cn{
+                        transition-delay: 0.2s;
+                    }
+                }
+                .line{
+                    div,p{
+                        transform: translateX(0);
+                        transition-delay: 0.4s;
                     }
                 }
             }
@@ -254,6 +269,9 @@
                     .text{
                         left:5%;
                     }
+                    .line{
+                        bottom:25%;
+                    }
                 }
             }
             .share{
@@ -322,24 +340,26 @@
         position: absolute;
         left:4px;
         top:4px;
-        width:9px;
-        height:9px;
+        width:0;
+        height:0;
         border-radius: 50%;
         background-color: white;
         content:'';
         display: inline-block;
         transition: all 1s;
-        opacity: 0;
+        opacity: 1;
     }
     .banner .swiper-pagination>>>.swiper-pagination-bullet-active{
       border-color: transparent;
     }
     .banner .swiper-pagination>>>.swiper-pagination-bullet-active::before{
         opacity: 0;
+        top:-30px;
     }
     .banner .swiper-pagination>>>.swiper-pagination-bullet-active::after{
         background-color: #747576;
-        opacity: 1;
+        width:9px;
+        height:9px;
     }
     .banner .swiper-pagination>>>.swiper-pagination-bullet:focus{
         outline: none;

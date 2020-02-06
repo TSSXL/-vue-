@@ -9,31 +9,31 @@
     </div>
     <div class="main">
       <div class="nav">
-        <div class="left">
+        <div class="left wow">
           <p>关于我们</p>
           <p>About Us</p>
           <div class="line">
 
           </div>
         </div>
-        <div class="right">
+        <div class="right wow">
           <span><i class="iconfont icon-home"></i></span>
           <a href="./index.html">首页-</a>
-          <a href="./pro.html">关于我们</a>
+          <a href="./about.html">关于我们</a>
         </div>
       </div>
-      <div class="tnav">
+      <div class="tnav wow fadeInUp" :style="aStyle">
         <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
       </div>
 
      <!--      公司概况-->
-      <div class="about">
-     <div class="title">
+      <div class="about" id="gk">
+     <div class="title wow fadeInUp">
          <p>关于镇明转轴</p>
        <p>About zms</p>
      </div>
         <div class="content">
-          <div class="left">
+          <div class="left wow">
           <div class="l">
             <img src="../assets/zm/l.png" alt="">
           </div>
@@ -42,7 +42,7 @@
               <img src="../assets/zm/r2.png" alt="">
             </div>
           </div>
-          <div class="right">
+          <div class="right wow">
            <p>宁波镇明转轴有限公司</p>
             <p>世界一流的轴制造商</p>
             <aboutDia />
@@ -54,12 +54,12 @@
       </div>
 
 <!--      厂房设备展示-->
-         <div class="house">
-           <div class="title">
+         <div class="house" id="sb">
+           <div class="title wow fadeInUp">
              <p>厂房设备展示</p>
              <p>Plant equipment</p>
            </div>
-           <div class="allImgs">
+           <div class="allImgs wow fadeInUp">
              <swiper class="swiper" :options="swiperOption" ref="mySwiper"  v-if="hList.length>0">
                <swiper-slide class="item" v-for="(item,index) in hList" :key="index" >
                  <div class="oItem">
@@ -86,13 +86,13 @@
          </div>
 
 <!--      企业理念-->
-      <div class="title1">
+      <div class="title1 wow fadeInUp" id="ln">
         <p>企业理念</p>
         <p>Corporate Philosophy</p>
       </div>
        <div class="idea">
 
-         <div class="service">
+         <div class="service wow fadeInLeft">
         <div class="left">
           <p>服务客户</p>
           <p>
@@ -104,7 +104,7 @@
              <img src="../assets/zm/ser.png" alt="">
            </div>
          </div>
-         <div class="cj">
+         <div class="cj wow fadeInRight">
            <div class="left">
              <p>成就员工</p>
              <p>
@@ -116,7 +116,7 @@
              <img src="../assets/zm/cj.png" alt="">
            </div>
          </div>
-         <div class="gx">
+         <div class="gx wow fadeInLeft">
            <div class="left">
              <p>贡献社会</p>
              <p>
@@ -131,28 +131,28 @@
        </div>
 
 <!--      企业荣誉-->
-        <div class="honor">
-          <div class="title">
+        <div class="honor" id="ry">
+          <div class="title wow fadeInUp">
             <p>企业荣誉</p>
             <p>Enterprise Honor</p>
           </div>
-            <Honor />
+            <Honor class="wow fadeInUp" style="animation-duration: 2s" />
 
         </div>
 
 <!--        品质保障-->
-        <div class="quality">
-            <div class="title">
+        <div class="quality" id="pz">
+            <div class="title wow fadeInUp">
                 <p>品质保障</p>
                 <p>Quality Assurance</p>
             </div>
-            <div class="t2">
+            <div class="t2 wow">
                 <p>我们的目标</p>
                 <p>世界一流的专业转轴制造商</p>
             </div>
             <div class="three">
             <div class="left">
-          <div class="item">
+               <div class="item wow fadeInUp">
               <img src="../assets/zm/duty.png" alt="">
               <p class="t0">责任</p>
               <p class="t1">
@@ -160,7 +160,7 @@
                   对员工的责任
               </p>
           </div>
-                <div class="item">
+                <div class="item wow fadeInUp">
                     <img src="../assets/zm/create.png" alt="">
                     <p class="t0">创新</p>
                     <p class="t1">
@@ -168,7 +168,7 @@
                         动力和基础
                     </p>
                 </div>
-                <div class="item">
+                <div class="item wow fadeInUp">
                     <img src="../assets/zm/devalop.png" alt="">
                     <p class="t0">发展</p>
                     <p class="t1">
@@ -177,7 +177,7 @@
                     </p>
                 </div>
             </div>
-                <div class="right">
+                <div class="right wow fadeInUp">
                 <p>我们的灵魂</p>
                     <p>
                         我们根据客户需求开发新产品，提供可靠的质量和最好的服务，并降低客户成本。<br>
@@ -189,12 +189,12 @@
         </div>
 
 <!--        发展历程-->
-       <div class="develop">
-           <div class="title">
+       <div class="develop" id="fz">
+           <div class="title wow fadeInUp">
                <p>发展历程</p>
                <p>Development Path</p>
            </div>
-           <History />
+           <History class="wow fadeInUp" style="animation-duration: 2s" />
        </div>
 
     </div>
@@ -209,11 +209,13 @@
   import { swiper, swiperSlide } from "vue-awesome-swiper";
   import "swiper/dist/css/swiper.css";
   import aboutDia  from "../components/aboutDia";
+  import Scrollbar from 'smooth-scrollbar'
 export default {
   name: 'about',
     data(){
     let _this=this
       return{
+          aStyle:{},
         swiperOption:{
           notNextTick: true,
           slidesPerView: 1,
@@ -265,20 +267,72 @@ export default {
                 "品质保障",
                 "发展历程"
         ],
+          scrollbar:''
       }
     },
   components:{footComponent,aboutDia,swiper, swiperSlide ,Honor,History},
   mounted() {
+      Scrollbar.initAll(document.getElementById("scroller-wrapper"));
+      this.scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
+      this.scrollbar.scrollTo(0,1)
+      window.pageYOffset=this.scrollbar.scrollTop
+      this.scrollbar.addListener((status) => {
+          if(status.offset.y>800){
+              this.aStyle={
+                  position:'sticky',
+                  top:status.offset.y+111+'px',
+                  left:'0',
+                  zIndex:'1000'
+              }
+          }else{
+              this.aStyle={
+                  position:'static'
+              }
+          }
+      });
     this.$nextTick(()=>{
      this.hList[0].a=this.hList[0].conList[0].img
+        if(this.getNid()!==undefined){
+            setTimeout(()=>{
+                this.change(parseInt(this.getNid()))
+            },1000)
+        }
     })
   },
   methods:{
     getBig(i,n){
       this.hList[i].a=n
     },
+      getNid () {
+          return window.location.search.replace('?', '').split('=')[1].split('?')[0]
+      },
     change(n){
       this.select=n
+        if(n===0){
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#gk"),{
+                offsetTop:100,
+            })
+        }else if(n===1){
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#sb"),{
+                offsetTop:100,
+            })
+        }else if(n===2){
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#ln"),{
+                offsetTop:100,
+            })
+        }else if(n===3){
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#ry"),{
+                offsetTop:100,
+            })
+        }else if(n===4){
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#pz"),{
+                offsetTop:100,
+            })
+        }else{
+            Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#fz"),{
+                offsetTop:100,
+            })
+        }
     }
   }
 }
@@ -329,6 +383,7 @@ export default {
     .main{
       width:100%;
       margin: 30px auto;
+        position: relative;
       .nav{
         width:1440px;
         margin: 0 auto;
@@ -344,6 +399,7 @@ export default {
           overflow: hidden;
           margin-top: -140px;
           z-index: 100;
+            animation: transition1 2s ease-in forwards;
           p{
             color:white;
           }
@@ -367,6 +423,7 @@ export default {
           }
         }
         .right{
+            animation: transition2 2s ease-in forwards;
           span{
             cursor: pointer;
             margin-right: 10px;
@@ -400,6 +457,7 @@ export default {
         flex-direction: row;
         justify-content: center;
         padding: 15px 0;
+          animation-duration: 2s;
         span{
           display: inline-block;
           padding: 0 50px;
@@ -449,6 +507,7 @@ export default {
         margin: 60px auto;
         .title{
           width:100%;
+            animation-duration: 2s;
           p:nth-child(1){
             color:#313131;
             font-size: 35px;
@@ -486,6 +545,7 @@ export default {
             width:65%;
              display: flex;
             flex-direction: row;
+              animation: transition1 2s ease-in forwards;
             justify-content: space-between;
             .l{
               width:49.5%;
@@ -504,6 +564,7 @@ export default {
               overflow: hidden;
               img{
                 width:100%;
+                  height:50%;
               }
               img:nth-child(2){
                 margin-top: 10px;
@@ -519,6 +580,7 @@ export default {
           }
           .right{
             width:30%;
+              animation: transition2 2s ease-in forwards;
             p:nth-child(1){
               font-size: 30px;
               font-weight: bolder;
@@ -542,6 +604,7 @@ export default {
           width:100%;
           margin: 30px auto;
           position: relative;
+            animation-duration: 2s;
           .swiper{
             .item{
               position: relative;
@@ -649,6 +712,7 @@ export default {
             z-index: 100;
             border-radius: 50%;
             padding: 10px 10px;
+              cursor: pointer;
             i{
               color:white;
               font-size: 30px;
@@ -667,6 +731,7 @@ export default {
       .title1{
         width:1440px;
         margin: 0 auto;
+          animation-duration: 2s;
         p:nth-child(1){
           color:#313131;
           font-size: 35px;
@@ -702,6 +767,7 @@ export default {
           display: flex;
           flex-direction: row;
           cursor: pointer;
+            animation-duration: 2s;
           .left{
             width:40%;
             background-color: #F7F7F7;
@@ -764,6 +830,7 @@ export default {
         .title{
           width:1440px;
           margin: 0 auto;
+            animation-duration: 2s;
           p:nth-child(1){
             color:#313131;
             font-size: 35px;
@@ -798,6 +865,7 @@ export default {
                 width:100%;
                 text-align: right;
                 margin: 30px auto;
+                animation: transition2 2s ease-in forwards;
                 p:nth-child(1){
                     font-size: 30px;
                     font-family: "Fira Code Light";
@@ -827,6 +895,7 @@ export default {
                         cursor: pointer;
                         transition: all 1s;
                         padding: 40px 0;
+                        animation-duration: 2s;
                         .t0{
                             margin: 20px 0;
                             font-size: 22px;
@@ -840,9 +909,17 @@ export default {
                             box-shadow:0px 46px 20px 1px rgba(0, 0, 0, 0.05);
                         }
                     }
+                    .item:nth-child(2){
+                        animation-delay: 0.2s;
+                    }
+                    .item:nth-child(3){
+                        animation-delay: 0.4s;
+                    }
                 }
                 .right{
                     width:48%;
+                    animation-delay: 0.6s;
+                    animation-duration: 2s;
                     p:nth-child(1){
                         font-size: 30px;
                         font-family: "Fira Code Light";
@@ -866,6 +943,7 @@ export default {
             .title{
                 width:1440px;
                 margin: 0 auto;
+                animation-duration: 2s;
                 p:nth-child(1){
                     color:#313131;
                     font-size: 35px;
@@ -901,7 +979,7 @@ export default {
     }
     @keyframes transition1 {
       0% {
-        transform: translate(-100px,-100px);
+        transform: translate(-300px,-300px);
         opacity: 0;
       }
       100% {
@@ -911,7 +989,7 @@ export default {
     }
     @keyframes transition2 {
       0% {
-        transform: translate(100px,-100px);
+        transform: translate(300px,-300px);
         opacity: 0;
       }
       100% {
@@ -928,11 +1006,42 @@ export default {
       }
     }
     @media screen and (max-width: 1440px) and (min-width: 1000px){
-      .main{
-        .one,.two,.three,.four{
-          width:95%;
-        }
-      }
+     .main{
+         .nav,.about{
+             width:90%;
+         }
+         .idea{
+             .service{
+                 .left{
+                     p:nth-child(1){
+                         margin-top: 20px;
+                     }
+                 }
+             }
+         }
+         .title1{
+             width:90%;
+         }
+         .house{
+             .allImgs{
+                 .swiper{
+                     .item{
+                         .oItem{
+                             width:66.5%;
+                         }
+                         .oItem:not(:first-child){
+                             width:32.6%;
+                         }
+                     }
+                 }
+             }
+         }
+         .honor,.develop{
+             .title{
+                 width:90%;
+             }
+         }
+     }
     }
     @media screen and (max-width: 1000px){
       .banner{

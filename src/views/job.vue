@@ -5,26 +5,26 @@
         </div>
         <div class="main">
             <div class="nav">
-                <div class="left">
+                <div class="left wow">
                     <p>职业发展</p>
                     <p>Jobs</p>
                     <div class="line">
 
                     </div>
                 </div>
-                <div class="right">
+                <div class="right wow">
                     <span><i class="iconfont icon-home"></i></span>
                     <a href="./index.html">首页-</a>
                     <a href="./job.html">职业发展</a>
                 </div>
             </div>
-            <div class="tnav">
+            <div class="tnav wow fadeInUp">
                 <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
             </div>
             <transition name="fade">
                 <div class="yg" v-if="select===0">
-                    <p class="title">员工天地</p>
-                    <p class="nr">
+                    <p class="title wow fadeInUp">员工天地</p>
+                    <p class="nr wow fadeInUp">
                         镇明转轴发展与其企业文化紧密相连，在镇明你可感受到优秀的团队、拼搏的精神、良好的职业培训与晋升，先进的管理理念等。<br>
                         镇明始终坚持“以人为本”，注重企业文化建设，定期举办员工运动会、文艺晚会、旅游活动、客户联谊活动等。
                     </p>
@@ -125,6 +125,7 @@
                 height:200px;
                 overflow: hidden;
                 margin-top: -150px;
+                animation: transition1 2s ease-in forwards;
                 p{
                     color:white;
                 }
@@ -147,6 +148,7 @@
                 }
             }
             .right{
+                animation: transition2 2s ease-in forwards;
                 span{
                     cursor: pointer;
                     margin-right: 10px;
@@ -180,6 +182,7 @@
             flex-direction: row;
             justify-content: center;
             padding: 15px 0;
+            animation-duration: 2s;
             span{
                 display: inline-block;
                 padding: 0 30px;
@@ -219,6 +222,7 @@
                 font-weight: bold;
                 position: relative;
                 padding: 15px 0;
+                animation-duration: 2s;
             }
             .title::after{
                 position: absolute;
@@ -238,6 +242,7 @@
                 font-family: "Fira Code Light";
                 font-weight: lighter;
                 margin: 30px auto;
+                animation-duration: 2s;
             }
          .allImgs{
              width:100%;
@@ -298,20 +303,8 @@
     }
     @media screen and (max-width: 1440px) and (min-width: 1000px){
         .main{
-            .one{
-                .bigImg{
-                    height:1000px;
-                }
-                .content{
-                    .c1{
-                        width:95%;
-                    }
-                }
-            }
-            .three{
-                .info{
-                    width:95%;
-                }
+            .nav,.yg{
+                width:90%;
             }
         }
     }

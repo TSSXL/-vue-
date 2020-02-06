@@ -5,23 +5,23 @@
         </div>
         <div class="main">
         <div class="nav">
-            <div class="left">
+            <div class="left wow">
                     <p>联系我们</p>
                     <p>Contact Us</p>
                     <div class="line">
 
                     </div>
             </div>
-            <div class="right">
+            <div class="right wow">
                 <span><i class="iconfont icon-home"></i></span>
                 <a href="./index.html">首页-</a>
-                <a href="./pro.html">产品中心</a>
+                <a href="./contact.html">联系我们</a>
             </div>
         </div>
-            <div class="tnav">
+            <div class="tnav wow fadeInUp">
               <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
             </div>
-            <div class="ly">
+            <div class="ly wow fadeIn" id="ly">
             <p class="title">在线留言</p>
                 <div class="form">
                     <input type="text" placeholder="姓名">
@@ -36,7 +36,7 @@
                     </a>
                 </div>
             </div>
-            <div class="lx">
+            <div class="lx wow fadeIn" id="lx">
                 <p class="title">联系方式</p>
                 <div class="content">
               <div class="left">
@@ -55,6 +55,7 @@
 <script>
     import  footComponent from '../components/foot'
     import  mapComponent from '../components/map'
+    import Scrollbar from 'smooth-scrollbar'
     export default {
         name: "contact",
         data(){
@@ -67,9 +68,31 @@
             }
         },
         components:{footComponent,mapComponent},
+        mounted() {
+            Scrollbar.initAll(document.getElementById("scroller-wrapper"));
+            let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
+            scrollbar.scrollTo(0,1)
+            if(this.getNid()!==undefined){
+                setTimeout(()=>{
+                    this.change(parseInt(this.getNid()))
+                },1000)
+            }
+        },
         methods:{
+            getNid () {
+                return window.location.search.replace('?', '').split('=')[1].split('?')[0]
+            },
             change(n){
                this.select=n
+                if(n===0){
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#ly"),{
+                        offsetTop:100,
+                    })
+                }else{
+                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#lx"),{
+                        offsetTop:100,
+                    })
+                }
             }
         }
     }
@@ -78,6 +101,15 @@
 <style lang="scss" scoped>
 .con{
     width:100%;
+    animation: run5 1s linear forwards;
+    @keyframes run5 {
+        from{
+            opacity: 0;
+        }
+        to{
+            opacity: 1;
+        }
+    }
     .banner{
         width:100%;
         img{
@@ -103,6 +135,7 @@
                 height:200px;
                 overflow: hidden;
                 margin-top: -150px;
+                animation: transition1 2s ease-in forwards;
                 p{
                     color:white;
                 }
@@ -125,6 +158,7 @@
                 }
             }
             .right{
+                animation: transition2 2s ease-in forwards;
                 span{
                     cursor: pointer;
                     margin-right: 10px;
@@ -158,6 +192,7 @@
             flex-direction: row;
             justify-content: center;
             padding: 15px 0;
+            animation-duration: 2s;
             span{
                 display: inline-block;
                 padding: 0 30px;
@@ -189,6 +224,7 @@
         .ly{
             width:1440px;
             margin: 60px auto;
+            animation-duration: 2s;
             .title{
                 color:#313131;
                 font-size: 35px;
@@ -368,6 +404,7 @@
         .lx{
             width:1440px;
             margin: 30px auto;
+            animation-duration: 2s;
             .title{
                 color:#313131;
                 font-size: 35px;
@@ -407,6 +444,33 @@
                     }
                 }
             }
+        }
+    }
+    @media screen and (max-width: 1440px) and (min-width: 1000px){
+        .main{
+            .nav,.ly,.lx{
+                width:90%;
+            }
+        }
+    }
+    @keyframes transition1 {
+        0% {
+            transform: translate(-100px,-100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(0,0);
+            opacity: 1;
+        }
+    }
+    @keyframes transition2 {
+        0% {
+            transform: translate(100px,-100px);
+            opacity: 0;
+        }
+        100% {
+            transform: translate(0,0);
+            opacity: 1;
         }
     }
 }
