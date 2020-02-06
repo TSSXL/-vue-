@@ -114,7 +114,7 @@
             let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
             scrollbar.scrollTo(0,1)
             this.$nextTick(()=>{
-                if(this.getNid()!==undefined){
+                if(window.location.search.replace('?', '').split('=')[1]!==undefined){
                     setTimeout(()=>{
                         this.change(parseInt(this.getNid()))
                     },1000)

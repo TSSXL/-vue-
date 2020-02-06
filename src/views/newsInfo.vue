@@ -5,14 +5,14 @@
         </div>
         <div class="main">
             <div class="nav">
-                <div class="left">
+                <div class="left wow">
                     <p>新闻详情</p>
                     <p>NewsInfo</p>
                     <div class="line">
 
                     </div>
                 </div>
-                <div class="right">
+                <div class="right wow">
                     <span><i class="iconfont icon-home"></i></span>
                     <a href="./index.html">首页-</a>
                     <a href="./news.html">新闻中心</a>
@@ -89,6 +89,7 @@
                     height:200px;
                     overflow: hidden;
                     margin-top: -150px;
+                    animation: transition1 2s ease-in forwards;
                     p{
                         color:white;
                     }
@@ -111,6 +112,7 @@
                     }
                 }
                 .right{
+                    animation: transition2 2s ease-in forwards;
                     span{
                         cursor: pointer;
                         margin-right: 10px;
@@ -152,6 +154,34 @@
                 margin: 60px auto;
                 font-size: 14px;
                 line-height: 30px;
+            }
+        }
+        @keyframes transition1 {
+            0% {
+                transform: translate(-100px,-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(0,0);
+                opacity: 1;
+            }
+        }
+        @keyframes transition2 {
+            0% {
+                transform: translate(100px,-100px);
+                opacity: 0;
+            }
+            100% {
+                transform: translate(0,0);
+                opacity: 1;
+            }
+        }
+        @media screen and (max-width: 1440px) and (min-width: 1000px){
+            .main{
+                    width:90%;
+                .nav{
+                    width:100%;
+                }
             }
         }
         @media screen and (max-width:450px){

@@ -126,9 +126,9 @@
         },
         components:{footComponent},
         mounted() {
-            if(this.getNid()!==undefined){
+            if(window.location.search.replace('?', '').split('=')[1]!==undefined){
                 setTimeout(()=>{
-                    this.change(parseInt(this.getNid()))
+                    this.getScroll(parseInt(this.getNid()))
                 },1000)
             }
         },
@@ -137,6 +137,11 @@
                 return window.location.search.replace('?', '').split('=')[1].split('?')[0]
             },
             change(n){
+                const  link=`/news.html?index=${n}`
+                window.open(link,'_self')
+                // this.select=n
+            },
+            getScroll(n){
                 this.select=n
             },
             gotoInfo(){

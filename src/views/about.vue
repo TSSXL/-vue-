@@ -292,7 +292,7 @@ export default {
       });
     this.$nextTick(()=>{
      this.hList[0].a=this.hList[0].conList[0].img
-        if(this.getNid()!==undefined){
+        if(window.location.search.replace('?', '').split('=')[1]!==undefined){
             setTimeout(()=>{
                 this.change(parseInt(this.getNid()))
             },1000)

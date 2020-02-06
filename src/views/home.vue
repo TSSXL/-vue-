@@ -17,7 +17,7 @@
                       </span>
                   </div>
               </div>
-                  <div class="two">
+                  <div class="two" :class="{Run:active}">
                       <img src="../assets/zm/home/ab.png" alt="">
                   </div>
                   <div class="three">
@@ -29,7 +29,7 @@
                   <p>关于镇明转轴</p>
                   <p>ABOUT US</p>
                   <homeDia class="dia" />
-                  <div class="detail">
+                  <div class="detail" @click="gotoAbout">
                       了解更多
                       <span>
                                       <i class="iconfont icon-top-line"></i>
@@ -100,10 +100,10 @@
                <div class="allNews">
                    <swiper class="swiper" :options="swiperOption" ref="mySwiper"  v-if="nList.length>0">
                        <swiper-slide class="item" v-for="(item,index) in nList" :key="index" >
-                        <div class="l">
+                        <div class="l" @click="gotoInfo">
                             <img :src="item.img" alt="">
                         </div>
-                           <div class="r">
+                           <div class="r" @click="gotoInfo">
                                <p>{{item.title}}</p>
                                <p>{{item.con}}</p>
                                <div class="detail">
@@ -154,6 +154,7 @@ export default {
   name: 'home',
     data(){
       return{
+          active:false,
           nList:[
               {
                   img:require('../assets/zm/home/news.png'),
@@ -176,6 +177,7 @@ export default {
                   con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
               }
           ],
+          scrollbar:'',
           swiperOption:{
               notNextTick: true,
               slidesPerView: 1,
@@ -206,8 +208,26 @@ export default {
         scrollbar.scrollTo(0,0)
         this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
         window.pageYOffset=this.scrollbar.scrollTop
+        this.scrollbar.addListener((status) => {
+            if(status.offset.y>500 && status.offset.y<1000)
+            {
+                this.active=true
+            }else{
+                this.active=false
+            }
+        });
     },
   components:{bannerComponent,footComponent,swiper, swiperSlide,homeDia},
+    methods:{
+      gotoInfo(){
+          const link='/newsInfo.html'
+          window.open(link,'_self')
+      },
+        gotoAbout(){
+            const link='/about.html'
+            window.open(link,'_self')
+        }
+    }
 }
 </script>
 
@@ -298,6 +318,27 @@ export default {
                       position: absolute;
                       top:320px;
                       left: -112px;
+                      transition: all 2s;
+                  }
+                  .Run{
+                      animation: go 2s forwards linear;
+                  }
+                  @keyframes go {
+                      0%{
+                          left: -112px;
+                      }
+                      25%{
+                          left:-140px;
+                      }
+                      50%{
+                          left:-160px;
+                      }
+                      75%{
+                          left:-140px;
+                      }
+                     100%{
+                         left: -112px;
+                     }
                   }
                   .three{
                       position: absolute;
@@ -387,11 +428,11 @@ export default {
                           width:100%;
                           display: block;
                           object-fit: cover;
-                          transition: all 1s;
+                          transition: all 2s;
                       }
                       &:hover{
                           img{
-                               transform: scale(1.05);
+                               transform: rotateY(360deg);
                           }
                       }
                   }
@@ -541,6 +582,7 @@ export default {
               margin-left: 10px;
               animation-name: polygon2;
               animation-duration: 2s;
+              animation-delay: 0.4s;
               cursor: pointer;
               .content{
                   width:80%;
@@ -671,6 +713,7 @@ export default {
                                   margin: 20px auto;
                                   font-size: 22px;
                                   font-weight: bolder;
+                                  transition: all 1s;
                               }
                               p:nth-child(2){
                                   font-family: "Fira Code Light";
@@ -716,6 +759,9 @@ export default {
                                   }
                               }
                               .r{
+                                  p:nth-child(1){
+                                      color:#F37041;
+                                  }
                                   .detail{
                                       span{
                                           margin-left: 30px;
