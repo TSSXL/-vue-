@@ -22,6 +22,9 @@
         <div class="mm">
             <div class="main">
                 <div class="right">
+                    <div class="img">
+                        <img src="../assets/yap/home/slogo.png" alt="">
+                    </div>
                     <ul>
                         <li class="animated fadeInDown" :class="page === 'index' ? 'showLine' : ''" @click="goto('index')"  style="animation-delay: 0.2s">
                             <a>首页</a>
@@ -269,6 +272,22 @@
                 justify-content: space-between;
                 transition: all 600ms;
                 margin-left: 10%;
+                position: relative;
+                .img{
+                    position: absolute;
+                    left:-100px;
+                    top:0;
+                    height:100%;
+                    width:120px;
+                    transition: all 1s;
+                    opacity: 0;
+                    cursor: pointer;
+                    img{
+                        width:100%;
+                        height:100%;
+                        object-fit: cover;
+                    }
+                }
                 .right{
                     display: flex;
                     flex-direction: row;
@@ -542,6 +561,13 @@
     }
     .dark{
         transform: translateY(-94px);
+        .mm{
+            .right{
+                .img{
+                    opacity: 1;
+                }
+            }
+        }
         /*@media screen and (max-width:450px){*/
         /*    .mImg{*/
         /*        display: none;*/
