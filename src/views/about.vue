@@ -60,7 +60,7 @@
       <transition name="fade">
         <div class="honor" v-if="select===3">
          <div class="allItems">
-            <div class="item wow fadeInUp" v-for="(item,index) in hList" :key="index">
+            <div class="item wow fadeInUp" v-for="(item,index) in hList" :key="index" @click="showBig(item.img)">
               <div class="left">
                   <img :src="item.img" alt="">
               </div>
@@ -117,6 +117,9 @@
         </div>
       </transition>
     </div>
+      <div class="big2" v-if="showImg" @click="hide" id="ia" :style="dStyle">
+          <img :src="src" alt="">
+      </div>
       <foot-Component class="foot wow"></foot-Component>
   </div>
 </template>
@@ -132,6 +135,9 @@ export default {
   name: 'about',
     data(){
       return{
+          src:'',
+          showImg:false,
+          dStyle:{},
         select:0,
         nList:[
           "企业介绍",
@@ -169,8 +175,10 @@ export default {
       Scrollbar.initAll(document.getElementById("scroller-wrapper"));
       this.scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
       this.scrollbar.scrollTo(0,1)
-      window.pageYOffset=this.scrollbar.scrollTop
+      // window.pageYOffset=this.scrollbar.scrollTop
       this.scrollbar.addListener((status) => {
+          this.dStyle={paddingTop:status.offset.y+120+'px'}
+          window.pageYOffset=this.scrollbar.scrollTop
       });
     this.$nextTick(()=>{
         if(window.location.search.replace('?', '').split('=')[1]!==undefined){
@@ -179,6 +187,14 @@ export default {
     })
   },
   methods:{
+      hide(){
+          this.showImg=false
+      },
+      showBig(n){
+          this.src=n
+          // this.src='http://fushiwei.sansg.com/upload/'+n
+          this.showImg=true
+      },
       getNid () {
           return window.location.search.replace('?', '').split('=')[1].split('?')[0]
       },
@@ -198,6 +214,7 @@ export default {
   .con{
     width:100%;
     animation: run5 1s linear forwards;
+      position: relative;
     @keyframes run5 {
       from{
         opacity: 0;
@@ -556,6 +573,20 @@ export default {
             }
         }
     }
+      .big2{
+          position: absolute;
+          width:100%;
+          text-align: center;
+          left:0;
+          top:0;
+          height:100%;
+          background-color: rgba(0,0,0,.8);
+          z-index: 1000;
+          img{
+              width:500px;
+              object-fit: cover;
+          }
+      }
     .foot{
       animation-name: polygon;
       animation-duration: 2s;
