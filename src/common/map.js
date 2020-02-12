@@ -14,7 +14,7 @@ function createMap(){
   map.centerAndZoom(new window.BMap.Point(121.490719,29.913285),12);
 }
 function setMapEvent(){
-  //map.enableScrollWheelZoom();
+  map.enableScrollWheelZoom();
   map.enableKeyboard();
   map.enableDragging();
   map.enableDoubleClickZoom()

@@ -239,7 +239,7 @@
     }
     .foot{
         animation-name: polygon;
-        animation-duration: 2s;
+        animation-duration: 1s;
     }
     @media screen and (max-width: 1440px) and (min-width: 1000px){
 .main{

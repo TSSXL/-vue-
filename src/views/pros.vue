@@ -251,7 +251,7 @@
     }
     .foot{
         animation-name: polygon;
-        animation-duration: 2s;
+        animation-duration: 1s;
     }
     @keyframes transition1 {
         0% {
