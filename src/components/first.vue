@@ -1,72 +1,73 @@
 <template>
     <div class="con" :class="{'dark':active2}">
-        <div class="lan animated fadeInRight">
-            <span>
-                <i class="iconfont icon-shixindiqiu"></i>
-            </span>
-            <span>语言:中文简体</span>
-        </div>
+       <div class="m1">
+           <a class="left" href="/index.html">
+               <img class="a" src="../assets/yap/home/Eanper.png" alt="">
+           </a>
+           <div class="right animated fadeInRight">
+               <div class="search">
+                   <input type="text">
+                   <span>搜索</span>
+               </div>
+               <div class="phone">
+                   <a href="tel:0574-2786 9883">
+                       <i class="iconfont icon-dianhua"></i>
+                       <span>
+                           0574-2786 9883
+                       </span>
+                   </a>
+               </div>
+           </div>
+       </div>
         <div class="mm">
             <div class="main">
-                <a class="left" href="/index.html">
-                    <img class="a" src="../assets/zm/tlogo.png" alt="">
-                </a>
                 <div class="right">
                     <ul>
                         <li class="animated fadeInDown" :class="page === 'index' ? 'showLine' : ''" @click="goto('index')"  style="animation-delay: 0.2s">
                             <a>首页</a>
                         </li>
                         <li class="animated fadeInDown" :class="page === 'about' ? 'showLine' : ''" @click="goto('about')" style="animation-delay: 0.3s">
-                            <a>关于我们</a>
+                            <a>关于我们
+                                <i class="iconfont icon-you"></i>
+                            </a>
+                            <div class="nav">
+                                <span class="animated fadeInUp" style="animation-delay: 0.2s" @click.stop="change(0)">企业介绍</span>
+                                <span class="animated fadeInUp" style="animation-delay: 0.4s" @click.stop="change(1)">企业文化</span>
+                                <span class="animated fadeInUp" style="animation-delay: 0.6s" @click.stop="change(2)">发展历程</span>
+                                <span class="animated fadeInUp" style="animation-delay: 0.8s" @click.stop="change(3)">荣誉资质</span>
+                                <span class="animated fadeInUp" style="animation-delay: 1s" @click.stop="change(4)">全球化服务</span>
+                            </div>
                         </li>
                         <li class="animated fadeInDown" :class="page === 'pro' ? 'showLine' : ''" @click="goto('pro')" style="animation-delay: 0.4s">
                             <a>产品中心</a>
                         </li>
-                        <li class="animated fadeInDown" :class="page === 'news' ? 'showLine' : ''" @click="goto('news')" style="animation-delay: 0.5s">
-                            <a >新闻中心</a>
+                        <li class="animated fadeInDown" :class="page === 'sale' ? 'showLine' : ''" @click="goto('sale')" style="animation-delay: 0.5s">
+                            <a >技术能力</a>
                         </li>
-                        <li class="animated fadeInDown" :class="page === 'job' ? 'showLine' : ''" @click="goto('job')" style="animation-delay: 0.6s">
-                            <a >职业发展</a>
+                        <li class="animated fadeInDown" :class="page === 'job' ? 'showLine' : ''"  style="animation-delay: 0.6s">
+                            <a >成功案例</a>
                         </li>
-                        <li class="animated fadeInDown" :class="page === 'sale' ? 'showLine' : ''" @click="goto('sale')" style="animation-delay: 0.7s">
-                            <a >销售网络</a>
+                        <li class="animated fadeInDown" :class="page === 'news' ? 'showLine' : ''" @click="goto('news')" style="animation-delay: 0.7s">
+                            <a >新闻资讯</a>
                         </li>
                         <li class="animated fadeInDown" :class="page === 'contact' ? 'showLine' : ''" @click="goto('contact')" style="animation-delay: 0.8s">
                             <a >联系我们</a>
                         </li>
                     </ul>
-                    <div class="tc">
-                        <div class="animated fadeInDown" style="animation-delay: 0.9s">
-                            <i class="iconfont icon-youxiang"></i>
-                        </div>
-                        <div class="animated fadeInDown" style="animation-delay: 1s">
-                            <i class="iconfont icon-search-line"></i>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
-        <div class="search" :class="{'showsList':showSearch}">
-            <span class="x-close" @click="hideS"></span>
-           <div class="m1">
-               <p>SEARCH</p>
-               <div class="ip">
-                   <input type="text" v-model="keywords" placeholder="KEYWORDS" @keyup.enter="gotoPros">
-                   <i class="iconfont icon-sousuo" @click="gotoPros"></i>
-               </div>
-           </div>
-        </div>
 
-        <div class="top animated fadeInDown">
-            <a href="/index.html" class="l1">
-                <img class="aImg" src="../assets/fb/topLogo.png" alt="">
-            </a>
-            <div class="mNav" :class="{active: menuOpen}" @click="menuOpen=!menuOpen">
-                <span class="burger"></span>
-                <span class="burger"></span>
-                <span class="burger"></span>
-            </div>
-        </div>
+<!--        <div class="top animated fadeInDown">-->
+<!--            <a href="/index.html" class="l1">-->
+<!--                <img class="aImg" src="../assets/fb/topLogo.png" alt="">-->
+<!--            </a>-->
+<!--            <div class="mNav" :class="{active: menuOpen}" @click="menuOpen=!menuOpen">-->
+<!--                <span class="burger"></span>-->
+<!--                <span class="burger"></span>-->
+<!--                <span class="burger"></span>-->
+<!--            </div>-->
+<!--        </div>-->
         <div class="menuBox" :class="{open: menuOpen}">
             <ul>
                 <li ><a href="/index.html">首页</a></li>
@@ -107,43 +108,13 @@
             })
         },
         methods:{
+            change(n){
+                const  link=`/about.html?index=${n}`
+                window.open(link,'_self')
+            },
             gotoPros(){
                 const  link=`/pros.html?name=${this.keywords}`
                 window.open(link,'_self') // this.project.link
-            },
-            hideS(){
-                this.showSearch=false
-            },
-            gotoLink(i,n){
-                if(i===0 && n===1){
-                    const link='/pro.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===2){
-                    const link='/lifestyle.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===3){
-                    const link='/homecase.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===4){
-                    const link='/news.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===5){
-                    const link='/newPro.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===6){
-                    const link='/sale.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===0){
-                    const link='/index.html'
-                    window.open(link,'_self')
-                }else if(i===0 && n===7){
-                    const link='/about.html'
-                    window.open(link,'_self')
-                }
-                else if(i===1){
-                    const link='/job.html'
-                    window.open(link,'_self')
-                }
             },
             aStyle(n){
                 return {transitionDelay:n*0.1+'s'}
@@ -180,305 +151,239 @@
         left:0;
         z-index: 1000;
         transition: all 1s;
-        .animated{
-            animation-delay: 600ms;
-        }
-        .lan{
-            width:90%;
-            margin-left: 5%;
-            padding-top: 15px;
+        background-color: white;
+        box-shadow:3px 8px 15px 0px rgba(0, 0, 0, 0.23);
+        .m1{
+            width:80%;
+            margin-left: 10%;
             display: flex;
             flex-direction: row;
-            justify-content: flex-end;
-            align-items: center;
-            span{
-                color:#D4D4D4;
-                font-family: "Fira Code Light";
-                font-weight: lighter;
-                cursor: pointer;
-                transition: all 1s;
-                i{
-                    font-size: 25px;
-                    color:white;
-                    transition: all 1s;
+           justify-content: space-between;
+            padding: 15px 0;
+            .left{
+                display: inline-block;
+                width:216px;
+                height:53px;
+                position: relative;
+                overflow: hidden;
+                margin-top: 10px;
+                img{
+                    position: absolute;
+                    left:-100%;
+                    top:0;
+                    height:100%;
+                    width:100%;
+                    animation: show 1s linear forwards;
+                    opacity: 0;
                 }
-                &:hover{
-                    color:#F37041;
-                    i{
-                        color:#F37041;
+                @keyframes show {
+                    from{
+                        left:-100%;
+                        opacity: 0;
+                    }
+                    to{
+                        left:0;
+                        opacity: 1;
                     }
                 }
             }
-            span:nth-child(1){
-                display: inline-block;
-                animation: xz 1s infinite linear;
-            }
-            @keyframes xz {
-                from{
-                    transform: rotate(0);
+            .right{
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding-top: 10px;
+                .search{
+                    width:450px;
+                    position: relative;
+                    height:50px;
+                    input{
+                        width:100%;
+                     height:100%;
+                        text-indent: 20px;
+                        border:1px solid rgba(51, 51, 51, 0.1);
+                        border-radius:30px;
+                        border-color: rgba(51, 51, 51, 0.1) !important;
+                        &:focus{
+                            border-color: rgba(51, 51, 51, 0.1) !important;
+                        }
+                    }
+                    span{
+                        width:100px;
+                        height:35px;
+                        background:rgba(34,124,203,1);
+                        border-radius:30px;
+                        position: absolute;
+                        right:10px;
+                        top:9px;
+                        color:white;
+                        line-height: 35px;
+                        text-align: center;
+                        font-family: "Fira Code Light";
+                        font-weight: lighter;
+                        cursor: pointer;
+                    }
                 }
-                to{
-                    transform: rotate(360deg);
+                .phone{
+                    margin-left: 40px;
+                    a{
+                        display: flex;
+                        flex-direction: row;
+                        justify-content: center;
+                        align-items: center;
+                        i{
+                            color:#ADADAD;
+                            font-size: 18px;
+                            padding-right: 20px;
+                        }
+                        span{
+                            display: inline-block;
+                            padding-left: 20px;
+                            color:#555555;
+                            font-size: 20px;
+                            font-family: "Fira Code Light";
+                            font-weight: lighter;
+                            position: relative;
+                            &::after{
+                                content:'';
+                                display: inline-block;
+                                width:1px;
+                                height:15px;
+                                background:rgba(205,205,205,1);
+                                position: absolute;
+                                left:0;
+                                top:5px;
+                            }
+                        }
+                    }
                 }
-            }
-            span:nth-child(2){
-                margin-left: 10px;
             }
         }
         .mm{
             width:100%;
+            border-top: 1px solid rgba(51,51,51,.1);
             border-bottom: 1px solid rgba(255,255,255,.2);
-            padding-bottom: 20px;
             .main{
-                width:90%;
+                width:80%;
                 display: flex;
                 flex-direction: row;
                 justify-content: space-between;
                 transition: all 600ms;
-                margin-left: 5%;
-                .left{
-                    display: inline-block;
-                    width:131px;
-                    height:47px;
-                    position: relative;
-                    overflow: hidden;
-                    img{
-                        position: absolute;
-                        left:-100%;
-                        top:0;
-                        height:100%;
-                        width:100%;
-                        animation: show 1s linear forwards;
-                        opacity: 0;
-                    }
-                    @keyframes show {
-                        from{
-                            left:-100%;
-                            opacity: 0;
-                        }
-                        to{
-                            left:0;
-                            opacity: 1;
-                        }
-                    }
-                }
+                margin-left: 10%;
                 .right{
                     display: flex;
                     flex-direction: row;
-                    width:80%;
-                    padding-top: 20px;
+                    width:100%;
                     ul{
                         list-style: none;
                         display: flex;
                         flex-direction: row;
                         justify-content: space-between;
-                        width:77%;
+                        width:100%;
+                        padding: 0;
                         li{
                             position: relative;
-                            margin-left: 3%;
+                            margin-left: 5%;
                             cursor: pointer;
+                            padding: 15px 0;
+                            width:12%;
                             a{
                                 font-size: 14px;
                                 font-family: "Fira Code Light";
                                 font-weight: lighter;
-                                color:white;
+                                color:#666666;
                                 transition: all 1s;
-                            }
-                            &::after{
-                                position: absolute;
-                                left:30%;
-                                bottom:-20px;
-                                width:0;
-                                height:3px;
-                                transition: all 1s;
-                                content:'';
-                                display: inline-block;
-                                background-color: white;
-                            }
-                            &:hover::after{
-                                width:40%;
+                                display: flex;
+                                flex-direction: row;
+                                justify-content: center;
+                                width:100%;
+                                text-align: center;
+                                align-items: center;
+                                i{
+                                    transition: all 1s;
+                                }
                             }
                             &:hover{
                                 a{
-                                    color:#F37041;
+                                    i{
+                                        transform: rotate(90deg);
+                                    }
                                 }
+                            }
+                            .nav{
+                                position: absolute;
+                                top:100%;
+                                width:100%;
+                                left:0;
+                                flex-direction: column;
+                               display: none;
+                                span{
+                                    display: inline-block;
+                                    width:100%;
+                                    padding: 10px 0;
+                                    text-align: center;
+                                    color:#666666;
+                                    font-size: 14px;
+                                    font-family: "Fira Code Light";
+                                    font-weight: lighter;
+                                    background-color: white;
+                                    cursor: pointer;
+                                    transition: all 1s;
+                                    &:hover{
+                                        background-color: #227CCB;
+                                        color:white;
+                                    }
+                                }
+                                span:nth-child(1){
+                                    border-bottom: 1px solid #D1D1D1;
+                                }
+                            }
+                            &::before{
+                                position: absolute;
+                                left:0;
+                                top:0;
+                                width:0;
+                                height:1px;
+                                transition: all 1s;
+                                content:'';
+                                display: inline-block;
+                                background-color: #227CCB;
+                            }
+                            &::after{
+                                position: absolute;
+                                left:0;
+                                bottom:-1px;
+                                width:0;
+                                height:1px;
+                                transition: all 1s;
+                                content:'';
+                                display: inline-block;
+                                background-color: #227CCB;
+                            }
+                            &:hover{
+                                .nav{
+                                    display: flex;
+                                }
+                            }
+                            &:hover::before{
+                                width:100%;
+                            }
+                            &:hover::after{
+                                width:100%;
                             }
                         }
                         .showLine::after{
-                            width:40%;
+                            width:100%;
                         }
-                        .showLine{
-                            a{
-                                color:#F37041;
-                            }
-                        }
-                    }
-                    .tc{
-                        width:18%;
-                        display: flex;
-                        flex-direction: row;
-                        justify-content: center;
-                        margin-left: 5%;
-                        div{
-                            width:50%;
-                            text-align: center;
-                            position: relative;
-                            i{
-                                color:white;
-                                font-size: 20px;
-                                cursor: pointer;
-                                transition: all 1s;
-                            }
-                            &:hover{
-                                i{
-                                    color:#F37041;
-                                }
-                            }
-                        }
-                        div:nth-child(1)::before,div:nth-child(1)::after{
-                            content:'';
-                            display: inline-block;
-                            height:20px;
-                            width:1px;
-                            background-color: rgba(255,255,255,.3);
-                            position: absolute;
-                        }
-                        div:nth-child(1)::before{
-                            left:0;
-                            top:2px;
-                        }
-                        div:nth-child(1)::after{
-                            right:0;
-                            top:2px;
+                        .showLine::before{
+                            width:100%;
                         }
                     }
                 }
                 @media screen and (max-width: 1440px) and (min-width: 1000px){
                     .right{
-                        width:80%;
+                        width:100%;
                     }
                 }
-            }
-        }
-        .search{
-            position: absolute;
-            right:0;
-            top:0;
-            width:50%;
-            background-color: black;
-            height:0;
-            transition: all 600ms;
-            z-index: 1000;
-            .x-close{
-                -webkit-font-smoothing: antialiased;
-                text-rendering: optimizeLegibility;
-                font-feature-settings: "kern" 1;
-                font-kerning: normal;
-                font-family: "helvetica_neue_light",Arial,Helvetica,sans-serif;
-                font-size: 17px;
-                line-height: 24px;
-                visibility: inherit;
-                padding: 0;
-                margin: 0;
-                display: block;
-                cursor: pointer;
-                width: 41px;
-                height: 41px;
-                top: 20px;
-                right: 150px;
-                position: absolute;
-                z-index: 100;
-                color: #000;
-                transform: scaleX(1);
-                display: none;
-            }
-            .x-close:before, .x-close:after {
-                content: '';
-                position: absolute;
-                left: -7px;
-                top: 20px;
-                height: 1px;
-                width: 55px;
-                z-index: 10;
-                background-color: white;
-                opacity: 0;
-                transition: all 1s;
-                transition-delay: 600ms;
-                transform: rotate(0deg);
-            }
-            .m1{
-                position: absolute;
-                opacity: 0;
-                width:70%;
-                left:15%;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                bottom:0;
-                transition: all 2s;
-                transform: matrix(1, 0, 0, 1, 1, 0);
-                p{
-                    width:100%;
-                    color:white;
-                    font-size: 35px;
-                    padding-bottom: 40px;
-                }
-                .ip{
-                    width:80%;
-                    position: relative;
-                    input{
-                        -moz-appearance: none;
-                        -webkit-appearance: none;
-                        -moz-border-radius: 0;
-                        -webkit-border-radius: 0;
-                        border-radius: 0;
-                        outline: none;
-                        background-color: transparent;
-                        width: 100%;
-                        border: solid 1px white;
-                        float: none;
-                        display: block;
-                        font-family: "helvetica_neue_bold",Arial,Helvetica,sans-serif;
-                        font-size: 25px;
-                        line-height: 27px;
-                        color: white;
-                        padding: 33px 90px 33px 33px;
-                    }
-                    input:focus{
-                        outline: none;
-                    }
-                    i{
-                        font-size: 40px;
-                        color:white;
-                        line-height: 100px;
-                        position: absolute;
-                        right:0;
-                        bottom:0;
-                        cursor: pointer;
-                    }
-                }
-            }
-        }
-        .showsList{
-            right:0;
-            height:100vh;
-            background-color: black;
-            .x-close{
-                display: block;
-            }
-            .x-close:before, .x-close:after{
-                opacity: 1;
-            }
-            .x-close:before {
-                transform: rotate(-45deg);
-            }
-            .x-close:after {
-                transform: rotate(45deg);
-            }
-            .m1{
-                opacity: 1;
-                bottom:50%;
-                transform: matrix(1, 0, 0, 1, 0, 0);
             }
         }
         .top{
@@ -636,38 +541,7 @@
         }
     }
     .dark{
-        background-color: white;
-        .lan{
-            span{
-                color:black;
-                i{
-                    color:black;
-                }
-            }
-        }
-        .mm{
-            .main{
-                .right{
-                    ul{
-                        li{
-                            a{
-                                color:black;
-                            }
-                        }
-                    }
-                    .tc{
-                        div{
-                            i{
-                                color:black;
-                            }
-                        }
-                        div:nth-child(1)::before,div:nth-child(1)::after{
-                            background-color: black;
-                        }
-                    }
-                }
-            }
-        }
+        transform: translateY(-94px);
         /*@media screen and (max-width:450px){*/
         /*    .mImg{*/
         /*        display: none;*/

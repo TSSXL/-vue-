@@ -1,8 +1,9 @@
 <template>
   <div class="dialog" >
-    <div style="height: 140px;overflow: hidden;text-align: left"  data-scrollbar>
-      <span>宁波镇明转轴有限公司地处中国沿海开放城市——美丽的宁波，是国内最具专业水准的轴类产品公司。公司现拥有员工500余人，其中各类专业技术人员100余人，拥有先进的数控成套设备和专业的轴类产品生产流水线及新组成的花键轴生产线、大轴生产线、机加生产线和汽车零部件生产线，年销售额达2亿元，生产实力达到国际先进水平……
-</span>
+    <div style="height: 300px;overflow: hidden;text-align: left"  data-scrollbar>
+      <span v-for="(item,index) in list" :key="index">
+          {{item}}
+      </span>
     </div>
   </div>
 </template>
@@ -14,6 +15,22 @@
     name: "aboutDia",
     data(){
       return{
+          list:[
+           "2001---公司成立",
+              "2001---汽车继电器专用生产线建成并投入使用",
+              "2001--汽车继电器专用生产线建成并投入使用",
+              "2001---汽车继电器专用生产线建成并投入使用立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立",
+              "2001---公司成立"
+          ]
       }
     },
     mounted(){
@@ -27,10 +44,27 @@
 <style lang="scss" scoped>
   .dialog{
     width:100%;
+      display: flex;
+      flex-direction: column;
     span{
-      line-height: 35px;
+      line-height: 30px;
       text-align: left;
       font-size: 14px;
+        display: inline-block;
+        width:70%;
+        position: relative;
+        margin-left: 15%;
+        margin-top: 10px;
+        &::after{
+            width:8px;
+            height:8px;
+            background:rgba(34,124,203,1);
+            content:'';
+            display: inline-block;
+            position: absolute;
+            left:-20px;
+            top:30%;
+        }
     }
   }
 </style>

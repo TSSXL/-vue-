@@ -2,29 +2,33 @@
     <div class="con">
         <div class="mone">
             <div class="main">
-                <div class="two">
-                    <div class="left">
-                        <div class="list" v-for="(item,index) in list" :key="index">
-                            <div class="item" v-for="(i,idx) in item.con" :key="idx" @click="goto(index,idx)">
-                                {{i}}
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right">
-                        <img src="../assets/zm/flogo.png" alt="">
-                        <img src="../assets/zm/code.png" alt="">
-                        <p>
-                            扫一扫<br>
-                            关注镇明
-                        </p>
-                    </div>
+            <div class="left">
+              <p>浙江亿安培电器有限公司</p>
+                <div class="icons">
+                    <i class="iconfont icon-xinlang"></i>
+                    <i class="iconfont icon-QQ"></i>
+                    <i class="iconfont icon-weixin"></i>
+                </div>
+                <div class="im">
+                    <img src="../assets/yap/home/Eanper.png" alt="">
+                </div>
+            </div>
+                <div class="center">
+                   <p>地址：宁波市海曙区望春工业园区杉杉路197号</p>
+                   <p> 电话：0574-2786 9883</p>
+                   <p>  传真：0574-2786 9883</p>
+                </div>
+                <div class="right">
+                    <p>邮编：712300</p>
+                    <p> 手机：18763941562</p>
+                    <p> 邮箱：yianpei@163.com</p>
                 </div>
             </div>
         </div>
         <div class="mtwo">
             <div class="mcon">
                 <p>
-                    © Copyright 2019  zhenming.com Rights Reserved.宁波镇明转轴有限公司 版权所有
+                    COPYRIGHT (©) 2019   宁波亿安培电器有限公司 -版权所有
                 </p>
                 <a href="http://www.sansg.com/" target="_blank">网站建设：三盛网络</a>
             </div>
@@ -37,81 +41,6 @@
         name: "foot",
         data(){
             return{
-              list:[
-                  {con:[
-                      "关于我们",
-                          "企业概况",
-                          "厂房设备",
-                          "企业理念",
-                          "企业荣誉",
-                          "品质保障",
-                          "发展历程"
-                      ]},
-                  {con:[
-                          "产品中心",
-                          "汽车电机轴",
-                          "健身器材轴",
-                         "水泵阀门轴",
-                          "家用电器轴",
-                          "电动工具轴",
-                          "发电机轴"
-                      ]},
-                  {con:[
-                      "新闻中心",
-                          "企业资讯",
-                          "展会信息"
-                      ]},
-                  {con:[
-                          "职业发展"
-                      ]},
-                  {con:[
-                          "销售网络",
-                          "销售分布",
-                          "客户展示",
-                          "销售展望"
-                      ]},
-                  {con:[
-                          "联系我们",
-                          "在线留言",
-                          "联系方式"
-                      ]}
-              ]
-            }
-        },
-        methods:{
-            goto(i,n){
-                console.log(i,n)
-                if(i===0 && n===0){
-                    const link='/about.html'
-                   window.open(link,'_self')
-                }else if(i===0 && n!==0){
-                        const link=`/about.html?index=${n-1}`
-                        window.open(link,'_self')
-                }else if(i===1 && n===0){
-                    const link='/pro.html'
-                    window.open(link,'_self')
-                }else if(i===2 && n===0){
-                    const link='/news.html'
-                    window.open(link,'_self')
-                }else if(i===2 && n!==0){
-                    const link=`/news.html?index=${n-1}`
-                    window.open(link,'_self')
-                }else if(i===3 && n===0){
-                    const link='/job.html'
-                    window.open(link,'_self')
-                }else if(i===4 && n===0){
-                    const link='/sale.html'
-                    window.open(link,'_self')
-                }else if(i===4 && n!==0){
-                    const link=`/sale.html?index=${n-1}`
-                    window.open(link,'_self')
-                }else if(i===5 && n===0){
-                    const link='/contact.html'
-                    window.open(link,'_self')
-                }else if(i===5 && n!==0){
-                    const link=`/contact.html?index=${n-1}`
-                    window.open(link,'_self')
-                }
             }
         }
     }
@@ -122,83 +51,61 @@
     width:100%;
     .mone{
         width:100%;
-        background-color: #333333;
+        background-color: #505050;
         padding: 30px 0;
         .main{
             width:1440px;
             margin: 0 auto;
-            .two{
-                width:100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            padding: 20px 0;
+            .left{
+                width:33%;
                 display: flex;
-                flex-direction: row;
-                justify-content: space-between;
-                padding: 30px 0;
-                .left{
-                    width:80%;
+                flex-direction: column;
+                p{
+                    color:#E7E7E7;
+                    font-family: "Fira Code Medium";
+                    font-size: 30px;
+                    font-weight: bolder;
+                }
+                .icons{
                     display: flex;
                     flex-direction: row;
+                    width:30%;
+                    margin: 30px 0;
                     justify-content: space-between;
-                    .list{
-                        width:33%;
-                        text-align: center;
-                        border-right: 1px solid rgba(255,255,255,.1);
-                        position: relative;
-                        .item{
-                            color:#898989;
-                            font-family: "Fira Code Medium";
-                            font-weight: lighter;
-                            font-size: 14px;
-                            margin-top: 15px;
-                            cursor: pointer;
-                            transition: color 1s;
+                    i{
+                        color:black;
+                        font-size: 18px;
+                        cursor: pointer;
+                        transition: all 1s;
+                        &:hover{
+                            color:#227CCB;
                         }
-                        .item:hover{
-                            color:#F37041;
-                        }
-                        .item:nth-child(1){
-                            font-size: 16px;
-                            color:white;
-                            margin-top: 0;
-                            font-family: "Fira Code Medium";
-                            font-weight: lighter;
-                        }
-                    }
-                    .list::after{
-                        position: absolute;
-                        right:-1.5px;
-                        top:0;
-                        height:9px;
-                        width:3px;
-                        background-color: #696969;
-                        content:'';
-                        display: inline-block;
                     }
                 }
-                .right{
-                    width:18%;
-                   display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    img{
-                        display: block;
-                    }
-                    img:nth-child(2){
-                        margin: 10px auto;
-                    }
-                    p{
-                        text-align: center;
-                        font-family: "Fira Code Light";
-                        font-weight: lighter;
-                        color:#898989;
-                        font-size: 14px;
-                    }
+            }
+            .center{
+                p{
+                    line-height: 45px;
+                    color:#E7E7E7;
+                    font-family:"Fira Code Light";
+                    font-weight: lighter;
+                }
+            }
+            .right{
+                @extend .center;
+                p{
+                    text-align: right;
                 }
             }
         }
     }
     .mtwo{
         width:100%;
-        background-color: #1C1C1C;
+        background-color: #262626;
         padding: 30px 0;
         .mcon{
             width:1440px;
@@ -207,13 +114,13 @@
             flex-direction: row;
             justify-content: space-between;
             p,a{
-                color:#A5A5A5;
+                color:#8A8A8A;
                 font-size: 14px;
                 cursor: pointer;
                 transition: all 1s;
             }
             p:hover,a:hover{
-                color:#F37041;
+                color:#227CCB;
             }
             a{
                 margin-right: 5%;

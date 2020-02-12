@@ -26,35 +26,11 @@ module.exports = {
       filename: 'newsInfo.html',
       chunks: ['chunk-vendors', 'chunk-common', 'newsInfo']
     },
-    lifestyle: {
-      entry: 'src/page/lifestyle/main.js',
-      template: 'public/lifestyle.html',
-      filename: 'lifestyle.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'lifestyle']
-    },
-    lifeInfo: {
-      entry: 'src/page/lifeInfo/main.js',
-      template: 'public/lifeInfo.html',
-      filename: 'lifeInfo.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'lifeInfo']
-    },
     pros: {
       entry: 'src/page/pros/main.js',
       template: 'public/pros.html',
       filename: 'pros.html',
       chunks: ['chunk-vendors', 'chunk-common', 'pros']
-    },
-    homeInfo: {
-      entry: 'src/page/homeInfo/main.js',
-      template: 'public/homeInfo.html',
-      filename: 'homeInfo.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'homeInfo']
-    },
-    homecase: {
-      entry: 'src/page/homecase/main.js',
-      template: 'public/homecase.html',
-      filename: 'homecase.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'homecase']
     },
     pro: {
       entry: 'src/page/products/main.js',
@@ -67,12 +43,6 @@ module.exports = {
       template: 'public/sale.html',
       filename: 'sale.html',
       chunks: ['chunk-vendors', 'chunk-common', 'sale']
-    },
-    newPro: {
-      entry: 'src/page/newPro/main.js',
-      template: 'public/newPro.html',
-      filename: 'newPro.html',
-      chunks: ['chunk-vendors', 'chunk-common', 'newPro']
     },
     news: {
       entry: 'src/page/news/main.js',

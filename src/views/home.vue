@@ -2,141 +2,86 @@
   <div class="home">
     <banner-Component></banner-Component>
     <div class="main">
-<!--    关于镇明转轴-->
-      <div class="about">
-          <div class="content">
-              <div class="left wow">
-              <div class="one">
-                <div class="l">
-                    <img src="../assets/zm/home/dot.png" alt="">
-                </div>
-                  <div class="r">
-                      <img src="../assets/zm/home/zm.png" alt="">
-                      <span>
-                          <i class="iconfont icon-bofang"></i>
-                      </span>
-                  </div>
-              </div>
-                  <div class="two" :class="{Run:active}">
-                      <img src="../assets/zm/home/ab.png" alt="">
-                  </div>
-                  <div class="three">
-                      <div></div>
-                      <p>人本、诚信、创新、发展</p>
-                  </div>
-              </div>
-              <div class="right wow">
-                  <p>关于镇明转轴</p>
-                  <p>ABOUT US</p>
-                  <homeDia class="dia" />
-                  <div class="detail" @click="gotoAbout">
-                      了解更多
-                      <span>
-                                      <i class="iconfont icon-top-line"></i>
-                                  </span>
-                  </div>
-                  <div class="im">
-                      <img src="../assets/zm/home/DSC_1697.png" alt="">
-                  </div>
-              </div>
-          </div>
-      </div>
-
-<!--        汽车电机轴-->
-      <div class="car wow">
-       <div class="content wow fadeIn">
-           <p>汽车电机轴</p>
-           <p>汽车轴从2011年开始试样投产，公司引进先进的加工设备，配备专业技术操作人才。两年时间，共组建了4条专业汽车产品轴生产线，生产包括新型能源汽车轴、混合动力汽车轴、汽车马达发动机轴、汽车座椅轴等产品。</p>
-           <div class="detail">
-               了解详情
-               <span>
-                                      <i class="iconfont icon-top-line"></i>
-                                  </span>
-           </div>
-       </div>
-      </div>
-
-<!--        工业电机轴&新能源轴-->
-       <div class="pros">
-      <div class="industry wow">
-          <div class="content wow fadeIn">
-              <p>工业电机轴</p>
-              <p>工业电机轴类产品是目前公司主要生产项目之一. 目前主要生产机器人、伺服电机、减速机、压缩机等设备用轴。</p>
-              <div class="detail">
-                  了解详情
-                  <span>
-                                      <i class="iconfont icon-top-line"></i>
-                                  </span>
-              </div>
-          </div>
-      </div>
-           <div class="ele wow">
-               <div class="content wow fadeIn">
-                   <p>新能源轴</p>
-                   <p>主要用于风力发电、新能源主要用于风力发电、 新能源等大型电机... ...
-                   </p>
-                   <div class="detail">
-                       了解详情
-                       <span>
-                                      <i class="iconfont icon-top-line"></i>
-                                  </span>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-<!--        新闻资讯-->
-       <div class="news">
-        <div class="title wow fadeInLeft">
-        <p>新闻资讯</p>
-            <p>news</p>
-        </div>
-           <div class="content wow fadeInRight">
-          <div class="link">
-              <a href="./news.html">全部/</a>
-              <a href="./news.html?index=0">企业资讯/</a>
-              <a href="./news.html?index=1">展会信息</a>
-          </div>
-               <div class="allNews">
-                   <swiper class="swiper" :options="swiperOption" ref="mySwiper"  v-if="nList.length>0">
-                       <swiper-slide class="item" v-for="(item,index) in nList" :key="index" >
-                        <div class="l" @click="gotoInfo">
-                            <img :src="item.img" alt="">
-                        </div>
-                           <div class="r" @click="gotoInfo">
-                               <p>{{item.title}}</p>
-                               <p>{{item.con}}</p>
-                               <div class="detail">
-                                   探索更多
-                                   <span>
-                                      <i class="iconfont icon-top-line"></i>
-                                  </span>
-                               </div>
-                           </div>
-                       </swiper-slide>
-                   </swiper>
-                   <div class="prev">
-                       <i class="el-icon-arrow-left"></i>
-                   </div>
-                   <div class="next ">
-                       <i class="el-icon-arrow-right"></i>
-                   </div>
-               </div>
-           </div>
-       </div>
-
-<!--        下一篇-->
-        <div class="nextNews wow fadeInUp">
-         <div class="left">
-             <img src="../assets/zm/home/cn.png" alt="">
+<!--    产品中心-->
+       <div class="pro">
+         <div class="link">
+         <div class="l wow fadeInLeft">
+           <p>产品</p>
+           <p>寻找您想要的产品</p>
          </div>
-            <div class="right">
-            <p>下一篇</p>
-                <p>国家医保局：明年将建成全国统一医保信息系统</p>
-                <p>国家医保局6月27日晚发布消息，到2020年我国将建成统一的医保信息系统。全国参保居民将使用全国统一的医保电子凭证，查询个人医保信息、医保参保关系转移接续、异地就医结算也将会更加的快捷方便...</p>
+           <div class="r wow fadeInRight">
+            <div class="item " v-for="(item,index) in list" :key="index" :class="{'active':select===index}">
+          {{item.name}}
             </div>
-        </div>
+           </div>
+         </div>
+         <div class="allPro">
+            <div class="item wow fadeIn" v-for="(item,index) in pList" :key="index" :style="aStyle(index)">
+            <div class="one">
+              <img :src="item.img" alt="">
+            </div>
+              <div class="two">
+                <p class="name">{{item.name}}</p>
+                <p class="content">{{item.con}}</p>
+                <div class="bq">
+                  <div class="ms">
+                    <p>{{item.bq}}</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+         </div>
+       </div>
 
+<!--      企业介绍-->
+      <div class="about wow fadeIn">
+        <div class="content">
+         <p>企业介绍</p>
+          <p>
+            浙江亿安培电器有限公司是一家专业从事汽车继电器、新能源专用继电器、电器控制盒、高压配电盒、汽车电子控制模块等产品的研发、生产、销售、服务于一体的高新科技企业。产品广泛应用于汽车、新能源、工程机械、光伏、工业控制等领域。
+          </p>
+          <p>优质服务，以质取胜</p>
+          <div class="btn">
+            <span>
+                  了解更多
+            </span>
+          </div>
+        </div>
+      </div>
+
+<!--      新闻资讯-->
+      <div class="news">
+        <div class="link">
+          <div class="l wow fadeInLeft">
+            <p>新闻</p>
+            <p>news</p>
+          </div>
+          <div class="r wow fadeInRight">
+            <div class="item" v-for="(item,index) in list2" :key="index" :class="{'active':select2===index}">
+              {{item.name}}
+            </div>
+          </div>
+        </div>
+        <div class="allItems">
+            <swiper class="swiper1" :options="swiperOption" ref="mySwiper"  v-if="nList.length>0">
+                <swiper-slide class="item wow fadeIn" v-for="(item,index) in nList" :key="index" >
+                    <div class="one">
+                        <img :src="item.img" alt="">
+                    </div>
+                    <div class="two">
+                        <p>{{item.title}}</p>
+                        <p>{{item.con}}</p>
+                    </div>
+                    <p class="time">
+                        {{item.time}}
+                        <i class="iconfont icon-you"></i>
+                    </p>
+                </swiper-slide>
+            </swiper>
+            <div class="prev"></div>
+            <div class="next "></div>
+        </div>
+      </div>
     </div>
       <foot-Component class="foot wow"></foot-Component>
   </div>
@@ -154,52 +99,128 @@ export default {
   name: 'home',
     data(){
       return{
-          active:false,
-          nList:[
-              {
-                  img:require('../assets/zm/home/news.png'),
-                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
-                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
-              },
-              {
-                  img:require('../assets/zm/home/news.png'),
-                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
-                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
-              },
-              {
-                  img:require('../assets/zm/home/news.png'),
-                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
-                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
-              },
-              {
-                  img:require('../assets/zm/home/news.png'),
-                  title:'易会满：科创板开市后整个股价的变化是比较合理的',
-                  con:'3日讯，证监会主席易会满表示，科创板正式开市后，第一个方面就是科创板的上市公司的价值，比较好的得到了体现。第二个，我觉得市场投资者还是比较活跃。第三个的话，上市以后整个股价的变化应该是比较合理的。那么在一百天的交易里面，股票有上有下，我觉得都非常正常。有些公司有一定的回归跟分化，这也是博弈的结果。第四个特.. ...'
-              }
-          ],
-          scrollbar:'',
           swiperOption:{
-              notNextTick: true,
-              slidesPerView: 1,
+              slidesPerView: 3,
               speed:1000,
-              init:true,
-              spaceBetween : 10,
-              loop:false,
-              autoplay:false,
-              setWrapperSize :true,
-              on: {
-                  slideChangeTransitionEnd: () => {
-                      this.$nextTick(() => {
-                          let swiper = this.$refs.mySwiper.swiper;
-                          let active = swiper.realIndex;
-                      });
-                  }
-              },
+              slideToClickedSlide: true,
               navigation: {
-                  nextEl: '.allNews .next',
-                  prevEl: '.allNews .prev'
+                  nextEl: '.allItems .next',
+                  prevEl: '.allItems .prev'
               }
           },
+        select:0,
+        select2:0,
+        list2:[
+          {
+            name:'全部'
+          },
+          {
+            name:'最新'
+          },
+          {
+            name:'MORE'
+          }
+        ],
+        list:[
+          {
+            name:'全部'
+          },
+          {
+            name:'汽车继电器'
+          },
+          {
+            name:'PCB继电器'
+          },
+          {
+            name:'新能源继电器'
+          },
+          {
+            name:'MORE'
+          }
+        ],
+        pList:[
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          },
+          {
+            img:require('../assets/yap/home/p.png'),
+            name:'M4/012-1H1G继电器',
+            con:'后窗除雾器、电池断路装置、汽车空调、油泵控制、雾灯、冷却风扇控制、大灯控制等',
+            bq:'继电器,触点切换,新品上市'
+          }
+        ],
+        nList:[
+          {
+            img:require('../assets/yap/home/n.png'),
+            title:'弧焊逆变电源以其高效率电能转换著称',
+            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
+            time:'12-16'
+          },
+          {
+            img:require('../assets/yap/home/n.png'),
+            title:'弧焊逆变电源以其高效率电能转换著称',
+            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
+            time:'12-15'
+          },
+          {
+            img:require('../assets/yap/home/n.png'),
+            title:'弧焊逆变电源以其高效率电能转换著称',
+            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
+            time:'12-14'
+          },
+            {
+                img:require('../assets/yap/home/n.png'),
+                title:'弧焊逆变电源以其高效率电能转换著称',
+                con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
+                time:'12-13'
+            }
+        ],
+          scrollbar:'',
       }
     },
     mounted() {
@@ -209,23 +230,13 @@ export default {
         this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
         window.pageYOffset=this.scrollbar.scrollTop
         this.scrollbar.addListener((status) => {
-            if(status.offset.y>500 && status.offset.y<1000)
-            {
-                this.active=true
-            }else{
-                this.active=false
-            }
+
         });
     },
-  components:{bannerComponent,footComponent,swiper, swiperSlide,homeDia},
+  components:{bannerComponent,footComponent,swiper, swiperSlide},
     methods:{
-      gotoInfo(){
-          const link='/newsInfo.html'
-          window.open(link,'_self')
-      },
-        gotoAbout(){
-            const link='/about.html'
-            window.open(link,'_self')
+        aStyle(n){
+            return {animationDelay:0.1*n+'s'}
         }
     }
 }
@@ -245,622 +256,333 @@ export default {
     }
   .main{
     width:100%;
-      .about{
-          width:100%;
-          height:1000px;
-          background: url("../assets/zm/home/abg.png") no-repeat;
-          background-size: cover;
-          .content{
-              width:1440px;
-              margin: 0 auto;
-              padding: 60px 0;
-              display: flex;
-              flex-direction: row;
-              .left{
-                  width:45%;
-                  position: relative;
-                  animation:transition1 2s forwards ease-in ;
-                  .one{
-                      width:100%;
-                      position: absolute;
-                      top:60px;
-                      left:0;
-                      display: flex;
-                      flex-direction: row;
-                      justify-content: flex-end;
-                      align-items: center;
-                      z-index: 100;
-                      .l{
-                          margin-right: 20px;
-                      }
-                      .r{
-                          position: relative;
-                          cursor: pointer;
-                          span{
-                              display: inline-block;
-                              position: absolute;
-                              left:45%;
-                              top:35%;
-                              height:66px;
-                              width:66px;
-                              i{
-                                  color:rgba(255,255,255,.6);
-                                  font-size: 60px;
-                              }
-                              &::after{
-                                  content: "";
-                                  position: absolute;
-                                  width: 100%;
-                                  height: 100%;
-                                  top: -2px;
-                                  left: -5px;
-                                  pointer-events: none;
-                                  background-color: transparent;
-                                  border-style: solid;
-                                  border-width: 2px;
-                                  border-color: rgba(255, 255, 255, 0.5);
-                                  border-radius: 50%;
-                                  opacity: 0;
-                                  transition: opacity 0.3s,transform 0.5s;
-                              }
-                          }
-                          &:hover{
-                              span::after{
-                                  opacity: 1;
-                                  transform: scale(1.2);
-                                  -webkit-transform: scale(1.2);
-                              }
-                          }
-                      }
-                  }
-                  .two{
-                      width:100%;
-                      position: absolute;
-                      top:320px;
-                      left: -112px;
-                      transition: all 2s;
-                  }
-                  .Run{
-                      animation: go 2s forwards linear;
-                  }
-                  @keyframes go {
-                      0%{
-                          left: -112px;
-                      }
-                      25%{
-                          left:-140px;
-                      }
-                      50%{
-                          left:-160px;
-                      }
-                      75%{
-                          left:-140px;
-                      }
-                     100%{
-                         left: -112px;
-                     }
-                  }
-                  .three{
-                      position: absolute;
-                      bottom:15%;
-                      left:0;
-                      width:90%;
-                      display: flex;
-                      flex-direction: row;
-                      justify-content: flex-end;
-                      align-items: center;
-                      div{
-                          width:247px;
-                          height:1px;
-                          background:rgba(243,112,65,1);
-                      }
-                      p{
-                          font-size: 18px;
-                          font-family: "Fira Code Light";
-                          font-weight: lighter;
-                          margin-left: 30px;
-                      }
-                  }
-              }
-              .right{
-                  width:55%;
-                  padding-left: 20px;
-                  animation:transition2 2s forwards ease-in ;
-                  p{
-                      width:90%;
-                  }
-                  p:nth-child(1){
-                      color:#2F2F2F;
-                      font-size: 30px;
-                      font-weight: bold;
-                  }
-                  p:nth-child(2){
-                      color:#D3D6D9;
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      margin: 5px 0;
-                  }
-                  .dia{
-                      margin: 30px 0;
-                      width:90%;
-                  }
-                 .detail{
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      font-size: 14px;
-                     margin: 30px 0;
-                     margin-right: 10px;
-                     width:90%;
-                     display: flex;
-                     flex-direction: row;
-                     justify-content: flex-end;
-                     cursor: pointer;
-                      span{
-                          width:20px;
-                          height:20px;
-                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
-                          border:1px solid rgba(223, 88, 39, 1);
-                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-                          border-radius:50%;
-                          display: inline-block;
-                          transform: rotate(90deg);
-                          text-align: center;
-                          margin-left: 10px;
-                          transition: all 1s;
-                          i{
-                              color:white;
-                              font-size: 14px;
-                          }
-                      }
-                     &:hover{
-                         span{
-                             margin-left: 30px;
-                         }
-                     }
-                  }
-                  .im{
-                      width:100%;
-                      overflow: hidden;
-                      cursor: pointer;
-                      margin: 58px auto;
-                      margin-left: -50px;
-                      img{
-                          width:100%;
-                          display: block;
-                          object-fit: cover;
-                          transition: all 2s;
-                      }
-                      &:hover{
-                          img{
-                               transform: rotateY(360deg);
-                          }
-                      }
-                  }
-              }
-          }
-      }
-      .car{
-          width: 100%;
-          background: url("../assets/zm/home/car.png") no-repeat;
-          background-size: cover;
-          height:737px;
-          animation-name: polygon;
-          animation-duration: 2s;
-          cursor: pointer;
-          .content{
-              width:1440px;
-              margin: 0 auto;
-              animation-duration: 2s;
-              animation-delay: 1.5s;
-              p:nth-child(1){
-                  color:#383838;
-                  font-size: 50px;
-                  padding-top: 150px;
-                  margin-bottom: 50px;
-              }
-              p:nth-child(2){
-                  color:#4B4B4B;
-                  font-family: "Fira Code Light";
-                  font-weight: lighter;
-                  line-height: 32px;
-                  width:38%;
-              }
-              .detail{
-                  font-family: "Fira Code Light";
-                  font-weight: lighter;
-                  font-size: 14px;
-                  display: flex;
-                  width:38%;
-                  margin: 60px 0;
-                  flex-direction: row;
-                  justify-content: flex-end;
-                  span{
-                      width:20px;
-                      height:20px;
-                      background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
-                      border:1px solid rgba(223, 88, 39, 1);
-                      box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-                      border-radius:50%;
-                      display: inline-block;
-                      transform: rotate(90deg);
-                      text-align: center;
-                      margin-left: 10px;
-                      transition: all 1s;
-                      i{
-                          color:white;
-                          font-size: 14px;
-                      }
-                  }
-              }
-              &:hover{
-                      .detail{
-                          span{
-                              margin-left: 20px;
-                          }
-                      }
-              }
-          }
+    .pro{
+      width:1440px;
+      margin: 60px auto;
+     .link{
+       width:100%;
+       display: flex;
+       flex-direction: row;
+       justify-content: space-between;
+       align-items: center;
+       .l{
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         p:nth-child(1){
+           color:#0A4F8C;
+           font-size: 24px;
+         }
+         p:nth-child(2){
+           color:#BBBBBB;
+           font-size: 14px;
+           margin-left: 10px;
 
-      }
-      .pros{
-          width:100%;
-          display: flex;
-          flex-direction: row;
-          justify-content: center;
-          margin-top: 10px;
-          .industry{
-              width:50%;
-              height:600px;
-              background: url("../assets/zm/home/in.png") no-repeat;
-              background-size: cover;
-              animation-name: polygon2;
-              animation-duration: 2s;
-              cursor: pointer;
-              .content{
-                  width:80%;
-                  margin-left: 10%;
-                  text-align: right;
-                  animation-duration: 2s;
-                  animation-delay: 2s;
-                  p:nth-child(1){
-                      color:#383838;
-                      font-size: 50px;
-                      padding-top: 100px;
-                      padding-bottom: 30px;
-                  }
-                  p:nth-child(2){
-                      color:#4B4B4B;
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      line-height: 32px;
-                      width:80%;
-                      margin-left: 20%;
-                  }
-                  .detail{
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      font-size: 14px;
-                      display: flex;
-                      width:80%;
-                      margin: 60px 20%;
-                      flex-direction: row;
-                      justify-content: flex-end;
-                      span{
-                          width:20px;
-                          height:20px;
-                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
-                          border:1px solid rgba(223, 88, 39, 1);
-                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-                          border-radius:50%;
-                          display: inline-block;
-                          transform: rotate(90deg);
-                          text-align: center;
-                          margin-left: 10px;
-                          transition: all 1s;
-                          i{
-                              color:white;
-                              font-size: 14px;
-                          }
-                      }
-                  }
-              }
-              &:hover{
-                  .content{
-                      .detail{
-                          span{
-                              margin-left: 30px;
-                          }
-                      }
-                  }
-              }
+         }
+       }
+       .r{
+         display: flex;
+         flex-direction: row;
+         align-items: center;
+         .item{
+           border: 1px solid #C6C6C6;
+           border-radius: 15px;
+           text-align: center;
+           font-size: 14px;
+           font-family: "Fira Code Light";
+           font-weight: lighter;
+           padding: 5px  15px;
+           cursor: pointer;
+           margin-left: 30px;
+           transition: all 1s;
+           &:hover{
+             background-color: #227CCB;
+             color:white;
+           }
+         }
+         .active{
+           background-color: #227CCB;
+           color:white;
+         }
+       }
+     }
+      .allPro{
+        width:100%;
+        margin: 60px auto;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        .item{
+          width:32%;
+          margin-left: 1%;
+          margin-top: 30px;
+          cursor: pointer;
+          transition: all 1s;
+          border:2px solid rgba(34,124,203,0);
+            animation-duration: 2s;
+          .one{
+            width:100%;
+            overflow: hidden;
+            text-align: center;
+            img{
+              transition: all 1s;
+            }
           }
-          .ele{
-              width:50%;
-              height:600px;
-              background: url("../assets/zm/home/ele.png") no-repeat;
-              background-size: cover;
-              margin-left: 10px;
-              animation-name: polygon2;
-              animation-duration: 2s;
-              animation-delay: 0.4s;
-              cursor: pointer;
-              .content{
-                  width:80%;
-                  margin-left: 10%;
-                  animation-duration: 2s;
-                  animation-delay: 2s;
-                  p:nth-child(1){
-                      color:#383838;
-                      font-size: 50px;
-                      padding-top: 100px;
-                      padding-bottom: 30px;
-                  }
-                  p:nth-child(2){
-                      color:#4B4B4B;
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      line-height: 32px;
-                      width:50%;
-                  }
-                  .detail{
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      font-size: 14px;
-                      display: flex;
-                      width:80%;
-                      margin: 60px 0;
-                      flex-direction: row;
-                      span{
-                          width:20px;
-                          height:20px;
-                          background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
-                          border:1px solid rgba(223, 88, 39, 1);
-                          box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-                          border-radius:50%;
-                          display: inline-block;
-                          transform: rotate(90deg);
-                          text-align: center;
-                          margin-left: 10px;
-                          transition: all 1s;
-                          i{
-                              color:white;
-                              font-size: 14px;
-                          }
-                      }
-                  }
+          .two{
+            width:100%;
+            transition: all 1s;
+            padding-top: 30px;
+            p{
+              transition: all 1s;
+            }
+           .name{
+              color:#333333;
+              font-size: 17px;
+              margin: 30px auto;
+             margin-top: 0;
+              width:90%;
+            }
+           .content{
+              color:#999999;
+              font-size: 13px;
+              font-family: "Fira Code Light";
+              font-weight: lighter;
+              line-height: 30px;
+              width:90%;
+             display: -webkit-box;
+             -webkit-box-orient: vertical;
+             -webkit-line-clamp: 2;
+             overflow: hidden;
+              margin: 0 auto;
+             margin-bottom: 20px;
+            }
+            .bq{
+              width:100%;
+              border-top: 1px solid #CDCDCD;
+              .ms{
+                width:90%;
+                padding: 20px 0;
+                color:#828282;
+                font-size: 12px;
+                margin: 0 auto;
               }
-              &:hover{
-                  .content{
-                      .detail{
-                          span{
-                              margin-left: 30px;
-                          }
-                      }
-                  }
-              }
+            }
           }
-      }
-      .news{
-          width:100%;
-          display: flex;
-          flex-direction: row;
-          .title{
-              width:15%;
-              padding: 30px 0;
-              background-color: #EDEDED;
-              position: relative;
-              p:nth-child(1){
-                  writing-mode:vertical-lr;
-                  font-size: 30px;
-                  font-weight: bolder;
-                  position: absolute;
-                  left:50%;
-                  top:30px;
-              }
-              p:nth-child(2){
-                  font-family: dusha;
-                  color:#A8A8A8;
-                  font-size: 60px;
-                  text-transform: uppercase;
-                  writing-mode:vertical-lr;
-                  position: absolute;
-                  left:25%;
-                  top:30px;
-              }
-          }
-          .content{
-              width:80%;
-              margin-left: 2%;
-             padding: 60px 0;
-              .link{
-                  width:100%;
-                  display: flex;
-                  flex-direction: row;
-                  a{
-                      font-family: "Fira Code Light";
-                      font-weight: lighter;
-                      letter-spacing: 1px;
-                      transition: all 1s;
-                      &:hover{
-                          color:#F37041;
-                      }
-                  }
-              }
-              .allNews{
-                  width:90%;
-                  margin: 60px 0;
-                  margin-left: 2.5%;
-                  position: relative;
-                  .swiper{
-                      .item{
-                          display: flex;
-                          flex-direction: row;
-                          cursor: pointer;
-                          .l{
-                              width:35%;
-                              overflow: hidden;
-                              img{
-                                  width:100%;
-                                  display: block;
-                                  object-fit: cover;
-                                  transition: all 1s;
-                              }
-                          }
-                          .r{
-                              width:62%;
-                              margin-left: 3%;
-                              p:nth-child(1){
-                                  margin: 20px auto;
-                                  font-size: 22px;
-                                  font-weight: bolder;
-                                  transition: all 1s;
-                              }
-                              p:nth-child(2){
-                                  font-family: "Fira Code Light";
-                                  font-weight: lighter;
-                                  font-size: 14px;
-                                  line-height: 30px;
-                                  margin: 10px auto;
-                                  display: -webkit-box;
-                                  -webkit-box-orient: vertical;
-                                  -webkit-line-clamp: 4;
-                                  overflow: hidden;
-                              }
-                              .detail{
-                                  font-family: "Fira Code Light";
-                                  font-weight: lighter;
-                                  font-size: 14px;
-                                  display: flex;
-                                  flex-direction: row;
-                                 margin-top: 60px;
-                                  span{
-                                      width:20px;
-                                      height:20px;
-                                      background:linear-gradient(-90deg,rgba(197,74,30,1),rgba(244,128,87,1));
-                                      border:1px solid rgba(223, 88, 39, 1);
-                                      box-shadow:0px 2px 6px 0px rgba(0, 0, 0, 0.3);
-                                      border-radius:50%;
-                                      display: inline-block;
-                                      transform: rotate(90deg);
-                                      text-align: center;
-                                      margin-left: 10px;
-                                      transition: all 1s;
-                                      i{
-                                          color:white;
-                                          font-size: 14px;
-                                      }
-                                  }
-                              }
-                          }
-                          &:hover{
-                              .l{
-                                  img{
-                                      transform: scale(1.05);
-                                  }
-                              }
-                              .r{
-                                  p:nth-child(1){
-                                      color:#F37041;
-                                  }
-                                  .detail{
-                                      span{
-                                          margin-left: 30px;
-                                      }
-                                  }
-                              }
-                          }
-                      }
-                  }
-                  .prev{
-                      position: absolute;
-                      right:10%;
-                      bottom:5%;
-                      z-index: 100;
-                      padding: 5px 5px;
-                      transition: all 1s;
-                      cursor: pointer;
-                      z-index: 100;
-                      i{
-                          transition: all 1s;
-                          font-size: 20px;
-                      }
-                      &:focus{
-                          outline: none;
-                      }
-                      &:hover{
-                          background-color: #F37041;
-                          i{
-                              color:white;
-                          }
-                      }
-                  }
-                  .next{
-                      @extend .prev;
-                      right:3%;
-                      left:auto;
-                      &::before{
-                          content:'';
-                          display: inline-block;
-                          width:1px;
-                          height:22px;
-                          background:rgba(77,77,77,.4);
-                          position: absolute;
-                          left:-33px;
-                          top:4px;
-                      }
-                  }
-              }
-          }
-      }
-      .nextNews{
-          width:100%;
-          display: flex;
-          flex-direction: row;
-          margin-bottom: 30px;
-          .left{
-              width:30%;
-              overflow: hidden;
-              cursor: pointer;
+          &:hover{
+            border:2px solid rgba(34,124,203,1);
+            .one{
               img{
-                  width:100%;
-                  object-fit: cover;
-                  display: block;
-                  transition: all 1s;
-                  height:100%;
+                transform: scale(1.05);
               }
+            }
+            .two{
+              background-color: #227CCB;
+              p{
+                color:white;
+              }
+            }
+          }
+        }
+      }
+    }
+    .about{
+      width:100%;
+      background: url("../assets/yap/home/ab.png") no-repeat;
+      background-size: cover;
+      height:679px;
+        animation-duration: 2s;
+      .content{
+        width:1440px;
+        margin:0 auto;
+        p:nth-child(1){
+          color:#555555;
+          font-size: 36px;
+          padding-top: 100px;
+          padding-bottom: 30px;
+        }
+        p:nth-child(2),p:nth-child(3){
+          color:#7F7F7F;
+          font-size: 13px;
+          line-height: 25px;
+          width:50%;
+        }
+        p:nth-child(3){
+          margin: 30px 0;
+        }
+        .btn{
+          width:234px;
+          height:50px;
+          border-radius:28px;
+          position: relative;
+          cursor: pointer;
+          overflow: hidden;
+          border: 1px solid #6D6D6D;
+          span{
+            position: absolute;
+            left:0;
+            top:0;
+            display: inline-block;
+            width:100%;
+            height:100%;
+            text-align: center;
+            transition: all 1s;
+            line-height: 45px;
+          }
+          &::before{
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 150%;
+            height: 100%;
+            background: #37474f;
+            z-index: 0;
+            -webkit-transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+            transform: rotate3d(0, 0, 1, -45deg) translate3d(0, -3em, 0);
+            -webkit-transform-origin: 0% 100%;
+            transform-origin: 0% 100%;
+            -webkit-transition: -webkit-transform 0.3s, opacity 0.3s, background-color 0.3s;
+            transition: all 1s;
+          }
+          &:hover{
+            span{
+              color:white;
+            }
+          }
+          &:hover::before{
+            opacity: 1;
+            background-color: #3f51b5;
+            -webkit-transform: rotate3d(0, 0, 1, 0deg);
+            transform: rotate3d(0, 0, 1, 0deg);
+            -webkit-transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+            transition-timing-function: cubic-bezier(0.2, 1, 0.3, 1);
+          }
+        }
+      }
+    }
+    .news{
+      @extend .pro;
+      .allItems{
+        width:100%;
+        display: flex;
+        flex-direction: row;
+        margin: 60px auto;
+          position: relative;
+          padding-bottom: 60px;
+        .item{
+          width:32%;
+          margin-left: 3%;
+          cursor: pointer;
+          .one{
+            width:100%;
+            overflow: hidden;
+            img{
+              width:100%;
+              display: block;
+              object-fit: cover;
+              transition: all 1s;
+            }
+          }
+          .two{
+            width:100%;
+            border-bottom: 1px solid #227CCB;
+            position: relative;
+            p:nth-child(1){
+            color:#333333;
+              margin: 20px auto;
+              transition: all 1s;
+            }
+            p:nth-child(2){
+              color:#999999;
+              font-size: 13px;
+              line-height: 25px;
+              margin-bottom: 20px;
+              display: -webkit-box;
+              -webkit-box-orient: vertical;
+              -webkit-line-clamp: 2;
+              overflow: hidden;
+            }
+            &::after{
+              content:'';
+              display: inline-block;
+              height:1px;
+              width:0;
+              position: absolute;
+              bottom:-1px;
+              left:0;
+              transition: all 1s;
+              background:linear-gradient(to right,#7f06a8, #bc34e4, #e8e8e8)
+            }
+          }
+          .time{
+            width:100%;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 20px;
+            color:#888888;
+            margin: 20px auto;
+            transition: all 1s;
+          font-family: "Arial Rounded MT Bold";
+            i{
+              opacity: 0;
+              transition: all 1s;
+            }
+          }
+          &:hover{
+            .one{
+              img{
+                transform: scale(1.05);
+              }
+            }
+            .two{
+              p:nth-child(1){
+                color:#227CCB;
+              }
+              &::after{
+                width:100%;
+              }
+            }
+            .time{
+              color:#227CCB;
+              i{
+                opacity: 1;
+              }
+            }
+          }
+        }
+        .item:nth-child(1){
+          margin-left: 0;
+        }
+          .prev{
+              position: absolute;
+              left:50%;
+              bottom:0;
+              z-index: 100;
+              cursor: pointer;
+              width:6px;
+              height:6px;
+              background:rgba(229,229,229,1);
+              border-radius:50%;
+              border:2px solid rgba(79,144,210,0);
+              transition: all 1s;
               &:hover{
-                  img{
-                      transform: scale(1.05);
-                  }
+                  width:8px;
+                  height:8px;
+                  background:rgba(255,255,255,1);
+                  border:2px solid rgba(79,144,210,1);
+              }
+              &:focus{
+                  outline: none;
               }
           }
-          .right{
-              width:70%;
-              background-color: #EDEDED;
-              p{
-                  width:80%;
-                  margin-left: 5%;
-              }
-              p:nth-child(1){
-                  font-size: 14px;
-                  font-family: "Fira Code Light";
-                  font-weight: lighter;
-                  padding: 40px 0;
-              }
-              p:nth-child(2){
-                  font-size: 18px;
-                  font-weight: bolder;
-              }
-              p:nth-child(3){
-                  margin: 20px 5%;
-                  font-size: 14px;
-                  font-family: "Fira Code Light";
-                  font-weight: lighter;
-                  color:#010101;
-                  line-height: 35px;
-              }
+          .next{
+              @extend .prev;
+              left:53%;
           }
       }
+    }
   }
   .foot{
     animation-name: polygon;
@@ -888,18 +610,18 @@ export default {
   }
   @keyframes polygon {
     0% {
-      clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+      clip-path: polygon(0% 0%, 100% 100%, 0% 100%, 100% 0%);
     }
     100% {
       clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
     }
   }
-    @keyframes polygon2 {
+    @keyframes polygon {
         0% {
-            clip-path: polygon(0% 0%, 100% 0%, 1000% 0%, 0% 0%);
+            clip-path: polygon(50% 0, 99% 50%, 50% 99%, 0 50%);
         }
         100% {
-            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
     }
   @media screen  and (min-width: 2200px){
@@ -907,26 +629,12 @@ export default {
   }
   @media screen and (max-width: 1440px) and (min-width: 1000px){
    .main{
+       .pro{
+           width:90%;
+       }
        .about{
            .content{
                width:90%;
-           }
-       }
-       .car{
-           .content{
-               width:90%;
-           }
-       }
-       .news{
-           .content{
-               .allNews{
-                   .prev{
-                       right:12%;
-                   }
-                   .next{
-                       right:3%;
-                   }
-               }
            }
        }
    }

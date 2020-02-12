@@ -5,24 +5,21 @@
 <!--                <img :src="`http://yibin.sansg.com/upload/${item.PICURL}`" alt="">-->
                 <img :src="item.img" alt="">
                 <div class="text">
-                    <p class="en">
-                        Committed to building a<br>
-                        World-class shaft manufacturer
-                    </p>
                     <p class="cn">
-                        人本 · 诚信 · 创新 · 发展
+                        技术领航
                     </p>
+                    <p class="cn cn2">
+                        高效创新
+                    </p>
+                    <div>
+                        专业的汽车电子及电气综合解决方案供应商
+                    </div>
 
-                </div>
-                <div class="line">
-                    <div></div>
-                    <p>致力于打造世界一流的转轴制造商</p>
                 </div>
             </swiper-slide>
+            <div class="swiper-scrollbar" slot="scrollbar"></div>
+            <div class="swiper-pagination" slot="pagination"></div>
         </swiper>
-        <div class="swiper-pagination">
-
-        </div>
     </div>
 </template>
 
@@ -37,25 +34,26 @@
             return{
                 bList:[
                     {
-                        img:require('../assets/zm/home/banner.png')
+                        img:require('../assets/yap/home/banner.png')
                     },
                     {
-                        img:require('../assets/zm/home/banner.png')
+                        img:require('../assets/yap/home/banner.png')
                     },
                     {
-                        img:require('../assets/zm/home/banner.png')
+                        img:require('../assets/yap/home/banner.png')
                     }
                 ],
                 swiperOptiona:{
-                    direction: 'vertical',
-                    pagination: {
-                        el: ".banner .swiper-pagination",
-                        clickable: true,
-                        renderBullet: function(index, className) {
-                            return '<span class="' + className + '"><i></i></span>';
-                        }
+                    scrollbar: {
+                        el: '.swiper-scrollbar',
+                        hide: true
                     },
-                    speed:1000,
+                    pagination: {
+                        el: '.swiper-pagination',
+                        clickable: true,
+                        dynamicBullets: true
+                    },
+                    speed:5000,
                     loop: true,
                     effect : 'fade',
                     fadeEffect: {
@@ -112,81 +110,47 @@
                     display: block;
                     z-index: 1;
                     cursor: pointer;
-                    transition: all 2s;
-                    transform: scale(1.05);
                 }
                 .text{
                     z-index: 10;
                     position: absolute;
-                    left: 10%;
+                    left: 5%;
                     top:30%;
-                    width:80%;
-                    p{
-                        transition: all 1s;
-                        transform: translateX(-500px);
-                    }
-                    .en{
-                        font-size: 40px;
-                        font-family: os;
-                        color:white;
-                        line-height: 70px;
-                        text-transform: uppercase;
-                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
-                    }
                     .cn{
-                        font-size: 30px;
-                        margin: 30px auto;
-                       font-family: "Fira Code Light";
-                        font-weight: lighter;
-                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
-                        color:white;
-                    }
-                }
-                .line{
-                    z-index: 10;
-                    position: absolute;
-                    left: 0;
-                    bottom:30%;
-                    display: flex;
-                    flex-direction: row;
-                    align-items: center;
-                    div{
-                        height:1px;
-                        background:rgba(255,255,255,.3);
-                        width:450px;
-                        transform: translateX(-450px);
-                        transition: all 1s;
-                        transition-delay: 0.5s;
-                    }
-                    p{
-                        color:white;
-                        font-size: 20px;
-                        font-family: "Fira Code Medium";
-                        margin-left: 10px;
-                        transition: all 1s;
+                        color:#0A4F8C;
+                        font-size: 91px;
                         transform: translateX(-1000px);
-                        text-shadow:0px 1px 5px rgba(0, 0, 0, 0.42);
+                        transition: all 1s;
+                        transition-delay: 1s;
+                        font-family: zhenyan;
+                    }
+                    .cn2{
+                        margin-left: 190px;
+                        transition-delay: 2s;
+                    }
+                    div{
+                        height:67px;
+                        box-shadow:0px 6px 6px 0px rgba(132,74,63,0.3);
+                        opacity:0.8;
+                        background:linear-gradient(to right,rgba(12,95,122,1), rgba(24, 189, 243, 0.08));
+                        color:#FCEEE0;
+                        font-size: 28px;
+                        line-height: 67px;
+                        padding-left: 5px;
+                        padding-right: 120px;
+                        width:auto;
+                        transform: translateX(-1000px);
+                        transition-delay: 2s;
+                        transition: all 1s;
                     }
                 }
             }
             .swiper-slide-active{
-                img{
-                    transform: scale(1);
-                }
-                .text{
-                    p{
-                        transform: translateX(0);
-                    }
-                    .cn{
-                        transition-delay: 0.2s;
-                    }
-                }
-                .line{
-                    div,p{
-                        transform: translateX(0);
-                        transition-delay: 0.4s;
-                    }
-                }
+              .text{
+                  .cn,div{
+                      transform: translateX(0);
+                  }
+          }
             }
         }
        .share{
@@ -303,84 +267,7 @@
     }
 </style>
 <style scoped>
-    .banner .swiper-pagination {
-         top:41%;
-        right:5%;
-        width: 10%;
-        z-index: 1000;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet {
-        position: relative;
-        width: 17px;
-        height:17px;
-        border-radius: 50%;
-        border: 1px solid #FFFFFF;
-        background-color: transparent;
-        margin-left: 30px;
-        opacity: 1 !important;
-        transition: all 1s;
-        margin-top: 20px;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet::before{
-        position: absolute;
-        left:6px;
-        top:6px;
-        width:5px;
-        height:5px;
-        border-radius: 50%;
-        background-color: white;
-        content:'';
-        display: inline-block;
-        transition: all 1s;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet::after{
-        position: absolute;
-        left:4px;
-        top:4px;
-        width:0;
-        height:0;
-        border-radius: 50%;
-        background-color: white;
-        content:'';
-        display: inline-block;
-        transition: all 1s;
-        opacity: 1;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet-active{
-      border-color: transparent;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet-active::before{
-        opacity: 0;
-        top:-30px;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet-active::after{
-        background-color: #747576;
-        width:9px;
-        height:9px;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet:focus{
-        outline: none;
-    }
-    .banner .swiper-pagination>>>.swiper-pagination-bullet i{
-        display: block;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height:8px;
-        border-radius: 20px;
-        background-color: #fff;
-    }
-    @media screen and (max-width:1000px){
-        .banner .swiper-pagination{
-            width:40%;
-            bottom:5%;
-            flex-direction: row;
-            top:auto;
-            right:35%;
-        }
+    .swiper-pagination-bullet-active{
+        background-color: #227CCB;
     }
 </style>

@@ -1,53 +1,125 @@
 <template>
     <div class="con">
         <div class="banner">
-            <img src="../assets/zm/xs/xbanner.png" alt="">
+            <img src="../assets/yap/tech/tbanner.png" alt="">
+            <div class="text">
+                <p class="animated fadeInUp" style="animation-delay: 0.2s">技术能力</p>
+                <p class="animated fadeIn">Technological capability</p>
+                <div class="scroll">
+
+                </div>
+            </div>
         </div>
         <div class="main">
             <div class="nav">
-                <div class="left wow">
-                    <p>销售网络</p>
-                    <p>Sales Network</p>
-                    <div class="line">
-
-                    </div>
-                </div>
-                <div class="right wow">
-                    <span><i class="iconfont icon-home"></i></span>
-                    <a href="./index.html">首页-</a>
-                    <a href="./sale.html">销售网络</a>
-                </div>
-            </div>
-            <div class="tnav wow fadeInUp">
-                <span v-for="(item,index) in list" :key="index" :class="{'active':select===index}" @click="change(index)">{{item}}</span>
-            </div>
-            <div class="xsfb wow fadeInUp" id="xsfb">
-                <p class="title">销售分布</p>
-                <div class="world-img">
-                    <img src="../assets/zm/xs/world-img.png" alt="">
-                    <div class="list">
-                        <div class="point"></div>
-                        <div class="point"></div>
-                        <div class="point"></div>
-                        <div class="point"></div>
-                        <div class="point"></div>
-                        <div class="point"></div>
-                    </div>
-                </div>
-            </div>
-            <div class="customer wow fadeInUp" id="customer">
-                <p class="title">客户展示</p>
                 <div class="allItems">
-                    <div class="item wow fadeInUp" v-for="(item,index) in cList" :key="index" :style="bStyle(index)">
-                        <img :src="item.img" alt="">
+                    <div class="item wow fadeInUp" v-for="(item,index) in list" :key="index" @click="change(index)" :class="{'active':select===index}" :style="aStyle(index)">
+                        {{item}}
                     </div>
                 </div>
             </div>
-            <div class="hope wow fadeInUp" id="zs">
-                <p class="title">销售展望</p>
-                <div class="content">
-                 <p>暂无内容</p>
+            <div class="content wow fadeIn">
+                <div class="link">
+                    <span>您的位置：</span>
+                    <a href="./sale.html">
+                        技术能力  >
+                    </a>
+                    <span>&nbsp;{{text}}</span>
                 </div>
+                <transition name="fade">
+                    <div class="product" v-if="select===0">
+                      <p class="title wow fadeInUp">技术创新是企业生命力的不竭源泉，是市场竞争力的根本所在</p>
+                    <div class="acon wow fadeInUp">
+                        <div class="left">
+                            <img src="../assets/yap/tech/l.png" alt="">
+                        </div>
+                        <div class="right">
+                            <div class="one three">
+                                <p>
+                                    多项具有自主知识产权的发明专利，研发技术处于国内领先地位。
+                                </p>
+                            </div>
+                            <div class="two">
+                                <img src="../assets/yap/tech/r.png" alt="">
+                            </div>
+                            <div class="two">
+                                <img src="../assets/yap/tech/c.png" alt="">
+                            </div>
+                            <div class="one">
+                                <p>
+                                    人才是企业最重要的资源，公司坚持“以人为本，尊重知识，人尽其才”的用人理念，现拥有一支行业优秀的研发队伍，具有强大的技术研发和攻关能力。
+                                </p>
+
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="sc" v-if="select===1">
+                 <div class="item wow fadeInUp">
+                     <img src="../assets/yap/tech/1.png" alt="">
+                 </div>
+                        <div class="item wow fadeInUp " >
+                            <img src="../assets/yap/tech/2.png" alt="">
+                        </div>
+                        <div class="item wow fadeInUp" >
+                            <img src="../assets/yap/tech/3.png" alt="">
+                        </div>
+                        <div class="item wow fadeInUp">
+                            <img src="../assets/yap/tech/4.png" alt="">
+                        </div>
+                        <div class="item oItem wow fadeInUp">
+                            <p>
+                                我们立足于先进的生产设备和工艺技术，致力于自身实力的持续增强，打造国内乃至世界一流品质的汽车继电器产品。
+                            </p>
+
+                        </div>
+                        <div class="item wow fadeInUp">
+                            <img src="../assets/yap/tech/6.png" alt="">
+                        </div>
+                        <div class="item wow fadeInUp">
+                            <img src="../assets/yap/tech/7.png" alt="">
+                        </div>
+                        <div class="item wow fadeInUp">
+                            <img src="../assets/yap/tech/8.png" alt="">
+                        </div>
+                        <div class="item wow fadeInUp">
+                            <img src="../assets/yap/tech/9.png" alt="">
+                        </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="sy" v-if="select===2">
+                   <div class="one wow fadeInUp">
+                       <img src="../assets/yap/tech/sy.png" alt="">
+                       <p>亿安培实验室能按照国际标准、国家标准及行业标准开展继电器的各项试验检测，实验室拥有各种试验检测设备，具备继电器综合检测分析和基础研究能力，为产品研发、
+                           品质保证、客户服务提供强有力的技术保障。</p>
+                   </div>
+                    </div>
+                </transition>
+                <transition name="fade">
+                    <div class="pz" v-if="select===3">
+                  <p class="title wow fadeInUp">质量是企业的生命</p>
+                        <div class="acon">
+                       <div class="item wow fadeInUp" >
+                              <p class="p1">专注品质</p>
+                           <i class="iconfont icon-zhiliangbz"></i>
+                           <p class="p2">以质量求生存，以质量求发展，努力提高产品质量，是公司质量管理体系的核心</p>
+                       </div>
+                            <div class="item  wow fadeInUp" style="animation-delay: 0.2s">
+                                <p class="p1">高效管理</p>
+                                <i class="iconfont icon-guanli"></i>
+                                <p class="p2">通过贯彻先进的质量理念，不断完善质量管理体系，持续推进产品过程质量控制与检测，强化供应链管理</p>
+                            </div>
+                            <div class="item  wow fadeInUp" style="animation-delay: 0.3s">
+                                <p class="p1">值得信任</p>
+                                <i class="iconfont icon-xin"></i>
+                                <p class="p2">致力于为每个客户提供高质量的产品，赢得广大客户的信任</p>
+                            </div>
+                        </div>
+                    </div>
+                </transition>
             </div>
         </div>
         <foot-Component class="foot wow"></foot-Component>
@@ -63,87 +135,41 @@
         data(){
             return{
                 select:0,
-                cList:[
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    },
-                    {
-                        img:require('../assets/zm/kh.png')
-                    }
-                ],
-                list:[
-                    "销售分布",
-                    "客户展示",
-                    "销售展望"
-                ]
+                text:'产品研发',
+           list:[
+               "产品研发",
+               "生产系统",
+               "试验检测",
+               "品质保证"
+           ]
             }
         },
         components:{footComponent},
         mounted() {
             Scrollbar.initAll(document.getElementById("scroller-wrapper"));
             let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
-            scrollbar.scrollTo(0,1)
+            scrollbar.scrollTo(0,0)
             this.$nextTick(()=>{
                 if(window.location.search.replace('?', '').split('=')[1]!==undefined){
-                    setTimeout(()=>{
-                        this.change(parseInt(this.getNid()))
-                    },1000)
+                    this.getScroll(parseInt(this.getNid()))
+                    this.text=this.list[parseInt(this.getNid())]
                 }
             })
         },
         methods:{
+            aStyle(n){
+                return {animationDelay:0.2*n+'s'}
+            },
+            change(n){
+                const  link=`/sale.html?index=${n}`
+                window.open(link,'_self')
+            },
+            getScroll(n){
+                this.select=n
+            },
             getNid () {
                 return window.location.search.replace('?', '').split('=')[1].split('?')[0]
             },
-            bStyle(n){
-                return {animationDelay:n*0.1+0.2+'s'}
-            },
-            change(n){
-                this.select=n
-                if(n===0){
-                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#xsfb"),{
-                        offsetTop:100,
-                    })
-                }else if(n===1){
-                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#customer"),{
-                        offsetTop:100,
-                    })
-                }else{
-                    Scrollbar.get(document.getElementById('scroller-wrapper')).scrollIntoView(document.querySelector("#zs"),{
-                        offsetTop:100,
-                    })
-                }
-            }
         }
     }
 </script>
@@ -152,259 +178,344 @@
 .con{
     width:100%;
     animation: run5 1s linear forwards;
-    .banner{
-        width:100%;
-        img{
-            display: block;
-            width:100%;
-            object-fit: cover;
-        }
-    }
-    .main{
-        width:100%;
-        margin: 30px auto;
-        .nav{
-            width:1440px;
-            margin: 0 auto;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-between;
-            .left{
-                padding: 10px 0;
-                text-align: center;
-                background-color: #F37041;
-                width:200px;
-                height:200px;
-                overflow: hidden;
-                margin-top: -150px;
-                animation: transition1 2s ease-in forwards;
-                p{
-                    color:white;
-                }
-                p:nth-child(1){
-                    font-size: 35px;
-                    font-weight: bold;
-                    margin-top: 10px;
-                }
-                p:nth-child(2){
-                    font-size: 25px;
-                    font-family: "Fira Code Light";
-                    margin-top: 5px;
-                }
-                .line{
-                    width:1px;
-                    height:120px;
-                    margin-left: 30px;
-                    background-color: white;
-                    margin-top: 30px;
-                }
-            }
-            .right{
-                animation: transition2 2s ease-in forwards;
-                span{
-                    cursor: pointer;
-                    margin-right: 10px;
-                    i{
-                        font-size: 25px;
-                        color:black;
-                        transition: all .6s;
-                    }
-                }
-                span:hover{
-                    i{
-                        color:#F37041;
-                    }
-                }
-                a{
-                    margin-right: 5px;
-                    display: inline-block;
-                    transition: all 1s;
-                    &:hover{
-                        color:#F37041;
-                    }
-                }
-            }
-        }
-        .tnav{
-            width:100%;
-            border-top: 1px solid #E7E7E7;
-            border-bottom: 1px solid #E7E7E7;
-            display: flex;
-            margin: 30px auto;
-            flex-direction: row;
-            justify-content: center;
-            padding: 15px 0;
-            animation-duration: 2s;
-            span{
-                display: inline-block;
-                padding: 0 30px;
-                position: relative;
-                font-size: 18px;
-                font-family: "Fira Code Light";
-                font-weight: lighter;
-                cursor: pointer;
-                transition: all 1s;
-                color:#B8B8B8;
-            }
-            span:hover{
-                color:black;
-            }
-            .active{
-                color:black;
-            }
-            span::after{
-                content:'';
-                display: inline-block;
-                height:18px;
-                top:4px;
-                right:0;
-                width:1px;
-                position: absolute;
-                background-color: #848484;
-            }
-        }
-        .xsfb{
-            width:1440px;
-            margin: 60px auto;
-            animation-duration: 2s;
-            .title{
-                color:#313131;
-                font-size: 35px;
-                text-align: center;
-                font-family: "Fira Code Medium";
-                font-weight: bold;
-                position: relative;
-                padding: 15px 0;
-            }
-            .title::after{
-                position: absolute;
-                left:49%;
-                bottom:0;
-                content:'';
-                display: inline-block;
-                height:3px;
-                width:30px;
-                background-color: #F37041;
-            }
-            .world-img{
-                width:100%;
-                position: relative;
-                margin: 60px auto;
-                img{
-                    width:100%;
-                    object-fit: cover;
-                }
-                .list{
-                    .point{
-                        position: absolute;
-                        width: 9.85%;
-                        padding-top: 9.85%;
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: cover;
-                        background-image: url(https://www.4d-bios.com/bocweb/web/css/../img/point-bg.png);
-                        transform-origin: center;
-                        transform: scale(.5);
-                        animation: pointAni 2s infinite;
-                        -webkit-animation: pointAni 2s infinite;
-                    }
-                    @keyframes pointAni {
-                        50% {
-                            transform: scale(.7);
-                        }
-                        100% {
-                            transform: scale(.5);
-                        }
-                    }
-                    .point:nth-child(1){
-                        left: 24%;
-                        top: 10.5%;
-                    }
-                    .point:nth-child(2){
-                        left: 22%;
-                        top: 22%;
-                        width: 5.375%;
-                        padding-top: 5.375%;
-                    }
-                    .point:nth-child(3){
-                        left: 29%;
-                        top: 54%;
-                    }
-                    .point:nth-child(4){
-                        left: 53%;
-                        top: 38%;
-                    }
-                    .point:nth-child(5){
-                        left: 74%;
-                        top: 17%;
-                    }
-                    .point:nth-child(6){
-                        left: 78%;
-                        top: 54%;
-                        width: 8.375%;
-                        padding-top: 8.375%;
-                    }
-                }
-            }
-        }
-        .customer{
-            @extend .xsfb;
-            .allItems{
-                width:100%;
-                display: flex;
-                flex-direction: row;
-                flex-wrap: wrap;
-                margin: 60px auto;
-                .item{
-                    width: 15%;
-                    height: 60px;
-                    text-align: center;
-                    border: 1px solid #dfdfdf;
-                    padding: 30px 0;
-                    margin-top: 30px;
-                    cursor: pointer;
-                    overflow: hidden;
-                    -webkit-transition: all 2s;
-                    transition: all 2s;
-                    margin-left: 1%;
-                    animation-duration: 2s;
-                    img{
-                        height: 50px;
-                        -webkit-transition: all 2s;
-                        transition: all 2s;
-                    }
-                    &:hover{
-                        img{
-                            transform: scale(1.05);
-                        }
-                    }
-                }
-            }
-        }
-        .hope{
-            @extend.xsfb;
-            .content{
-                width:100%;
-                margin: 60px auto;
-                p{
-                    text-align: center;
-                }
-            }
-        }
-    }
-    @media screen and (max-width: 1440px) and (min-width: 1000px){
-        .main{
-            .nav,.xsfb{
-                width:90%;
-            }
-        }
-    }
+    background-color: #F8F8F8;
     @keyframes run5 {
         from{
             opacity: 0;
         }
         to{
             opacity: 1;
+        }
+    }
+    .banner{
+        width:100%;
+        position: relative;
+        img{
+            display: block;
+            width:100%;
+            object-fit: cover;
+        }
+        .text{
+            position: absolute;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            right:5%;
+            bottom:0;
+            p{
+                animation-duration: 2s;
+            }
+            p:nth-child(1){
+                color:white;
+                font-size: 30px;
+                font-weight: bolder;
+            }
+            p:nth-child(2){
+                font-size: 60px;
+                text-transform: uppercase;
+                color:rgba(255,255,255,.1);
+                margin-top: -30px;
+                font-family: os;
+                font-weight: bolder;
+            }
+            .scroll{
+                width:1px;
+                height:142px;
+                background:rgba(255,255,255,0.15);
+                position: relative;
+                &::after{
+                    content:'';
+                    display: inline-block;
+                    width:1px;
+                    height:23px;
+                    background:rgba(255,255,255,1);
+                    position: absolute;
+                    animation: down 2s infinite linear;
+                    left:0;
+                    top:0;
+                }
+                @keyframes down {
+                    from{
+                        top:0;
+                    }
+                    to{
+                        top:100%;
+                    }
+                }
+            }
+        }
+    }
+    .main{
+        width:1440px;
+        margin: 30px auto;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        .nav{
+            width:223px;;
+            .allItems{
+                width:100%;
+                display: flex;
+                flex-direction: column;
+                background:rgba(255,255,255,1);
+                border:1px solid rgba(225, 225, 225, 1);
+                box-shadow:0px 2px 10px 0px rgba(204,204,204,0.52);
+                .item{
+                    color:#666666;
+                    font-family: "Fira Code Light";
+                    font-weight: lighter;
+                    border-bottom: 1px solid #E1E1E1;
+                    text-align: center;
+                    padding: 10px 0;
+                    cursor: pointer;
+                    transition: all 1s;
+                    &:hover{
+                        background-color: #227CCB;
+                        color:white;
+                    }
+                }
+                .active{
+                    background-color: #227CCB;
+                    color:white;
+                }
+            }
+        }
+        .content{
+            width:75%;
+            margin-left: 5%;
+            margin-bottom: 60px;
+            .link{
+                width:100%;
+                border-bottom: 2px solid #E1E1E1;
+                display: flex;
+                flex-direction: row;
+                margin: 20px auto;
+                padding-bottom: 15px;
+                margin-bottom: 0;
+                span,a{
+                    color:#666666;
+                    font-size: 13px;
+                }
+                a{
+                    transition: all 1s;
+                    &:hover{
+                        color:#227CCB;
+                    }
+                }
+            }
+            .product{
+            width:100%;
+                .title{
+                    font-size: 30px;
+                    font-weight: bolder;
+                    font-family: "Fira Code Medium";
+                    margin: 30px auto;
+                    text-align: center;
+                    animation-duration: 2s;
+                }
+                .acon{
+                    width:100%;
+                    display: flex;
+                    flex-direction: row;
+                    margin: 20px auto;
+                    animation-duration: 2s;
+                    .left{
+                        width:50%;
+                        overflow: hidden;
+                        cursor: pointer;
+                        img{
+                            display: block;
+                            width:100%;
+                            object-fit: cover;
+                            transition: all 1s;
+                            height:100%;
+                        }
+                        &:hover{
+                            img{
+                                transform: scale(1.05);
+                            }
+                        }
+                    }
+                    .right{
+                        width:50%;
+                        display: flex;
+                        flex-direction: row;
+                        flex-wrap: wrap;
+                        .one{
+                            width:50%;
+                            background-color: #227CCB;
+                            -moz-box-align: center;
+                            p{
+                                color:white;
+                                font-family: "Fira Code Light";
+                                font-weight: lighter;
+                                width:90%;
+                                margin: 60px auto;
+                                line-height: 30px;
+                            }
+                        }
+                        .three{
+                            p{
+                                margin: 100px auto;
+                            }
+                        }
+                        .two{
+                            width:50%;
+                            overflow: hidden;
+                            cursor: pointer;
+                            img{
+                                width:100%;
+                                height:100%;
+                                object-fit: cover;
+                                transition: all 1s;
+                            }
+                            &:hover{
+                                img{
+                                    transform: scale(1.05);
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            .sc{
+                width:100%;
+                display: flex;
+                margin: 30px auto;
+                flex-direction: row;
+                flex-wrap: wrap;
+                background: url("../assets/yap/tech/tbg.png") no-repeat;
+                background-size: cover;
+                height:1200px;
+                justify-content: space-between;
+                .item{
+                    width:30%;
+                    cursor: pointer;
+                    overflow: hidden;
+                    height:324px;
+                    transition: all 1s;
+                    animation-duration: 2s;
+                    img{
+                        width:100%;
+                        display: block;
+                        transition: all 1s;
+                        object-fit: cover;
+                    }
+                    &:hover{
+                        img{
+                            transform: scale(1.05);
+                        }
+                        box-shadow:0px 10px 10px 0px rgba(210,210,210,0.7);
+                    }
+                }
+                .oItem{
+                    background: url("../assets/yap/tech/5.png") no-repeat;
+                    background-size: cover;
+                    height:324px;
+                    p{
+                        width:70%;
+                        margin: 80px auto;
+                        color:white;
+                        line-height:35px;
+                        font-size: 14px;
+                        font-family: "Fira Code Light";
+                        font-weight: lighter;
+                    }
+                }
+            }
+            .sy{
+                width:100%;
+                margin: 30px auto;
+                padding-bottom: 60px;
+                .one{
+                    width:100%;
+                    text-align: center;
+                    img{
+                        cursor: pointer;
+                        transition: all 1s;
+                        &:hover{
+                            transform: scale(1.05);
+                        }
+                    }
+                    p{
+                        margin: 20px auto;
+                        color:#333333;
+                        font-family: "Fira Code Light";
+                        font-weight: lighter;
+                        line-height: 35px;
+                    }
+                }
+            }
+            .pz{
+                width:100%;
+                margin: 30px auto;
+                background: url("../assets/yap/tech/bg.png") no-repeat;
+                height:600px;
+                background-size: cover;
+                .title{
+                    padding: 60px 0;
+                    text-align: center;
+                    color:#010101;
+                    font-weight: bolder;
+                    font-size: 30px;
+                }
+                .acon{
+                    width:100%;
+                    display: flex;
+                    flex-direction: row;
+                    justify-content: space-between;
+                    margin-top: 30px;
+                    .item{
+                        width:30%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        cursor: pointer;
+                        p,i{
+                            color:#666666;
+                        }
+                        .p1{
+                            margin: 30px auto;
+                            transition: all 1s;
+                        }
+                        i{
+                            font-size: 90px;
+                            transition: all 1s;
+                        }
+                        .p2{
+                            width:90%;
+                            font-size: 13px;
+                            margin: 10px auto;
+                            line-height:25px;
+                            text-align: center;
+                            font-family: "Fira Code Light";
+                            font-weight: lighter;
+                        }
+                        &:hover{
+                            .p1,i{
+                                color:#227CCB;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    @media screen and (max-width: 1440px) and (min-width: 1000px){
+        .banner{
+            img{
+                height:500px;
+            }
+        }
+        .main{
+            width:90%;
+            .content{
+                .sc{
+                    .item{
+                        height:274px;
+                    }
+                }
+            }
         }
     }
     .foot{
@@ -433,23 +544,16 @@
     }
     @keyframes polygon {
         0% {
-            clip-path: polygon(0% 0%, 0% 100%, 0% 100%, 0% 0%);
+            clip-path: polygon(50% 0, 99% 50%, 50% 99%, 0 50%);
         }
         100% {
-            clip-path: polygon(0% 0%, 0% 100%, 100% 100%, 100% 0%);
+            clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
         }
     }
     @media screen and (max-width: 1000px){
         .main{
             width:90%;
             margin-left: 5%;
-            .allItems{
-                flex-direction: column;
-                .item{
-                    width:100%;
-                    margin-left: 0;
-                }
-            }
         }
     }
 }

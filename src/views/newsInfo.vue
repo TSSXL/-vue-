@@ -1,30 +1,16 @@
 <template>
     <div class="con">
         <div class="banner">
-            <img src="../assets/zm/news/nbanner.png" alt="">
+            <img src="../assets/yap/news/nbanner.png" alt="">
         </div>
         <div class="main">
-            <div class="nav">
-                <div class="left wow">
-                    <p>新闻详情</p>
-                    <p>NewsInfo</p>
-                    <div class="line">
-
-                    </div>
-                </div>
-                <div class="right wow">
-                    <span><i class="iconfont icon-home"></i></span>
-                    <a href="./index.html">首页-</a>
-                    <a href="./news.html">新闻中心</a>
-                </div>
-            </div>
             <p class="title">{{info.TITLE}}</p>
             <p class="time">{{info.SHOWTIME}}</p>
             <div class="htmlCon" v-html="info.CONTENT">
 
             </div>
         </div>
-        <foot-Component></foot-Component>
+        <foot-Component class="foot wow"></foot-Component>
     </div>
 </template>
 
@@ -156,6 +142,11 @@
                 line-height: 30px;
             }
         }
+        .foot{
+            animation-name: polygon;
+            animation-duration: 2s;
+            
+        }
         @keyframes transition1 {
             0% {
                 transform: translate(-100px,-100px);
@@ -174,6 +165,14 @@
             100% {
                 transform: translate(0,0);
                 opacity: 1;
+            }
+        }
+        @keyframes polygon {
+            0% {
+                clip-path: polygon(50% 0, 99% 50%, 50% 99%, 0 50%);
+            }
+            100% {
+                clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
             }
         }
         @media screen and (max-width: 1440px) and (min-width: 1000px){
