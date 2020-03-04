@@ -2,17 +2,16 @@
     <div class="banner">
         <swiper :options="swiperOptiona" ref="mySwipers" class="swiper" >
             <swiper-slide class="item" v-for="(item,index) in bList" :key="index">
-<!--                <img :src="`http://yibin.sansg.com/upload/${item.PICURL}`" alt="">-->
-                <img :src="item.img" alt="">
+                <img :src="`http://yap.sansg.com/upload/${item.PICURL}`" alt="">
                 <div class="text">
                     <p class="cn">
-                        技术领航
+                       {{item.TEXT0}}
                     </p>
                     <p class="cn cn2">
-                        高效创新
+                        {{item.TEXT1}}
                     </p>
                     <div>
-                        专业的汽车电子及电气综合解决方案供应商
+                        {{item.TEXT2}}
                     </div>
 
                 </div>
@@ -32,17 +31,7 @@
         name: "banner",
         data(){
             return{
-                bList:[
-                    {
-                        img:require('../assets/yap/home/banner.png')
-                    },
-                    {
-                        img:require('../assets/yap/home/banner.png')
-                    },
-                    {
-                        img:require('../assets/yap/home/banner.png')
-                    }
-                ],
+                bList:[],
                 swiperOptiona:{
                     scrollbar: {
                         el: '.swiper-scrollbar',
@@ -72,11 +61,8 @@
             swiperSlide,
         },
         mounted(){
-            // setTimeout(()=>{
-            //     this.getList()
-            // },4000)
             setTimeout(()=>{
-                this.$refs.mySwipers.swiper.init()
+                this.getList()
             },100)
         },
         methods:{
@@ -84,6 +70,7 @@
                 const url = `${getPicUrl( 'zh-CN','首页banner',8)}`
                 this.$axios.get(url).then(res => {
                     this.bList=res.data
+                    // console.log(this.bList)
                     setTimeout(()=>{
                         this.$refs.mySwipers.swiper.init()
                     },100)

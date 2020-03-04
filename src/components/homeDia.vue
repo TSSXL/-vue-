@@ -2,7 +2,7 @@
   <div class="dialog" >
     <div style="height: 300px;overflow: hidden;text-align: left"  data-scrollbar>
       <span v-for="(item,index) in list" :key="index">
-          {{item}}
+          {{item.TITLE}}
       </span>
     </div>
   </div>
@@ -15,28 +15,23 @@
     name: "aboutDia",
     data(){
       return{
-          list:[
-           "2001---公司成立",
-              "2001---汽车继电器专用生产线建成并投入使用",
-              "2001--汽车继电器专用生产线建成并投入使用",
-              "2001---汽车继电器专用生产线建成并投入使用立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立",
-              "2001---公司成立"
-          ]
+          list:[]
       }
     },
     mounted(){
       Scrollbar.initAll();
+      this.$nextTick(()=>{
+        this.getNews('26')
+      })
     },
     methods:{
+      getNews(id){
+        const url = `${getNewsUrl('zh-CN',id,10000,1)}`
+        this.$axios.get(url).then(res => {
+          this.list=res.data.newsArr
+          console.log(this.list)
+        })
+      },
     }
   }
 </script>

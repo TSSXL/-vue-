@@ -12,9 +12,8 @@ import 'element-ui/lib/theme-chalk/index.css';
 import axios from 'axios'
 
 
-axios.defaults.baseURL = 'http://yibin.sansg.com/';
+axios.defaults.baseURL = 'http://yap.sansg.com/';
 Vue.prototype.$axios=axios
-
 
 Vue.use(ElementUI);
 Vue.use(Viewer);

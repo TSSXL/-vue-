@@ -91,10 +91,7 @@
                 </transition>
                 <transition name="fade">
                     <div class="sy" v-if="select===2">
-                   <div class="one wow fadeInUp">
-                       <img src="../assets/yap/tech/sy.png" alt="">
-                       <p>亿安培实验室能按照国际标准、国家标准及行业标准开展继电器的各项试验检测，实验室拥有各种试验检测设备，具备继电器综合检测分析和基础研究能力，为产品研发、
-                           品质保证、客户服务提供强有力的技术保障。</p>
+                   <div class="one wow fadeInUp" v-html="info.CONTENT">
                    </div>
                     </div>
                 </transition>
@@ -128,7 +125,7 @@
 
 <script>
     import footComponent from '../components/foot'
-    import {getProductsUrl} from '../util/lang'
+    import {getContent} from '../util/lang'
     import Scrollbar from 'smooth-scrollbar'
     export default {
         name: "pro",
@@ -141,7 +138,8 @@
                "生产系统",
                "试验检测",
                "品质保证"
-           ]
+           ],
+                info:{}
             }
         },
         components:{footComponent},
@@ -154,9 +152,17 @@
                     this.getScroll(parseInt(this.getNid()))
                     this.text=this.list[parseInt(this.getNid())]
                 }
+                this.getContent('51')
             })
         },
         methods:{
+            getContent(id){
+                const url = `${getContent(id)}`
+                this.$axios.get(url).then(res => {
+                    this.info=res.data
+                    console.log(this.info)
+                })
+            },
             aStyle(n){
                 return {animationDelay:0.2*n+'s'}
             },
@@ -429,21 +435,8 @@
                 padding-bottom: 60px;
                 .one{
                     width:100%;
-                    text-align: center;
-                    img{
-                        cursor: pointer;
-                        transition: all 1s;
-                        &:hover{
-                            transform: scale(1.05);
-                        }
-                    }
-                    p{
-                        margin: 20px auto;
-                        color:#333333;
-                        font-family: "Fira Code Light";
-                        font-weight: lighter;
-                        line-height: 35px;
-                    }
+                   font-size: 14px;
+                    line-height: 30px;
                 }
             }
             .pz{

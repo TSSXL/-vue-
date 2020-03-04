@@ -9,6 +9,11 @@ import ElementUI from 'element-ui';
 import Viewer from 'v-viewer'
 import 'viewerjs/dist/viewer.css'
 import 'element-ui/lib/theme-chalk/index.css';
+import axios from 'axios'
+
+
+axios.defaults.baseURL = 'http://yap.sansg.com/';
+Vue.prototype.$axios=axios
 
 
 Vue.use(ElementUI);

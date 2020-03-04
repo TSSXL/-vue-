@@ -13,8 +13,8 @@
         <div class="main">
          <div class="nav">
              <div class="allItems">
-                 <div class="item wow fadeInUp" v-for="(item,index) in list" :key="index" :style="aStyle(index)" :class="{'active':select===index}">
-                     {{item}}
+                 <div class="item wow fadeInUp" v-for="(item,index) in list" :key="index" :style="aStyle(index)" :class="{'active':select===index}" @click="change(index,item.ID,item.CALLED)">
+                     {{item.CALLED}}
                  </div>
              </div>
          </div>
@@ -24,21 +24,21 @@
                  <a href="./pro.html">
                   产品中心  >
                  </a>
-                 <span>&nbsp;全部系列</span>
+                 <span>{{text}}</span>
              </div>
                 <div class="allItems">
-                    <div class="item wow fadeInUp" v-for="(item,index) in pList" :key="index">
+                    <div class="item wow fadeInUp" v-for="(item,index) in pList" :key="index" @click="gotoDown(item.HREF)">
                         <div class="one">
-                            <img :src="item.img" alt="">
+                            <img :src="`http://yap.sansg.com/upload/${item.SMALLPIC}`" alt="">
                         </div>
                         <div class="two">
-                          <p>{{item.price}}</p>
-                            <p>{{item.title}}</p>
-                            <p>{{item.size}}</p>
+                          <p>{{item.PRICE2}}</p>
+                            <p>{{item.PRONAME}}</p>
+                            <p>{{item.SIZE}}</p>
                         </div>
                     </div>
                 </div>
-                <div class="btn wow fadeInUp">
+                <div class="btn wow fadeInUp" @click="showMore">
             <span>
                   MORE
             </span>
@@ -51,67 +51,88 @@
 
 <script>
     import footComponent from '../components/foot'
+    import {getProductstypeUrl2,getProductsUrl} from '../util/lang'
     export default {
         name: "about",
         data(){
             return{
                 select:0,
+                text:'全部系列',
                 list:[
-                    "全部系列",
-                    "汽车继电器",
-                    "PCB继电器",
-                    "新能源继电器",
-                    "大功率继电器",
-                    "汽车电器控制盒",
-                    "汽车高压配电盒"
+                    {CALLED:'全部系列',ID:42}
                 ],
-                pList:[
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    },
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    },
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    },
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    },
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    },
-                    {
-                        img:require('../assets/yap/pro/p.png'),
-                        title:'汽车电子继电器',
-                        price:'￥199',
-                        size:'型号：PLTD'
-                    }
-                ]
+                id:'',
+                page:'',
+                totalPage:'',
+                pList:[]
             }
         },
         components:{footComponent},
+        mounted(){
+            setTimeout(()=>{
+                this.getPro()
+            },100)
+            if(window.location.search!==''){
+                this.select=parseInt(this.getNid())
+                this.getProList(parseInt(this.getNid2()))
+                this.text=decodeURI(this.getNid3())
+            }else{
+                this.getProList(42)
+            }
+        },
         methods:{
+            gotoDown(n){
+                window.open(`http://yap.sansg.com/upload/${n}`,'_blank')
+            },
+            getNid () {
+                return window.location.search.replace('?', '').split('=')[1].split('?')[0]
+            },
+            getNid2 () {
+                return window.location.search.replace('?', '').split('=')[2].split('?')[0]
+            },
+            getNid3 () {
+                return window.location.search.replace('?', '').split('=')[3].split('?')[0]
+            },
+            change(n,id,t){
+                const link = `/pro.html?index=${n}?id=${id}?type=${t}`
+                window.open(link,'_self')
+                // this.select=n
+            },
+            getProList(id){
+                this.id=id
+                this.page=2
+                const url = `${getProductsUrl('zh-CN',id,6,1)}`
+                this.$axios.get(url).then(res => {
+                    this.pList=res.data.proarr
+                    this.totalPage=res.data.pagershow.totalPagers
+                })
+            },
+            showMore(){
+                if(this.page<=this.totalPage){
+                    this.$nextTick(()=>{
+                        const url = `${getProductsUrl('zh-CN',this.id,6,this.page++)}`
+                        this.$axios.get(url).then(res => {
+                            this.pList=this.pList.concat(res.data.proarr)
+                        })
+                    })
+                }else{
+                    this.$notify({
+                        title: '提示',
+                        message: '已经加载全部了',
+                        offset: 100
+                    });
+                }
+            },
+            getPro(){
+                this.$nextTick(()=>{
+                    const url = `${getProductstypeUrl2('zh-CN','42')}`
+                    this.$axios.get(url).then(res => {
+                        this.list=this.list.concat(res.data)
+                    })
+                })
+            },
             aStyle(n){
                 return {animationDelay:0.1*n+'s'}
-            },
-            change(n){
-                this.select=n
             }
         }
     }

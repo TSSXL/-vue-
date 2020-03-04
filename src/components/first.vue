@@ -23,7 +23,7 @@
             <div class="main">
                 <div class="right">
                     <div class="img">
-                        <img src="../assets/yap/home/slogo.png" alt="">
+                        <img src="../assets/yap/home/slogo.png" alt="" @click="goto('index')">
                     </div>
                     <ul>
                         <li class="animated fadeInDown" :class="page === 'index' ? 'showLine' : ''" @click="goto('index')"  style="animation-delay: 0.2s">

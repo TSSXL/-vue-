@@ -16,21 +16,21 @@
             <transition name="fade">
                 <div class="company" v-if="select===0">
              <div class="allItems">
-                 <div class="item wow fadeIn" v-for="(item,index) in list" :key="index" @click="gotoInfo">
+                 <div class="item wow fadeIn" v-for="(item,index) in list" :key="index" @click="gotoInfo(item.ID)">
                      <div class="one">
-                         <img :src="item.img" alt="">
+                         <img :src="`http://yap.sansg.com/upload/${item.SMALLPIC}`" alt="">
                      </div>
                      <div class="two">
-                         <p class="title">{{item.title}}</p>
-                         <p class="nr">{{item.con}}</p>
+                         <p class="title">{{item.TITLE}}</p>
+                         <p class="nr">{{item.INTRO}}</p>
                          <div class="time">
-                            <p>{{item.time}}</p>
+                            <p>{{item.SHOWTIME}}</p>
                              <p>></p>
                          </div>
                      </div>
                  </div>
              </div>
-                    <div class="btn">
+                    <div class="btn" @click="showMore">
             <span>
                   MORE
             </span>
@@ -40,21 +40,21 @@
             <transition name="fade">
                 <div class="company" v-if="select===1">
                     <div class="allItems">
-                        <div class="item wow fadeIn" v-for="(item,index) in list2" :key="index" @click="gotoInfo">
+                        <div class="item wow fadeIn" v-for="(item,index) in list2" :key="index" @click="gotoInfo(item.ID)">
                             <div class="one">
-                                <img :src="item.img" alt="">
+                                <img :src="`http://yap.sansg.com/upload/${item.SMALLPIC}`" alt="">
                             </div>
                             <div class="two">
-                                <p class="title">{{item.title}}</p>
-                                <p class="nr">{{item.con}}</p>
+                                <p class="title">{{item.TITLE}}</p>
+                                <p class="nr">{{item.INTRO}}</p>
                                 <div class="time">
-                                    <p>{{item.time}}</p>
+                                    <p>{{item.SHOWTIME}}</p>
                                     <p>></p>
                                 </div>
                             </div>
                         </div>
                     </div>
-                    <div class="btn">
+                    <div class="btn" @click="showMore2">
             <span>
                   MORE
             </span>
@@ -68,6 +68,7 @@
 
 <script>
     import footComponent from '../components/foot'
+    import { getNewsUrl} from '../util/lang'
     export default {
         name: "about",
         data(){
@@ -77,82 +78,14 @@
                     "公司新闻",
                     "行业资讯"
                 ],
-                list:[
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    }
-                ],
-                list2:[
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所2',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    },
-                    {
-                        img:require('../assets/yap/news/n.png'),
-                        title:'纯正、静谧与惬意：浴室作为舒缓身心的场所',
-                        con:'浴室潮流是天然的材料、充足的光线和清晰的空间布局,打造高性价比的现代浴室 ...',
-                        time:'01-03'
-                    }
-                ]
+                id:'',
+                page:'',
+                totalPage:'',
+                id2:'',
+                page2:'',
+                totalPage2:'',
+                list:[],
+                list2:[]
             }
         },
         components:{footComponent},
@@ -160,8 +93,74 @@
             if(window.location.search.replace('?', '').split('=')[1]!==undefined){
                     this.getScroll(parseInt(this.getNid()))
             }
+            this.$nextTick(()=>{
+                this.getNews('24')
+                this.getNews2('25')
+            })
         },
         methods:{
+            getNews(id){
+                this.id=id
+                this.page=2
+                const url = `${getNewsUrl('zh-CN',id,6,1)}`
+                this.$axios.get(url).then(res => {
+                    res.data.newsArr.map((item)=>{
+                        item.SHOWTIME=item.SHOWTIME.slice(0,11)
+                    })
+                    this.list=res.data.newsArr
+                    this.totalPage=res.data.pagerShow.totalPagers
+                })
+            },
+            showMore(){
+                if(this.page<=this.totalPage){
+                    this.$nextTick(()=>{
+                        const url = `${getNewsUrl('zh-CN',this.id,6,this.page++)}`
+                        this.$axios.get(url).then(res => {
+                            res.data.newsArr.map((item)=>{
+                                item.SHOWTIME=item.SHOWTIME.slice(0,11)
+                            })
+                            this.list= this.list.concat(res.data.newsArr)
+                        })
+                    })
+                }else{
+                    this.$notify({
+                        title: '提示',
+                        message: '已经加载全部了',
+                        offset: 100
+                    });
+                }
+            },
+            getNews2(id){
+                this.id2=id
+                this.page2=2
+                const url = `${getNewsUrl('zh-CN',id,6,1)}`
+                this.$axios.get(url).then(res => {
+                    res.data.newsArr.map((item)=>{
+                        item.SHOWTIME=item.SHOWTIME.slice(0,11)
+                    })
+                    this.list2=res.data.newsArr
+                    this.totalPage2=res.data.pagerShow.totalPagers
+                })
+            },
+            showMore2(){
+                if(this.page2<=this.totalPage2){
+                    this.$nextTick(()=>{
+                        const url = `${getNewsUrl('zh-CN',this.id2,6,this.page2++)}`
+                        this.$axios.get(url).then(res => {
+                            res.data.newsArr.map((item)=>{
+                                item.SHOWTIME=item.SHOWTIME.slice(0,11)
+                            })
+                            this.list2= this.list2.concat(res.data.newsArr)
+                        })
+                    })
+                }else{
+                    this.$notify({
+                        title: '提示',
+                        message: '已经加载全部了',
+                        offset: 100
+                    });
+                }
+            },
             getNid () {
                 return window.location.search.replace('?', '').split('=')[1].split('?')[0]
             },
@@ -173,10 +172,10 @@
             getScroll(n){
                 this.select=n
             },
-            gotoInfo(){
-                const link='/newsInfo.html'
+            gotoInfo(n){
+                const link=`/newsInfo.html?id=${n}`
                 window.open(link,'_blank')
-            }
+            },
         }
     }
 </script>

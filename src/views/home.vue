@@ -13,6 +13,9 @@
             <div class="item " v-for="(item,index) in list" :key="index" :class="{'active':select===index}">
           {{item.name}}
             </div>
+               <div class="item" @click="gotoPro">
+                   MORE
+               </div>
            </div>
          </div>
          <div class="allPro">
@@ -41,7 +44,7 @@
             浙江亿安培电器有限公司是一家专业从事汽车继电器、新能源专用继电器、电器控制盒、高压配电盒、汽车电子控制模块等产品的研发、生产、销售、服务于一体的高新科技企业。产品广泛应用于汽车、新能源、工程机械、光伏、工业控制等领域。
           </p>
           <p>优质服务，以质取胜</p>
-          <div class="btn">
+          <div class="btn" @click="gotoAbout">
             <span>
                   了解更多
             </span>
@@ -66,14 +69,14 @@
             <swiper class="swiper1" :options="swiperOption" ref="mySwiper"  v-if="nList.length>0">
                 <swiper-slide class="item wow fadeIn" v-for="(item,index) in nList" :key="index" >
                     <div class="one">
-                        <img :src="item.img" alt="">
+                        <img :src="`http://yap.sansg.com/upload/${item.SMALLPIC}`" alt="">
                     </div>
                     <div class="two">
-                        <p>{{item.title}}</p>
-                        <p>{{item.con}}</p>
+                        <p>{{item.TITLE}}</p>
+                        <p>{{item.INTRO}}</p>
                     </div>
                     <p class="time">
-                        {{item.time}}
+                        {{item.SHOWTIME}}
                         <i class="iconfont icon-you"></i>
                     </p>
                 </swiper-slide>
@@ -94,7 +97,7 @@
   import { swiper, swiperSlide } from "vue-awesome-swiper";
   import "swiper/dist/css/swiper.css";
   import footComponent from '../components/foot'
-  import {getProductsUrl} from '../util/lang'
+  import {getProductsUrl,getNewsUrl} from '../util/lang'
 export default {
   name: 'home',
     data(){
@@ -102,6 +105,7 @@ export default {
           swiperOption:{
               slidesPerView: 3,
               speed:1000,
+              init:false,
               slideToClickedSlide: true,
               navigation: {
                   nextEl: '.allItems .next',
@@ -112,10 +116,10 @@ export default {
         select2:0,
         list2:[
           {
-            name:'全部'
+            name:'公司新闻'
           },
           {
-            name:'最新'
+            name:'行业新闻'
           },
           {
             name:'MORE'
@@ -133,9 +137,6 @@ export default {
           },
           {
             name:'新能源继电器'
-          },
-          {
-            name:'MORE'
           }
         ],
         pList:[
@@ -194,32 +195,7 @@ export default {
             bq:'继电器,触点切换,新品上市'
           }
         ],
-        nList:[
-          {
-            img:require('../assets/yap/home/n.png'),
-            title:'弧焊逆变电源以其高效率电能转换著称',
-            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
-            time:'12-16'
-          },
-          {
-            img:require('../assets/yap/home/n.png'),
-            title:'弧焊逆变电源以其高效率电能转换著称',
-            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
-            time:'12-15'
-          },
-          {
-            img:require('../assets/yap/home/n.png'),
-            title:'弧焊逆变电源以其高效率电能转换著称',
-            con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
-            time:'12-14'
-          },
-            {
-                img:require('../assets/yap/home/n.png'),
-                title:'弧焊逆变电源以其高效率电能转换著称',
-                con:'弧焊逆变电源以其高效率电能转换著称，随着功率控制器件向实用化和大容量化方向发展，弧焊逆变电源也将跨入高频化、大容量的时代。率因数很低...',
-                time:'12-13'
-            }
-        ],
+        nList:[],
           scrollbar:'',
       }
     },
@@ -230,11 +206,29 @@ export default {
         this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
         window.pageYOffset=this.scrollbar.scrollTop
         this.scrollbar.addListener((status) => {
-
         });
+        this.$nextTick(()=>{
+         this.getNews('24')
+        },100)
     },
   components:{bannerComponent,footComponent,swiper, swiperSlide},
     methods:{
+        getNews(id){
+            const url = `${getNewsUrl('zh-CN',id,6,1)}`
+            this.$axios.get(url).then(res => {
+                this.nList=res.data.newsArr
+                console.log(this.nList)
+                setTimeout(()=>{
+                    this.$refs.mySwiper.swiper.init()
+                },100)
+            })
+        },
+        gotoPro(){
+            window.open('/pro.html','_self')
+        },
+        gotoAbout(){
+            window.open('/about.html','_self')
+        },
         aStyle(n){
             return {animationDelay:0.1*n+'s'}
         }

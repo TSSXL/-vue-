@@ -60,17 +60,17 @@
       <transition name="fade">
         <div class="honor" v-if="select===3">
          <div class="allItems">
-            <div class="item wow fadeInUp" v-for="(item,index) in hList" :key="index" @click="showBig(item.img)">
+            <div class="item wow fadeInUp" v-for="(item,index) in hList" :key="index" @click="showBig(item.SMALLPIC)">
               <div class="left">
-                  <img :src="item.img" alt="">
+                  <img :src="`http://yap.sansg.com/upload/${item.SMALLPIC}`" alt="">
               </div>
                 <div class="right">
-                    <p>{{item.title}}</p>
-                    <p>{{item.con}}</p>
+                    <p>{{item.TITLE}}</p>
+                    <p>{{item.INTRO}}</p>
                 </div>
             </div>
          </div>
-            <div class="btn">
+            <div class="btn" @click="showMore">
             <span>
                   MORE
             </span>
@@ -131,6 +131,7 @@
   import aboutDia  from "../components/aboutDia";
   import homeDia  from "../components/homeDia";
   import Scrollbar from 'smooth-scrollbar'
+  import { getNewsUrl} from '../util/lang'
 export default {
   name: 'about',
     data(){
@@ -146,28 +147,10 @@ export default {
            "荣誉资质",
            "全球化服务"
         ],
-          hList:[
-              {
-                  img:require('../assets/yap/about/honor.png'),
-                  title:'认证证书1',
-                  con:'2018年，获取“组合开关的铝合金压铸外壳的制造，IATF16949:2016标准的要求”'
-              },
-              {
-                  img:require('../assets/yap/about/honor.png'),
-                  title:'认证证书1',
-                  con:'2018年，获取“组合开关的铝合金压铸外壳的制造，IATF16949:2016标准的要求”'
-              },
-              {
-                  img:require('../assets/yap/about/honor.png'),
-                  title:'认证证书1',
-                  con:'2018年，获取“组合开关的铝合金压铸外壳的制造，IATF16949:2016标准的要求”'
-              },
-              {
-                  img:require('../assets/yap/about/honor.png'),
-                  title:'认证证书1',
-                  con:'2018年，获取“组合开关的铝合金压铸外壳的制造，IATF16949:2016标准的要求”'
-              }
-          ]
+          id:'',
+          page:'',
+          totalPage:'',
+          hList:[]
       }
     },
   components:{footComponent,aboutDia,swiper, swiperSlide,homeDia },
@@ -184,15 +167,40 @@ export default {
         if(window.location.search.replace('?', '').split('=')[1]!==undefined){
                 this.getScroll(parseInt(this.getNid()))
         }
+        this.getNews('27')
     })
   },
   methods:{
+      getNews(id){
+          this.id=id
+          this.page=2
+          const url = `${getNewsUrl('zh-CN',id,4,1)}`
+          this.$axios.get(url).then(res => {
+              this.hList=res.data.newsArr
+              this.totalPage=res.data.pagerShow.totalPagers
+          })
+      },
+      showMore(){
+          if(this.page<=this.totalPage){
+              this.$nextTick(()=>{
+                  const url = `${getNewsUrl('zh-CN',this.id,4,this.page++)}`
+                  this.$axios.get(url).then(res => {
+                      this.hList= this.hList.concat(res.data.newsArr)
+                  })
+              })
+          }else{
+              this.$notify({
+                  title: '提示',
+                  message: '已经加载全部了',
+                  offset: 100
+              });
+          }
+      },
       hide(){
           this.showImg=false
       },
       showBig(n){
-          this.src=n
-          // this.src='http://fushiwei.sansg.com/upload/'+n
+          this.src='http://yap.sansg.com/upload/'+n
           this.showImg=true
       },
       getNid () {
