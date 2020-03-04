@@ -288,6 +288,9 @@
                             overflow: hidden;
                             img{
                                 transition: all 1s;
+                                width:135px;
+                                height:200px;
+                                object-fit: contain;
                             }
                         }
                         .two{
