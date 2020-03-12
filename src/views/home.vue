@@ -92,7 +92,6 @@
 
 <script>
     import bannerComponent from '../components/banner'
-    import Scrollbar from 'smooth-scrollbar'
     import homeDia from "../components/homeDia";
     import { swiper, swiperSlide } from "vue-awesome-swiper";
     import "swiper/dist/css/swiper.css";
@@ -138,17 +137,9 @@
                 ],
                 pList:[],
                 nList:[],
-                scrollbar:'',
             }
         },
         mounted() {
-            Scrollbar.initAll(document.getElementById("scroller-wrapper"));
-            let scrollbar=Scrollbar.get(document.getElementById('scroller-wrapper'))
-            scrollbar.scrollTo(0,0)
-            this.scrollbar = Scrollbar.init(document.getElementById('scroller-wrapper'));
-            window.pageYOffset=this.scrollbar.scrollTop
-            this.scrollbar.addListener((status) => {
-            });
             this.$nextTick(()=>{
                 this.getPro()
                 this.getNews('24')
